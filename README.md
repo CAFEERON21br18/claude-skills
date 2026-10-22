@@ -1,37 +1,61 @@
+<div align="center">
+
 # 🎓 claude-skills
 
 **Stop rereading your notes. Turn them into something you can actually study with.**
 
-Skills for [Claude](https://claude.ai) built by a computer engineering student, for students. Drop in your course material, answer a few questions, get a full study kit.
+Skills for [Claude](https://claude.ai), built by a computer engineering student, for students.
+
+[**▶ Try the live demo**](https://cafeeron21br18.github.io/claude-skills/study-pack-demo/) · [Install](#install) · [Example prompts](#example-prompts)
+
+<img src="media/demo.gif" alt="Answering exercises in the revision page: instant right/wrong, an explanation for every option, and a question history" width="860">
+
+</div>
 
 ---
 
 ## 📚 study-pack
 
-Give Claude your course (Notion pages, PDFs, slides, photos of notes). It builds **three linked pages**:
+Give Claude your course (Notion pages, PDFs, slides, photos of your notes). It asks you a few questions, then builds **three linked pages**:
 
 | | What you get |
 |---|---|
-| **1 · Syllabus** | Every topic, numbered 1, 2, 3… Only what you need to know. No filler, no paragraphs, nothing to lose focus on. |
-| **2 · Revision** | An interactive lesson per topic: explanations, traps, worked examples, and exercises that correct themselves. Free answers (or a photo of your working) get corrected by Claude. |
-| **3 · Study Plan** *(optional)* | A day-by-day plan up to your exam, with spaced reviews, a mock test at the end, a progress chart, and links straight to the right topic. |
+| **1 · Syllabus** | Every topic, numbered 1, 2, 3… Only what the exam can ask. No filler, nothing to lose focus on. |
+| **2 · Revision** | One lesson per topic: explanation, the classic trap, a worked example, then exercises that correct themselves. Free answers (or a photo of your working) get corrected by Claude. |
+| **3 · Study Plan** *(optional)* | A day-by-day plan to your exam with spaced reviews, a mock test at the end, charts, and links straight to the right topic. |
+
+<table>
+<tr>
+<td width="50%"><img src="media/1-syllabus.png" alt="Syllabus page: five numbered topic cards with short bullet points"><br><sub><b>Syllabus</b> · straight to the point</sub></td>
+<td width="50%"><img src="media/2-revision.png" alt="Revision page with sidebar, progress and focus highlight on one exercise"><br><sub><b>Revision</b> · focus highlight dims everything but what you're reading</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="media/3-plan.png" alt="Study plan with hours per day chart, progress chart and topic timeline"><br><sub><b>Study Plan</b> · spaced reviews up to the exam</sub></td>
+<td width="50%"><img src="media/2b-history.png" alt="Question history drawer listing every answer with right or missed"><br><sub><b>Question history</b> · see what you missed, redo it</sub></td>
+</tr>
+</table>
 
 ### You choose how it looks and works
 
-- 🎨 **Theme**: black & orange · yellow, white & orange · yellow, white & blue · dark blue & light blue · black & pink · or your own
-- 🧭 **Sidebar** with contents and progress
-- 🔦 **Focus highlight**: everything dims except what you're reading
+Claude asks before building anything:
+
+- 🎨 **Theme**: black & orange · yellow, white & orange · yellow, white & blue · dark blue & light blue · black & pink · or describe your own
+- 🧭 **Sidebar** with contents and progress per topic
+- 🔦 **Focus highlight**: everything dims except the part you're reading
 - ✍️ **Exercise types**: multiple choice, free answer, true/false, fill in the blank, and how many per topic
 - 🔤 **Font**: Atkinson Hyperlegible, IBM Plex Sans, Lexend, or any Google Font
 - 🌍 **Language** of your choice
-- 🕓 **Question history**, progress tracker, exam countdown, "review only what I missed"
-- 📅 **Study plan**: pick a deadline and either your hours per day or let Claude decide
+- 🕓 **Question history**, progress tracker, exam countdown, "review only what I missed", light/dark switch
+- 📅 **Study plan**: pick a deadline, then give your hours per day or let Claude decide
+
+<p align="center"><img src="media/5-mobile.png" alt="Revision page on a phone" width="260">&nbsp;&nbsp;<img src="media/4-syllabus-light.png" alt="Syllabus in light mode" width="520"></p>
+<p align="center"><sub>Works on your phone · light and dark</sub></p>
 
 ### Install
 
 1. Download [`study-pack/SKILL.md`](study-pack/SKILL.md).
 2. In Claude's **Settings**, open the **Skills** section and upload it (zip the `study-pack` folder if a zip is asked for).
-3. In any chat: *"Make a study pack for my Linear Algebra course"* and attach your notes or link your Notion page.
+3. In any chat: *"Make a study pack for my Linear Algebra course"*, and attach your notes or link your Notion page.
 
 Works best with the Notion connector turned on.
 
@@ -43,10 +67,14 @@ Works best with the Notion connector turned on.
 
 ---
 
+## Also by me
+
+- [**daily-master-prompt**](https://github.com/CAFEERON21br18/daily-master-prompt): turn any project into a self-running daily Claude session with one line.
+
 ## ⭐ Like it?
 
-Star the repo so other students find it, and open an issue if you want a new option or a new skill. More study skills are coming.
+Star the repo so other students find it, and [open an issue](https://github.com/CAFEERON21br18/claude-skills/issues) if you want a new option or a new skill. More study skills are coming.
 
 ## License
 
-MIT, use it, fork it, improve it.
+MIT. Use it, fork it, improve it.

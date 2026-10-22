@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Syllabus — Linear Algebra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="assets/study.css">
+<script src="assets/course.js"></script>
+<script src="assets/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" async></script>
+<style>
+main{max-width:1120px;margin:0 auto;padding-top:36px}
+.head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px;margin-bottom:28px}
+.head h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.02}
+.head p{margin:8px 0 0;color:var(--muted);max-width:52ch}
+.count{font-family:var(--f-mono);font-size:.82rem;color:var(--muted);text-align:right}
+.count b{display:block;font-family:var(--f-display);font-size:2rem;color:var(--accent);line-height:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:14px}
+.topic{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px 16px;display:grid;grid-template-rows:auto 1fr auto;scroll-margin-top:20px}
+.topic header{display:flex;gap:14px;align-items:baseline;margin-bottom:10px}
+.num{font-family:var(--f-display);font-weight:700;font-size:2.6rem;line-height:.85;color:var(--accent);min-width:1.1ch}
+.topic h2{font-size:1.15rem;line-height:1.25}
+.topic ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;align-content:start}
+.topic li{position:relative;padding-left:16px;font-size:.98rem;line-height:1.45}
+.topic li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.topic footer{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line)}
+.topic footer a{font-family:var(--f-mono);font-size:.78rem;text-decoration:none}
+.topic footer a:hover{text-decoration:underline}
+.topic:target{box-shadow:0 0 0 2px var(--accent)}
+</style>
+</head>
+<body>
+<div id="bar" class="bar"></div>
+<main>
+  <div class="head">
+    <div><h1>Syllabus</h1><p>Everything the exam can ask, and nothing else. One topic per number.</p></div>
+    <div class="count"><b id="nTopics">5</b>topics</div>
+  </div>
+  <div class="grid" id="grid"></div>
+</main>
+<script>
+SP.bar("syllabus.html");
+document.getElementById("nTopics").textContent = COURSE.topics.length;
+document.getElementById("grid").innerHTML = COURSE.topics.map(t =>
+  '<article class="topic" id="t'+t.n+'"><header><span class="num">'+t.n+'</span><h2>'+t.name+'</h2></header><ul>' +
+  t.syllabus.map(b => '<li>'+b+'</li>').join("") +
+  '</ul><footer><a href="revision.html#ch'+t.n+'">Study topic '+t.n+' →</a></footer></article>'
+).join("");
+</script>
+</body>
+</html>

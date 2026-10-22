@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>study-pack demo — Linear Algebra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="assets/study.css">
+<script src="assets/course.js"></script>
+<script src="assets/common.js"></script>
+<style>
+main{max-width:1000px;margin:0 auto;padding:56px 0 20px}
+.eyebrow{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1;margin:10px 0 14px}
+.lead{font-size:1.15rem;color:var(--muted);max-width:56ch;margin:0 0 34px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px}
+.c{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;transition:border-color .3s var(--ease),transform .3s var(--ease)}
+.c:hover{border-color:var(--accent);transform:translateY(-2px)}
+.c .n{font-family:var(--f-display);font-size:2.6rem;font-weight:700;color:var(--accent);line-height:1}
+.c h2{font-size:1.25rem;margin:8px 0 6px}
+.c p{margin:0;color:var(--muted);font-size:.95rem}
+.foot{margin-top:36px;font-size:.92rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<div id="bar" class="bar"></div>
+<main>
+  <div class="eyebrow">Live demo · study-pack skill for Claude</div>
+  <h1>One course in,<br>three study pages out.</h1>
+  <p class="lead">This is what the skill built from a short Linear Algebra course. Theme “black &amp; orange”, Atkinson Hyperlegible, every option on. Everything is clickable.</p>
+  <div class="cards">
+    <a class="c" href="syllabus.html"><div class="n">1</div><h2>Syllabus</h2><p>Every topic numbered, only what the exam can ask.</p></a>
+    <a class="c" href="revision.html"><div class="n">2</div><h2>Revision</h2><p>Explanations, traps, worked examples, self-correcting exercises, focus mode, history.</p></a>
+    <a class="c" href="plan.html"><div class="n">3</div><h2>Study Plan</h2><p>Day-by-day plan to the exam with spaced reviews and charts.</p></a>
+  </div>
+  <p class="foot">Get the skill: <a href="https://github.com/CAFEERON21br18/claude-skills">github.com/CAFEERON21br18/claude-skills</a> · Your progress on this demo stays in your browser.</p>
+</main>
+<script>SP.bar("index.html");</script>
+</body>
+</html>

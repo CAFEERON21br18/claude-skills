@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Study Plan — Linear Algebra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="assets/study.css">
+<script src="assets/course.js"></script>
+<script src="assets/common.js"></script>
+<style>
+:root{--c1:#ff7a1a;--c2:#4aa8ff;--c3:#4cc38a;--c4:#b38cff;--c5:#ff5fa2;--c0:#7d746a}
+:root[data-theme="light"]{--c1:#d45f00;--c2:#1f6fd1;--c3:#1d8a55;--c4:#7b4fd6;--c5:#d1306f;--c0:#9a9085}
+main{max-width:1120px;margin:0 auto;padding-top:32px}
+.head h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05}
+.head p{color:var(--muted);margin:8px 0 22px;max-width:60ch}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:22px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kpi .l{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.kpi b{display:block;font-family:var(--f-display);font-size:1.7rem;line-height:1.15;margin-top:2px}
+.kpi b.acc{color:var(--accent)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.panel h2{font-size:1.05rem;margin-bottom:4px}
+.panel .sub{color:var(--muted);font-size:.88rem;margin:0 0 12px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.82rem;color:var(--muted);margin-bottom:10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.charts{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:16px}
+@media (max-width:900px){.charts{grid-template-columns:minmax(0,1fr)}}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+.gl{stroke:var(--line);stroke-width:1}
+.bar rect{transition:opacity .2s}
+.bar:hover rect{opacity:.8}
+.tl-cell{fill:var(--raise)}
+.days{display:grid;gap:10px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 16px;align-items:start}
+@media (max-width:640px){.day{grid-template-columns:minmax(0,1fr)}}
+.day.today{box-shadow:0 0 0 2px var(--accent)}
+.day .d b{display:block;font-family:var(--f-display);font-size:1.05rem}
+.day .d span{font-family:var(--f-mono);font-size:.75rem;color:var(--muted)}
+.sess{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.sess li{display:grid;grid-template-columns:auto 10px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:.95rem}
+.sess input{width:18px;height:18px;accent-color:var(--accent);margin:0}
+.sess .sw{width:10px;height:10px;border-radius:2px}
+.sess li.done .what{text-decoration:line-through;color:var(--muted)}
+.sess .links{display:flex;gap:8px;font-family:var(--f-mono);font-size:.75rem;white-space:nowrap}
+.sess .links a{text-decoration:none}.sess .links a:hover{text-decoration:underline}
+.sess .h{font-family:var(--f-mono);font-size:.75rem;color:var(--muted)}
+.exam{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.exam .d span{color:var(--accent-ink);opacity:.8}
+</style>
+</head>
+<body>
+<div id="bar" class="bar"></div>
+<main>
+  <div class="head"><h1>Study Plan</h1><p>Mode “You know”: each topic is learned once, then reviewed about 1, 3 and 7 days later. The last day is a mock test. Tick sessions as you go; the chart follows.</p></div>
+  <div class="kpis" id="kpis"></div>
+  <div class="charts">
+    <section class="panel"><h2>Hours per day</h2><p class="sub">Coloured by topic. Grey is mixed work: buffer, missed questions, mock test.</p><div class="legend" id="legend"></div><div id="hours"></div></section>
+    <section class="panel"><h2>Progress</h2><p class="sub">Hours done vs. planned, cumulative.</p><div id="progress"></div></section>
+  </div>
+  <section class="panel"><h2>Timeline</h2><p class="sub">When each topic is learned (L), practised (E) and reviewed (R).</p><div id="timeline"></div></section>
+  <h2 style="font-size:1.3rem;margin:26px 0 12px">Day by day</h2>
+  <div class="days" id="days"></div>
+</main>
+<script>
+SP.bar("plan.html");
+const C = COURSE, st = SP.store, P = C.plan, nT = C.topics.length;
+let done = st.get("plan-done", {});
+const col = t => "var(--c"+t+")";
+const tname = t => t ? (t+" · "+C.topics[t-1].name) : "Mixed";
+const dayH = P.map(d => d.reduce((a,s)=>a+s.h,0)), total = dayH.reduce((a,b)=>a+b,0);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+document.getElementById("legend").innerHTML = C.topics.map(t=>'<span><i style="background:'+col(t.n)+'"></i>'+t.n+'</span>').join("")+'<span><i style="background:var(--c0)"></i>Mixed</span>';
+
+function kpis(){
+  const doneH = Object.keys(done).filter(k=>done[k]).reduce((a,k)=>{const [d,i]=k.split("-").map(Number);return a+(P[d]&&P[d][i]?P[d][i].h:0)},0);
+  document.getElementById("kpis").innerHTML =
+    '<div class="kpi"><div class="l">Exam</div><b class="acc">'+SP.fmt(SP.examDate())+'</b></div>'+
+    '<div class="kpi"><div class="l">Days left</div><b>'+C.examInDays+'</b></div>'+
+    '<div class="kpi"><div class="l">Planned</div><b>'+total+' h</b></div>'+
+    '<div class="kpi"><div class="l">Done</div><b>'+doneH+' h</b></div>'+
+    '<div class="kpi"><div class="l">Topics</div><b>'+nT+'</b></div>';
+  return doneH;
+}
+
+// stacked bar chart, hours per day
+function hours(){
+  const W=560,H=230,pl=28,pb=26,pt=8, max=4, bw=(W-pl)/P.length;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Hours per day, stacked by topic">';
+  for(let y=0;y<=max;y++){const yy=pt+(H-pt-pb)*(1-y/max);s+='<line class="gl" x1="'+pl+'" x2="'+W+'" y1="'+yy+'" y2="'+yy+'"/><text x="0" y="'+(yy+4)+'">'+y+'h</text>';}
+  P.forEach((d,i)=>{
+    let acc=0; const x=pl+i*bw+bw*.18, w=bw*.64;
+    s+='<g class="bar"><title>'+SP.fmt(SP.dayDate(i))+' · '+dayH[i]+' h</title>';
+    d.forEach(ss=>{const h=(H-pt-pb)*ss.h/max, y=pt+(H-pt-pb)*(1-(acc+ss.h)/max); s+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+(h-1.5)+'" rx="2" fill="'+col(ss.t)+'"/>'; acc+=ss.h;});
+    s+='</g><text x="'+(x+w/2)+'" y="'+(H-8)+'" text-anchor="middle">D'+(i+1)+'</text>';
+  });
+  document.getElementById("hours").innerHTML = s+'</svg>';
+}
+
+// cumulative done vs planned
+function progress(){
+  const W=400,H=230,pl=30,pb=26,pt=8,n=P.length;
+  const X=i=>pl+(W-pl-8)*i/n, Y=v=>pt+(H-pt-pb)*(1-v/total);
+  let plan=[0],dn=[0];P.forEach((d,i)=>{plan.push(plan[i]+dayH[i]);dn.push(dn[i]+d.reduce((a,ss,j)=>a+(done[i+"-"+j]?ss.h:0),0));});
+  const today=0; // day 1 is today
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Cumulative hours done versus planned">';
+  [0,.25,.5,.75,1].forEach(f=>{const v=Math.round(total*f);s+='<line class="gl" x1="'+pl+'" x2="'+W+'" y1="'+Y(v)+'" y2="'+Y(v)+'"/><text x="0" y="'+(Y(v)+4)+'">'+v+'h</text>';});
+  s+='<polyline fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 4" points="'+plan.map((v,i)=>X(i)+","+Y(v)).join(" ")+'"/>';
+  s+='<polyline fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" points="'+dn.map((v,i)=>X(i)+","+Y(v)).join(" ")+'"/>';
+  s+='<circle cx="'+X(n)+'" cy="'+Y(dn[n])+'" r="4" fill="var(--accent)"/>';
+  s+='<text x="'+X(n)+'" y="'+(Y(plan[n])-8)+'" text-anchor="end">planned '+total+'h</text>';
+  s+='<text x="'+(X(n)-6)+'" y="'+(Y(dn[n])-8)+'" text-anchor="end" style="fill:var(--accent)">done '+dn[n]+'h</text>';
+  for(let i=0;i<=n;i+=2) s+='<text x="'+X(i)+'" y="'+(H-8)+'" text-anchor="middle">D'+i+'</text>';
+  document.getElementById("progress").innerHTML = s+'</svg>';
+}
+
+// topic × day timeline
+function timeline(){
+  const W=1080,rowH=30,pl=210,top=22,n=P.length,cw=(W-pl)/(n+1),H=top+rowH*nT+6;
+  let s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Timeline of learning and reviews per topic">';
+  for(let i=0;i<=n;i++) s+='<text x="'+(pl+cw*i+cw/2)+'" y="14" text-anchor="middle"'+(i===n?' style="fill:var(--accent)"':'')+'>'+(i===n?"EXAM":"D"+(i+1))+'</text>';
+  C.topics.forEach((t,r)=>{
+    const y=top+r*rowH;
+    s+='<text x="0" y="'+(y+19)+'" style="fill:var(--ink)">'+t.n+' · '+esc(t.name.length>24?t.name.slice(0,23)+"…":t.name)+'</text>';
+    for(let i=0;i<=n;i++){
+      const ses=(P[i]||[]).filter(x=>x.t===t.n), x=pl+cw*i+2;
+      s+='<rect class="tl-cell" x="'+x+'" y="'+(y+3)+'" width="'+(cw-4)+'" height="'+(rowH-6)+'" rx="4"'+(i===n?' style="fill:var(--accent-soft)"':'')+'/>';
+      if(ses.length){const lab=ses.map(x=>x.a[0]).join(""), learn=ses.some(x=>x.a==="Learn");
+        s+='<rect x="'+x+'" y="'+(y+3)+'" width="'+(cw-4)+'" height="'+(rowH-6)+'" rx="4" fill="'+col(t.n)+'" opacity="'+(learn?1:.55)+'"><title>'+esc(ses.map(x=>x.a+" "+x.h+"h").join(", "))+'</title></rect>';
+        s+='<text x="'+(x+(cw-4)/2)+'" y="'+(y+19)+'" text-anchor="middle" style="fill:#120a03;font-weight:600">'+lab+'</text>';}
+    }
+  });
+  document.getElementById("timeline").innerHTML = s+'</svg>';
+}
+
+// day list
+function daysList(){
+  let h = P.map((d,i)=>'<div class="day'+(i===0?' today':'')+'"><div class="d"><b>'+(i===0?"Today":"Day "+(i+1))+'</b><span>'+SP.fmt(SP.dayDate(i))+' · '+dayH[i]+' h</span></div><ul class="sess">'+
+    d.map((ss,j)=>{const k=i+"-"+j;return '<li class="'+(done[k]?"done":"")+'"><input type="checkbox" data-k="'+k+'" aria-label="Done: '+esc(ss.a)+'"'+(done[k]?" checked":"")+'><i class="sw" style="background:'+col(ss.t)+'"></i><span class="what">'+(ss.t?'<b>'+ss.t+'</b> '+esc(C.topics[ss.t-1].name)+' · ':'')+esc(ss.a)+' <span class="h">'+ss.h+' h</span></span>'+
+      (ss.t?'<span class="links"><a href="syllabus.html#t'+ss.t+'">Syllabus</a><a href="revision.html#ch'+ss.t+'">Revision</a></span>':'<span class="links"><a href="revision.html">Revision</a></span>')+'</li>';}).join("")+'</ul></div>').join("");
+  h += '<div class="day exam"><div class="d"><b>Exam</b><span>'+SP.fmt(SP.examDate())+'</span></div><div>Sleep well. Skim the syllabus once in the morning, nothing new.</div></div>';
+  document.getElementById("days").innerHTML = h;
+}
+document.getElementById("days").addEventListener("change", e => {
+  const k = e.target.dataset.k; if (!k) return; done[k] = e.target.checked; st.set("plan-done", done);
+  e.target.closest("li").classList.toggle("done", e.target.checked); kpis(); progress();
+});
+kpis(); hours(); progress(); timeline(); daysList();
+</script>
+</body>
+</html>

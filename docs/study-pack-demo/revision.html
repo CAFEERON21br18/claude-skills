@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revision — Linear Algebra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@500;700&display=swap">
+<link rel="stylesheet" href="assets/study.css">
+<script src="assets/course.js"></script>
+<script src="assets/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js" async></script>
+<style>
+.layout{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;padding-top:28px;align-items:start}
+@media (max-width:880px){.layout{grid-template-columns:minmax(0,1fr)}.side{position:static!important}}
+
+/* sidebar */
+.side{position:sticky;top:16px;display:grid;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+.lbl{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.countdown b{font-family:var(--f-display);font-size:2.2rem;line-height:1;color:var(--accent);display:block}
+.countdown span{font-size:.85rem;color:var(--muted)}
+.nums{display:flex;gap:12px;font-family:var(--f-mono);font-size:.82rem}
+.nums .ok{color:var(--good)}.nums .ko{color:var(--bad)}.nums .tot{margin-left:auto;color:var(--muted)}
+.pbar{height:6px;background:var(--idle);border-radius:3px;overflow:hidden;margin-top:8px}
+.pbar i{display:block;height:100%;width:0;background:var(--accent);transition:width .5s var(--ease)}
+.toc{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.toc a{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:start;text-decoration:none;color:var(--ink);padding:6px 8px;border-radius:8px;font-size:.9rem;line-height:1.3}
+.toc a:hover{background:var(--raise)}
+.toc a.cur{background:var(--accent-soft)}
+.toc .n{font-family:var(--f-display);font-weight:700;color:var(--accent)}
+.dots{display:flex;gap:4px;margin-top:5px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--idle)}
+.dots i.ok{background:var(--good)}.dots i.ko{background:var(--bad)}
+.tools{display:grid;gap:6px}
+.tools .btn{text-align:left}
+
+/* content */
+main{min-width:0;max-width:760px}
+.intro h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05}
+.intro p{color:var(--muted);margin:10px 0 0}
+section.topic{padding:44px 0 12px;border-bottom:1px solid var(--line);scroll-margin-top:12px}
+section.topic h2{font-size:clamp(1.5rem,3.4vw,2rem);line-height:1.15;margin-bottom:14px}
+section.topic h2 .n{color:var(--accent)}
+h3{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:28px 0 10px;display:flex;align-items:center;gap:10px;font-weight:500}
+h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.blk{transition:opacity .45s var(--ease),filter .45s var(--ease)}
+body.focus .blk.dim{opacity:.13;filter:saturate(.2)}
+.lead{font-size:1.06rem;margin:0 0 6px}
+.def{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:12px 16px;margin:10px 0;overflow-x:auto}
+.def b{display:block;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;font-weight:500}
+.trap{background:var(--bad-soft);border-radius:8px;padding:12px 16px;margin:10px 0;overflow-x:auto}
+.trap b{color:var(--bad)}
+.worked{border:1px dashed var(--line);border-radius:10px;padding:14px 16px;margin:10px 0;overflow-x:auto}
+.worked .t{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.worked ol{margin:6px 0 0;padding-left:1.3em}
+
+.q{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0}
+.q.hide{display:none}
+.qh{display:flex;gap:8px 12px;flex-wrap:wrap;align-items:baseline;margin-bottom:6px}
+.qn{font-family:var(--f-mono);font-size:.78rem;color:var(--accent);font-weight:500}
+.qp{margin:0 0 10px;overflow-x:auto}
+.opts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:600px){.opts{grid-template-columns:minmax(0,1fr)}}
+.opts button{all:unset;box-sizing:border-box;width:100%;display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:10px;padding:9px 12px;cursor:pointer;background:var(--surface);transition:border-color .3s var(--ease),background .3s var(--ease);overflow-x:auto}
+.opts button:hover{border-color:var(--accent)}
+.opts button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opts .k{font-family:var(--f-mono);font-size:.85rem;color:var(--muted);width:1.2em;flex:0 0 auto}
+.opts button.right{border-color:var(--good);background:var(--good-soft)}
+.opts button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.q.done .opts button{cursor:default}
+.q.done .opts button:not(.right):not(.wrong){opacity:.5}
+.why{margin-top:10px;padding:10px 14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:.96rem;overflow-x:auto}
+.why[hidden]{display:none}
+.fr textarea{width:100%;min-height:7em;resize:vertical;font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:10px 12px}
+.fr textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.frrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}
+.photo{position:relative;overflow:hidden}
+.photo input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.key{margin-top:10px;padding:10px 14px;border-left:3px solid var(--good);background:var(--good-soft);border-radius:0 8px 8px 0;overflow-x:auto}
+.key[hidden],.self[hidden]{display:none}
+.key b{font-family:var(--f-mono);font-size:.72rem;color:var(--good);letter-spacing:.08em;text-transform:uppercase;display:block}
+.self{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center;font-size:.88rem;color:var(--muted)}
+
+/* history drawer */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,92vw);background:var(--surface);border-left:1px solid var(--line);box-shadow:-20px 0 50px rgba(0,0,0,.25);transform:translateX(105%);transition:transform .45s var(--ease);z-index:20;display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer header{display:flex;align-items:center;gap:10px;padding:16px;border-bottom:1px solid var(--line)}
+.drawer header h2{font-size:1.2rem;flex:1}
+.hlist{overflow-y:auto;padding:8px 16px 24px;display:grid;gap:8px;align-content:start}
+.hi{border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.9rem}
+.hi .top{display:flex;gap:8px;align-items:center;font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.hi .v{font-weight:700}.hi .v.ok{color:var(--good)}.hi .v.ko{color:var(--bad)}
+.hi a{font-family:var(--f-mono);font-size:.75rem}
+.empty{color:var(--muted);font-size:.92rem}
+</style>
+</head>
+<body>
+<div id="bar" class="bar"></div>
+<div class="layout">
+  <aside class="side" aria-label="Contents and progress">
+    <div class="card countdown"><div class="lbl">Exam in</div><b id="days">–</b><span id="examDate"></span></div>
+    <div class="card"><div class="lbl">Progress</div>
+      <div class="nums"><span class="ok">✓ <b id="nOk">0</b></span><span class="ko">✗ <b id="nKo">0</b></span><span class="tot"><b id="nDone">0</b>/<span id="nAll">0</span></span></div>
+      <div class="pbar"><i id="pAll"></i></div></div>
+    <div class="card"><div class="lbl">Topics</div><ul class="toc" id="toc"></ul></div>
+    <div class="tools">
+      <button class="btn" type="button" id="focusBtn" aria-pressed="true">◐ Focus highlight</button>
+      <button class="btn" type="button" id="revBtn" aria-pressed="false">↺ Review only missed</button>
+      <button class="btn" type="button" id="histBtn">☰ Question history</button>
+      <a class="btn" href="plan.html" style="text-decoration:none">→ Study plan</a>
+    </div>
+  </aside>
+  <main id="main">
+    <div class="intro blk"><h1>Revision</h1><p>Explanation, a trap, a worked example, then the exercises, topic by topic. Click an answer: you see right away if it's right, and why.</p></div>
+  </main>
+</div>
+
+<aside class="drawer" id="drawer" aria-label="Question history" aria-hidden="true">
+  <header><h2>Question history</h2><button class="btn" type="button" id="clearHist">Clear</button><button class="btn" type="button" id="closeHist">Close</button></header>
+  <div class="hlist" id="hlist"></div>
+</aside>
+
+<script>
+SP.bar("revision.html");
+const C = COURSE, st = SP.store;
+let answers = st.get("answers", {});      // id -> {ok, pick}
+let history = st.get("history", []);      // [{id, q, given, ok, ts}]
+const strip = s => s.replace(/\\\(|\\\)|\\\[|\\\]/g,"").replace(/\\[a-zA-Z]+/g,"").replace(/[{}]/g,"").replace(/\s+/g," ").trim();
+const L = "ABCD";
+
+// countdown
+const days = Math.round((SP.examDate() - SP.today) / 864e5);
+document.getElementById("days").textContent = days + " days";
+document.getElementById("examDate").textContent = SP.fmt(SP.examDate());
+
+// build the topics
+const main = document.getElementById("main");
+C.topics.forEach(t => {
+  const s = document.createElement("section");
+  s.className = "topic"; s.id = "ch"+t.n; s.dataset.n = t.n;
+  let h = '<h2 class="blk"><span class="n">'+t.n+'</span> · '+t.name+'</h2>';
+  h += '<h3>Explanation</h3><p class="lead blk">'+t.lead+'</p>';
+  t.defs.forEach(d => h += '<div class="def blk"><b>'+d[0]+'</b>'+d[1]+'</div>');
+  h += '<div class="trap blk"><b>Trap '+t.n+' · </b>'+t.trap+'</div>';
+  h += '<h3>Worked example</h3><div class="worked blk"><div class="t">'+t.worked.title+'</div>'+t.worked.math+'<ol>'+t.worked.steps.map(x=>'<li>'+x+'</li>').join("")+'</ol></div>';
+  h += '<h3>Exercises</h3>';
+  t.ex.forEach((e,i) => {
+    const id = t.n+"."+(i+1);
+    h += '<div class="q blk" data-id="'+id+'" data-t="'+t.n+'"><div class="qh"><span class="qn">Ex '+id+'</span><span class="chip">'+e.src+'</span><span class="chip">'+(e.type==="mcq"?"Multiple choice":"Free answer")+'</span></div><p class="qp">'+e.q+'</p>';
+    if (e.type === "mcq") {
+      h += '<ul class="opts">'+e.opts.map((o,k)=>'<li><button type="button" data-k="'+k+'"><span class="k">'+L[k]+'</span><span>'+o+'</span></button></li>').join("")+'</ul><div class="why" hidden>'+e.why+'</div>';
+    } else {
+      h += '<div class="fr"><textarea aria-label="Your working for Ex '+id+'" placeholder="Paste or type your working…"></textarea>'+
+        '<div class="frrow"><button class="btn primary chk" type="button">Correct with Claude</button><span class="btn photo">📷 Photo of my working<input type="file" accept="image/*" aria-label="Add a photo"></span><span class="chip pn"></span></div>'+
+        '<div class="key" hidden><b>Answer key</b>'+e.key+'<p class="empty" style="margin:.4em 0 0">Inside Claude, your working gets a verdict and a correction. On this demo page, compare with the key.</p></div>'+
+        '<div class="self" hidden>How did you do? <button class="btn sOk" type="button">I got it</button><button class="btn sKo" type="button">I missed it</button></div></div>';
+    }
+    h += '</div>';
+  });
+  s.innerHTML = h; main.appendChild(s);
+});
+
+// sidebar contents
+document.getElementById("toc").innerHTML = C.topics.map(t =>
+  '<li><a href="#ch'+t.n+'" data-n="'+t.n+'"><span class="n">'+t.n+'</span><span>'+t.name+'<span class="dots">'+t.ex.map((e,i)=>'<i data-id="'+t.n+'.'+(i+1)+'"></i>').join("")+'</span></span></a></li>').join("");
+
+function record(id, ok, given){
+  answers[id] = {ok, pick: given}; st.set("answers", answers);
+  const t = C.topics[+id.split(".")[0]-1], e = t.ex[+id.split(".")[1]-1];
+  history.unshift({id, q: t.n+" · "+t.name+" — "+e.src, given, ok, ts: Date.now()}); history = history.slice(0,200); st.set("history", history);
+  refresh();
+}
+
+// MCQ
+document.querySelectorAll(".q").forEach(q => {
+  const id = q.dataset.id, [tn, en] = id.split(".").map(Number), e = C.topics[tn-1].ex[en-1];
+  if (e.type === "mcq") {
+    const btns = q.querySelectorAll(".opts button");
+    const show = (k) => {
+      q.classList.add("done");
+      btns[e.ans].classList.add("right");
+      if (k !== e.ans) btns[k].classList.add("wrong");
+      q.querySelector(".why").hidden = false;
+    };
+    if (answers[id]) show(answers[id].pick);
+    btns.forEach(b => b.addEventListener("click", () => {
+      if (q.classList.contains("done")) return;
+      const k = +b.dataset.k; show(k); record(id, k === e.ans, L[k]);
+    }));
+  } else {
+    const key = q.querySelector(".key"), self = q.querySelector(".self");
+    q.querySelector(".chk").addEventListener("click", () => { key.hidden = false; self.hidden = false; });
+    q.querySelector(".photo input").addEventListener("change", ev => { q.querySelector(".pn").textContent = ev.target.files[0] ? ev.target.files[0].name : ""; });
+    q.querySelector(".sOk").addEventListener("click", () => { self.hidden = true; record(id, true, "free answer"); });
+    q.querySelector(".sKo").addEventListener("click", () => { self.hidden = true; record(id, false, "free answer"); });
+    if (answers[id]) { key.hidden = false; }
+  }
+});
+
+// progress + history
+const all = C.topics.reduce((a,t)=>a+t.ex.length,0);
+document.getElementById("nAll").textContent = all;
+function refresh(){
+  const vals = Object.values(answers), ok = vals.filter(v=>v.ok).length, ko = vals.length - ok;
+  document.getElementById("nOk").textContent = ok; document.getElementById("nKo").textContent = ko;
+  document.getElementById("nDone").textContent = vals.length;
+  document.getElementById("pAll").style.width = (vals.length/all*100)+"%";
+  document.querySelectorAll(".dots i").forEach(d => { const a = answers[d.dataset.id]; d.className = a ? (a.ok?"ok":"ko") : ""; });
+  const hl = document.getElementById("hlist");
+  hl.innerHTML = history.length ? history.map(h =>
+    '<div class="hi"><div class="top"><span>Ex '+h.id+'</span><span class="v '+(h.ok?"ok":"ko")+'">'+(h.ok?"✓ right":"✗ missed")+'</span><span style="margin-left:auto">'+new Date(h.ts).toLocaleString("en-GB",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})+'</span></div>'+
+    '<div>'+h.q+'</div><div class="empty">Your answer: '+h.given+'</div><a href="#" data-redo="'+h.id+'">Redo →</a></div>').join("")
+    : '<p class="empty">No answers yet. Every question you answer is logged here, so you can see what you missed and redo it.</p>';
+  if (document.getElementById("revBtn").getAttribute("aria-pressed")==="true") applyReview();
+}
+refresh();
+
+// review only missed
+function applyReview(){ const on = document.getElementById("revBtn").getAttribute("aria-pressed")==="true";
+  document.querySelectorAll(".q").forEach(q => q.classList.toggle("hide", on && !(answers[q.dataset.id] && !answers[q.dataset.id].ok))); }
+document.getElementById("revBtn").addEventListener("click", e => { const b=e.currentTarget; b.setAttribute("aria-pressed", b.getAttribute("aria-pressed")!=="true"); applyReview(); });
+
+// redo from history
+document.getElementById("hlist").addEventListener("click", e => {
+  const a = e.target.closest("[data-redo]"); if (!a) return; e.preventDefault();
+  const id = a.dataset.redo; delete answers[id]; st.set("answers", answers);
+  const q = document.querySelector('.q[data-id="'+id+'"]'); q.classList.remove("done","hide");
+  q.querySelectorAll(".opts button").forEach(b=>b.classList.remove("right","wrong"));
+  const w = q.querySelector(".why"); if (w) w.hidden = true;
+  closeDrawer(); refresh(); q.scrollIntoView({block:"center"});
+});
+
+// drawer
+const drawer = document.getElementById("drawer");
+function closeDrawer(){ drawer.classList.remove("open"); drawer.setAttribute("aria-hidden","true"); }
+document.getElementById("histBtn").addEventListener("click", () => { drawer.classList.add("open"); drawer.setAttribute("aria-hidden","false"); });
+document.getElementById("closeHist").addEventListener("click", closeDrawer);
+document.getElementById("clearHist").addEventListener("click", () => { history = []; st.set("history", history); refresh(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+// focus highlight: only the block at reading height stays bright
+const focusBtn = document.getElementById("focusBtn");
+if (st.get("focus", true)) document.body.classList.add("focus"); else focusBtn.setAttribute("aria-pressed","false");
+focusBtn.addEventListener("click", () => { const on = !document.body.classList.contains("focus"); document.body.classList.toggle("focus", on); focusBtn.setAttribute("aria-pressed", on); st.set("focus", on); });
+const blocks = [...document.querySelectorAll(".blk")], tocLinks = [...document.querySelectorAll(".toc a")];
+let ticking = false;
+function onScroll(){
+  ticking = false;
+  const line = innerHeight * 0.38; let best = null, bd = 1e9;
+  blocks.forEach(b => { const r = b.getBoundingClientRect(); if (r.height === 0) return;
+    const d = (r.top <= line && r.bottom >= line) ? 0 : Math.min(Math.abs(r.top-line), Math.abs(r.bottom-line)); if (d < bd) { bd = d; best = b; } });
+  blocks.forEach(b => b.classList.toggle("dim", b !== best));
+  const sec = best && best.closest("section.topic");
+  tocLinks.forEach(a => a.classList.toggle("cur", sec && a.dataset.n === sec.dataset.n));
+}
+addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+addEventListener("resize", onScroll); onScroll();
+
+// links from the study plan: revision.html#ch3
+function goHash(){ const el = location.hash && document.querySelector(location.hash); if (el) el.scrollIntoView(); }
+document.documentElement.classList.contains("mj-ready") ? goHash() : setTimeout(goHash, 600);
+</script>
+</body>
+</html>
