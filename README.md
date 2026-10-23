@@ -16,13 +16,14 @@ Skills for [Claude](https://claude.ai), built by a computer engineering student,
 
 ## 📚 study-pack
 
-Give Claude your course (Notion pages, PDFs, slides, photos of your notes). It asks you a few questions, then builds **three linked pages**:
+Give Claude your course (Notion pages, PDFs, slides, photos of your notes). It asks you a few questions, then builds **four linked pages** (or updates the pack you already have):
 
 | | What you get |
 |---|---|
 | **1 · Syllabus** | Every topic, numbered 1, 2, 3… Only what the exam can ask. No filler, nothing to lose focus on. |
-| **2 · Revision** | One lesson per topic: explanation, the classic trap, a worked example, then exercises that correct themselves. Free answers (or a photo of your working) get corrected by Claude. |
-| **3 · Study Plan** *(optional)* | A day-by-day plan to your exam with spaced reviews, a mock test at the end, charts, and links straight to the right topic. |
+| **2 · Resumo** | The full course: complete explanations and at least 3 solved examples per topic. |
+| **3 · Revision** | One lesson per topic: explanation, the classic trap, a worked example, then exercises that correct themselves. Free answers (or a photo of your working) get corrected by Claude. |
+| **4 · Study Plan** *(optional)* | A day-by-day plan to your exam with spaced reviews, a mock test at the end, charts, and links straight to the right topic. |
 
 <table>
 <tr>
@@ -39,13 +40,18 @@ Give Claude your course (Notion pages, PDFs, slides, photos of your notes). It a
 
 Claude asks before building anything:
 
-- 🎨 **Theme**: black & orange · yellow, white & orange · yellow, white & blue · dark blue & light blue · black & pink · or describe your own
+- 🎨 **Theme**: Focus (cream, slate & sage, made for concentration and dyslexia) · black & orange · yellow, white & orange · yellow, white & blue · dark blue & light blue · black & pink · or describe your own
 - 🧭 **Sidebar** with contents and progress per topic
 - 🔦 **Focus highlight**: everything dims except the part you're reading
 - ✍️ **Exercise types**: multiple choice, free answer, true/false, fill in the blank, and how many per topic
-- 🔤 **Font**: Atkinson Hyperlegible, IBM Plex Sans, Lexend, or any Google Font
+- 📂 **Your own exercises**: use only yours, mix 50/50 with Claude's, take all of them or just the best and most varied; your resolutions are explained step by step (and checked)
+- 🔤 **Font**: Atkinson Hyperlegible, Lexend, OpenDyslexic, IBM Plex Sans, or any Google Font
 - 🌍 **Language** of your choice
 - 🕓 **Question history**, progress tracker, exam countdown, "review only what I missed", light/dark switch
+- 📝 **Notes** on every topic, section and question, hidden until you click them
+- 💬 **Tutor chat** inside the pages, which saves what you didn't understand as notes to reread
+- 📈 **Graph calculator** (math-type courses): a Desmos-like window you can drag anywhere
+- 🔄 **Update mode**: adds new material to an existing pack without losing your notes or history
 - 📅 **Study plan**: pick a deadline, then give your hours per day or let Claude decide
 
 <p align="center"><img src="media/5-mobile.png" alt="Revision page on a phone" width="260">&nbsp;&nbsp;<img src="media/4-syllabus-light.png" alt="Syllabus in light mode" width="520"></p>
