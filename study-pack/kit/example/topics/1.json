@@ -1,0 +1,191 @@
+{
+ "n": 1,
+ "syllabus": [
+  "Axiomas de corpo e de ordem de $\\mathbb R$",
+  "Módulo: $|x|<a\\Leftrightarrow -a<x<a$, desigualdade triangular",
+  "Indução: base $P(p)$ + hereditariedade $P(n)\\Rightarrow P(n+1)$"
+ ],
+ "resumo": [
+  {
+   "kind": "p",
+   "body": "Em CDI-I os reais são definidos pela **via axiomática**: tudo o resto é **provado** a partir dos axiomas."
+  },
+  {
+   "kind": "def",
+   "title": "Módulo",
+   "body": "$|x|=x$ se $x\\ge0$ e $|x|=-x$ se $x<0$. Distância de $x$ a $0$.",
+   "plot": "abs(x)"
+  },
+  {
+   "kind": "formula",
+   "title": "Regras de ouro",
+   "body": "$$|x|<a\\Leftrightarrow -a<x<a\\qquad |x|>a\\Leftrightarrow x>a\\lor x<-a\\qquad \\big||x|-|y|\\big|\\le|x+y|\\le|x|+|y|$$"
+  },
+  {
+   "kind": "trap",
+   "title": "Armadilha 1",
+   "body": "Multiplicar uma desigualdade por um número **negativo** inverte o sinal."
+  },
+  {
+   "kind": "bookerr",
+   "title": "Gralha no livro",
+   "body": "O livro escreve $|x+y|\\ge|x|+|y|$ na p. 12; o correto é $\\le$."
+  }
+ ],
+ "examples": [
+  {
+   "title": "Soma de potências de 2",
+   "origin": "Aula 1",
+   "statement": "Prove que $\\displaystyle\\sum_{k=0}^n2^k=2^{n+1}-1$ para todo o $n\\in\\mathbb N_0$.",
+   "steps": [
+    {
+     "do": "Base ($n=0$): $2^0=1=2^1-1$.",
+     "why": "Princípio de indução: substitui-se só $n$.",
+     "trap": "Substituir também $k$."
+    },
+    {
+     "do": "$\\sum_{k=0}^{n+1}2^k=(2^{n+1}-1)+2^{n+1}=2^{n+2}-1$.",
+     "why": "Separar o último termo e usar a hipótese."
+    }
+   ],
+   "answer": "Verdadeira para todo o $n\\in\\mathbb N_0$."
+  },
+  {
+   "title": "Inequação com módulo",
+   "origin": "Ficha 1, ex. 2",
+   "statement": "Resolva $|2x-1|<3$.",
+   "steps": [
+    {
+     "do": "$-3<2x-1<3$",
+     "why": "Regra $|u|<a\\Leftrightarrow -a<u<a$."
+    },
+    {
+     "do": "$-1<x<2$",
+     "why": "Somar 1 e dividir por 2 (positivo, não inverte).",
+     "by_claude": true
+    }
+   ],
+   "answer": "$x\\in\\,]-1,2[$",
+   "plot": "abs(2x-1)"
+  },
+  {
+   "title": "Módulos encadeados",
+   "origin": "new",
+   "statement": "Resolva $\\big||x|-2\\big|\\le 1$.",
+   "steps": [
+    {
+     "do": "$1\\le|x|\\le3$",
+     "why": "Regra do módulo aplicada a $u=|x|-2$."
+    },
+    {
+     "do": "$x\\in[-3,-1]\\cup[1,3]$",
+     "why": "Cada desigualdade em $|x|$ separadamente.",
+     "flag": {
+      "text": "A resolução original escreve $[-3,3]$.",
+      "fix": "Falta excluir $]-1,1[$: fica $[-3,-1]\\cup[1,3]$."
+     }
+    }
+   ],
+   "answer": "$[-3,-1]\\cup[1,3]$"
+  }
+ ],
+ "lesson": [
+  {
+   "kind": "p",
+   "body": "Revê os axiomas e as regras do módulo. Ver também [[2|matrizes]]."
+  },
+  {
+   "kind": "formula",
+   "title": "Módulo",
+   "body": "$|x|<a\\Leftrightarrow -a<x<a$"
+  }
+ ],
+ "worked": {
+  "title": "Inequação com módulo",
+  "origin": "Ficha 1, ex. 2",
+  "statement": "Resolva $|x-1|\\le 2$.",
+  "steps": [
+   {
+    "do": "$-2\\le x-1\\le 2$",
+    "why": "Regra do módulo."
+   },
+   {
+    "do": "$-1\\le x\\le3$",
+    "why": "Somar 1."
+   }
+  ],
+  "answer": "$[-1,3]$"
+ },
+ "exercises": [
+  {
+   "id": "e1-1",
+   "type": "mcq",
+   "origin": "Ficha 1, ex. 3",
+   "gate": true,
+   "free_too": true,
+   "q": "Qual é o conjunto-solução de $|x+2|\\ge 5$?",
+   "options": [
+    "$]-\\infty,-7]\\cup[3,+\\infty[$",
+    "$[-7,3]$",
+    "$]-\\infty,-3]\\cup[7,+\\infty[$",
+    "$[3,+\\infty[$"
+   ],
+   "why": [
+    "Certo: $x+2\\ge5$ ou $x+2\\le-5$.",
+    "Confunde $\\ge$ com $\\le$: isto é $|x+2|\\le5$.",
+    "Troca o sinal de $2$.",
+    "Esquece o ramo $x+2\\le-5$."
+   ],
+   "correct": 0,
+   "key": {
+    "steps": [
+     {
+      "do": "$x+2\\ge5\\lor x+2\\le-5$",
+      "why": "$|u|\\ge a\\Leftrightarrow u\\ge a\\lor u\\le -a$."
+     }
+    ],
+    "answer": "$]-\\infty,-7]\\cup[3,+\\infty[$"
+   }
+  },
+  {
+   "id": "e1-2",
+   "type": "tf",
+   "origin": "new",
+   "q": "$|a+b|=|a|+|b|$ para todos os reais $a,b$.",
+   "why": [
+    "Falso: com $a=1,b=-1$ dá $0\\ne2$.",
+    "Certo: só vale se $ab\\ge0$."
+   ],
+   "correct": 1,
+   "key": {
+    "steps": [
+     {
+      "do": "Contraexemplo $a=1$, $b=-1$.",
+      "why": "Basta um caso."
+     }
+    ],
+    "answer": "Falso."
+   }
+  },
+  {
+   "id": "e1-3",
+   "type": "free",
+   "origin": "Semana 2, ex. 1a",
+   "q": "Mostre que $6^{2n}-1$ é divisível por 7 para todo o $n\\in\\mathbb N^+$.",
+   "key": {
+    "steps": [
+     {
+      "do": "Base: $6^2-1=35=7\\cdot5$.",
+      "why": "Base em $p=1$."
+     },
+     {
+      "do": "$6^{2n+2}-1=36(6^{2n}-1)+35=7(36k+5)$.",
+      "why": "Fazer aparecer a hipótese.",
+      "trap": "Usar o mesmo $k$ na tese."
+     }
+    ],
+    "answer": "Divisível por 7 para todo o $n\\ge1$."
+   }
+  }
+ ]
+}
