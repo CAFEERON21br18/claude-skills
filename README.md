@@ -16,7 +16,7 @@ Skills for [Claude](https://claude.ai), built by a computer engineering student,
 
 ## 📚 study-pack
 
-Give Claude your course (Notion pages, PDFs, slides, photos of your notes). It asks you the same short form every time, then builds **four linked pages** (or updates the pack you already have). Every page comes out of one fixed generator ([`study-pack/kit`](study-pack/kit)), so two courses with the same options look and work exactly the same.
+Give Claude your course (Notion pages, PDFs, slides, photos of your notes). It asks you a few questions, then builds **four linked pages** (or updates the pack you already have):
 
 | | What you get |
 |---|---|
@@ -43,12 +43,11 @@ Claude asks before building anything:
 - 🎨 **Theme**: Focus (cream, slate & sage, made for concentration and dyslexia) · black & orange · yellow, white & orange · yellow, white & blue · dark blue & light blue · black & pink · or describe your own
 - 🧭 **Sidebar** with contents and progress per topic
 - 🔦 **Focus highlight**: everything dims except the part you're reading
-- ✍️ **Exercise types**: your own lesson-style format from Notion, as in the source, multiple choice (solve on paper first, then show the options), free answer graded by Claude, true/false, and how many per topic
+- ✍️ **Exercise types**: multiple choice, free answer, true/false, fill in the blank, and how many per topic
 - 📂 **Your own exercises**: use only yours, mix 50/50 with Claude's, take all of them or just the best and most varied; your resolutions are explained step by step (and checked)
 - 🔤 **Font**: Atkinson Hyperlegible, Lexend, OpenDyslexic, IBM Plex Sans, or any Google Font
 - 🌍 **Language** of your choice
-- 🕓 **Question history**, progress tracker, exam countdown, "review only what I missed", light/dark switch (sun/moon button)
-- ➗ **Maths that never breaks**: KaTeX with embedded fonts, wide formulas shrink to fit on phones, copy any formula as LaTeX
+- 🕓 **Question history**, progress tracker, exam countdown, "review only what I missed", light/dark switch
 - 📝 **Notes** on every topic, section and question, hidden until you click them
 - 💬 **Tutor chat** inside the pages, which saves what you didn't understand as notes to reread
 - 📈 **Graph calculator** (math-type courses): a Desmos-like window you can drag anywhere
@@ -60,7 +59,7 @@ Claude asks before building anything:
 
 ### Install
 
-1. Download [`study-pack/SKILL.md`](study-pack/SKILL.md). (The skill fetches the kit from this repo on its own.)
+1. Download [`study-pack/SKILL.md`](study-pack/SKILL.md).
 2. In Claude's **Settings**, open the **Skills** section and upload it (zip the `study-pack` folder if a zip is asked for).
 3. In any chat: *"Make a study pack for my Linear Algebra course"*, and attach your notes or link your Notion page.
 

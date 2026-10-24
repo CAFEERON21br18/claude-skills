@@ -1,110 +1,195 @@
 ---
 name: study-pack
-description: Turns course material from Notion or uploaded files into a linked study pack (Sílabo, Resumo, Revisão, optional Plano), or updates an existing pack, with one fixed question form and a fixed page kit so every course looks and works the same.
+description: Turns course material from Notion or uploaded files into a linked study pack (syllabus, full resumo, interactive revision, optional study plan), or updates an existing pack, after personalization questions.
 ---
 
 # Study Pack
 
-Four linked pages for one course, always built by the **kit** (`kit/` in github.com/CAFEERON21br18/claude-skills, folder `study-pack/kit`):
+Builds (or updates) up to four linked artifacts from one course's material:
 
-1. **Sílabo**: numbered topics, bare essentials.
-2. **Resumo**: the full course, complete explanations, ≥ 3 solved examples per topic.
-3. **Revisão**: short lesson + exercises (yours / the user's), grading, history, notes, tutor.
-4. **Plano** (optional): dated plan to the exam, charts, ticks.
+1. **Syllabus — <Course>**: numbered topics, bare essentials only.
+2. **Resumo — <Course>**: the complete content with full explanations and at least 3 solved examples per topic.
+3. **Revision — <Course>**: interactive lesson and exercises, personalized, with tutor chat and notes.
+4. **Study Plan — <Course>** (optional): day-by-day plan up to a deadline, with a graph view.
 
-## Rule zero: the kit decides the look, you only write content
+All four share the same topic numbering and link to each other: `Syllabus#t<n>`, `Resumo#r<n>`, `Revision#ch<n>`. On load, each artifact scrolls to the anchor in its URL.
 
-- Every page comes out of `kit/build.py`. Never write or patch page HTML, CSS or JS by hand, never "improve" the layout, never add a page-specific style. Same options ⇒ same pages, whatever the course (CDI, AL, LP…).
-- You write **only** the JSON described in `kit/SCHEMA.md` (with Python `json.dump`), then build, check, publish.
-- The questions are **always** the form from `kit/questions.py`, in its order, in its format. Never reword, reorder, split, or ask them another way. Never list theme names without their colors.
-- If something can't be done with the kit, say so in one line in the final message. Don't work around it in HTML.
+## Step 0 — Does a pack already exist?
 
-What the kit fixes for you (don't re-implement): the header (CDI layout: course line + title on the left, the 4 pack tabs on the right, tools on the second row: countdown · page tools · *As minhas notas* · light/dark button with the sun/moon icon of ruben-bonanni-ribeiro.dev), the topic rail, KaTeX with embedded fonts, wide-maths fitting, notes, tutor chat, graph calculator, focus mode, countdown in calendar days, same-tab links, phone layout, storage.
+Before anything else, list the user's artifacts (`Artifact` list, scope "all") and look for titles "Syllabus — / Resumo — / Revision — / Study Plan — <Course>" (or close matches of the course name).
 
-Tools per page (fixed order, an option that is off is simply absent):
+- **Found**: ask (AskUserQuestion) "A study pack for <Course> already exists. Update it or create a new one?" · Update the existing pack (Recommended) · Create a new pack. Then, if Update: "What should change?" (multiSelect) · Add new material · Change options (theme, font, exercises…) · Add a missing artifact · Regenerate exercises.
+- **Not found but unsure** (the course name is ambiguous): ask once "Is there already a study pack for this course?" with the closest matches as options and "No, start fresh".
+- **Not found**: go on to Step 1 silently.
 
-| Page | Header tools | Strip under header |
-|---|---|---|
-| Sílabo | countdown · Foco · As minhas notas · ☾/☀ | — |
-| Resumo | countdown · Calculadora · Foco · As minhas notas · ☾/☀ | — |
-| Revisão | countdown · Calculadora · Foco · Só erradas · Histórico · As minhas notas · ☾/☀ | done / right / to review + saved |
-| Plano | countdown · Hoje · Esconder feitas · ☾/☀ | sessions done + hours |
+**Update mode rules**
+- Read every existing artifact of the pack first (`Artifact` read) and its `<script type="application/json" id="pack-config">` block (see Config block below). Reuse its theme, font, language and options: only ask the questions the user wants to change, plus the ones the new material raises (e.g. exercise source if they now uploaded exercises).
+- Publish with the existing `url` every time, so links, notes, chat notes and question history survive. Never drop a capability the page already declares, never rename or reorder database collections.
+- Topic numbering never changes: existing topics keep their number; new topics get the next numbers. If a new topic belongs in the middle of the course order, keep its new number and say so in one line.
+- Merge, don't overwrite: new definitions, examples and exercises are added to the right topic; the user's notes and attempts are untouched. If new material contradicts the old, keep the newer source and say which point changed.
+- Finish by listing what was added or changed per artifact.
 
-## Step 0 — Kit, and does a pack already exist?
+## Step 1 — Gather the material
 
-1. Get the kit, every time (it may have changed):
-   `git clone --depth 1 https://github.com/CAFEERON21br18/claude-skills /tmp/sp && cp -r /tmp/sp/study-pack/kit ./kit`
-   Read `kit/SCHEMA.md`.
-2. List the user's artifacts (`Artifact` list, scope "all", limit 200) and look for "Sílabo/Syllabus/Programa — <Course>", "Resumo — <Course>", "Revisão/Revision — <Course>", "Plano — <Course>" or close names.
-3. **Found** → ask once, plain: "Já existe um pacote de <Course>. Atualizo esse ou crio um novo?" (Atualizar o existente (recomendado) · Criar um novo). If update: "O que muda?" (Juntar material novo · Mudar opções · Juntar uma página que falta · Refazer os exercícios).
-   **Ambiguous name** → ask once which one, with the closest matches and "Nenhum, começar do zero". **Not found** → go on silently.
+- Sources: Notion pages the user names or links (fetch each one with the Notion tools and follow the child pages that belong to the course), uploaded files (PDF, docx, slides, images — read them in full), or pasted text. If the user names a course but gives no source, search Notion for it and confirm the page in one line.
+- Read everything before writing. Collect every topic, definition, theorem or rule, method, typical trap, worked example, every exercise with its source (sheet + number), and the exam date if it appears.
+- **The user's own exercises**: if the user uploaded exercises they have to do (exercise sheets, past exams, homework), tag each one: source (sheet + number), topic number, difficulty, method(s) used, and whether a **resolution** is included (full, partial, final answer only, none).
+- Build the **master topic list**: numbered 1, 2, 3… in the course's order, one topic per number, never letters. All artifacts share this numbering and it never changes.
+- Note whether the course is **calculation-heavy** (math, physics, statistics, engineering, finance, anything with functions, equations or numeric answers). This decides question 2d-1.
+- If a source is missing or unreadable, say which one and continue with the rest.
 
-### Update mode
-- Read **each existing page in full** with `Artifact` `action:"read"` **without `path`** now, in Step 0. The publish is refused unless the whole live version was read. A big page comes back as a saved file: read that file in chunks of ~150–200 lines until the end. Then also save each page's HTML (`read` with `path:"index.html"`) for `extract.py`.
-- `python3 kit/extract.py pack <saved pages…>` rebuilds `pack/` (pack.json, topics, plan.json) from kit pages. Keep `slug`, `storage`, `urls`, topic numbers and exercise ids as they are.
-- **Old pack (no kit data)**: infer the settings from the page (theme, font, language, features, count) and write `pack.json`. Copy its storage keys into `"storage"` so progress survives: the localStorage key (e.g. `cdi-revisao-v1`, `lp-revision-v2`) in `storage.ls.revisao`, the db document name (e.g. `revisao`, `lp-revision-v2`) in `storage.docs.revisao`, and the same for `plano` and the theme prefix.
-- Exercises: the same exercise (same sheet + number) keeps its id; new ones take the next numbers. Attempts on removed exercises show as "Exercício da versão anterior": say so at the end.
-- Plano kept: never move dated sessions (ticks are keyed by date + index); only update texts, counts and links. A plan rebuilt from scratch loses the old ticks: say so at the end.
-- Only ask the questions the user wants to change, plus the ones the new material raises (e.g. source if they now uploaded exercises). Reuse everything else from `pack.json`.
-- Publish to the existing `url` of each page. Finish with what changed, per page.
+## Step 2 — Ask the personalization questions
 
-## Step 1 — Gather the material (before any question)
+Ask before building anything. Use AskUserQuestion (max 4 questions per call, max 4 options per question; "Other" is added automatically and lets the user type). In a session without it, ask the same questions in plain text as numbered lists. Write the questions in the user's language. Never ask something the request (or, in update mode, the pack config) already answers. Skip a question whose condition isn't met.
 
-- Sources: Notion pages named or linked (fetch each, follow the course's child pages), uploaded files (PDF, docx, slides, images, read in full), pasted text. Course named but no source → search Notion, confirm the page in one line.
-- Search Notion for a page named like **"lesson-style"** (the user's own exercise format). If found, read it: it becomes the first exercise-format option.
-- Collect every topic, definition, theorem, method, trap, worked example, exercise with its source (sheet + number), exam date, and for the user's own exercises: topic, difficulty, methods, resolution (full / partial / answer only / none).
-- **Statements missing** (a sheet with only answers): say it in one line right now, before the questions, and ask for the PDF. Never invent a statement. A statement rebuilt from another page of the user's or from the answer table gets `"reconstructed": true` ("enunciado reconstituído").
-- **Textbook in Notion**: extract it with one subagent per block of topics (e.g. 1–3, 4–8, 9–11), in parallel. Each returns JSON per topic: definitions and theorems with the book's numbering, traps, ≥ 4 worked examples with steps (what + why) and final answer; each recomputes every number with sympy and flags book errors instead of fixing them silently → `bookerr` blocks ("Gralha no livro").
-- Master topic list: numbered 1, 2, 3… in course order, never letters. Never renumbered later.
-- Calculation-heavy course (maths, physics, statistics, engineering, finance) → the calculator question is shown.
-- Unreadable source → say which one, continue.
+**2a — Color theme** (7 choices, so it doesn't fit AskUserQuestion):
+Focus (cream, slate & sage — made for concentration and dyslexia) · Black & orange · Yellow, white & orange · Yellow, white & blue · Dark blue & light blue · Black & pink · Something else.
+When the Visualizer is available, show an inline picker: one clickable swatch per theme showing background / surface / text / accent, plus a text field for "something else"; each click calls `sendPrompt` with the choice. Otherwise list the seven in plain text and let the user answer with a number.
 
-## Step 2 — The questions (one fixed form)
+The **Focus** theme follows readability research (British Dyslexia Association style guide, low-glare reading): no pure white, no pure black, soft contrast, calm cool accent.
+- Light: background `#F7F1E3` (cream), surface `#FDF9EF`, text `#2E3440` (dark slate), muted `#5B6472`, accent `#4F7F6E` (sage), accent-2 `#5A7FA6` (soft blue), trap card `#B5564B` on `#F6E3DE`.
+- Dark: background `#1F2328`, surface `#272C33`, text `#E6E1D6` (warm off-white), accent `#8DB5A5`, accent-2 `#8EAED0`.
+- Line height 1.6–1.8, max line length ~70 characters, left-aligned text (never justified), no italics for emphasis (use bold), generous paragraph spacing.
 
-1. `python3 kit/questions.py --lang <pt|fr|en> [--mine] [--calc] [--lesson-style] [--exam YYYY-MM-DD]`
-   (`--mine` if the user uploaded their own exercises, `--calc` if calculation-heavy, `--lesson-style` if that Notion page exists, `--exam` if a date was found.)
-2. Call the Visualizer `read_me` (module `elicitation`), then `show_widget` with **exactly** the printed HTML, title `study_pack_details`. Nothing else in the widget, no extra question.
-3. The answer comes back as one line (`Theme: … · Font: … · Features: … · Exercise format: … · Source: … · Per topic: … · Language: … · Graph calc: … · Tutor: … · Plan: … · Deadline: … · Hours: …`). Map it to `pack.json`.
-4. No Visualizer in this session → send the output of `questions.py … --text` verbatim (it shows each theme with its hex colors) and wait for the numbered answers. No other format, ever.
-5. Skipped or unanswered (unattended run) → defaults: Focus theme, Atkinson Hyperlegible, sidebar + focus + history + progress + countdown, lesson-style if found else multiple choice + free answer, 50/50 if the user has exercises else yours, 5 per topic, conversation language, calculator yes if calculation-heavy, tutor yes, no plan. Say which defaults were used.
+**2b — First call:**
+1. Features (multiSelect): Sidebar (contents + progress) · Focus highlight (dims everything except the part being read) · Question history · Progress tracker
+2. Exercise types (multiSelect): Multiple choice · Free answer corrected by Claude (paste working or a photo) · True / false · Fill in the blank
+3. Exercise source — **only if the user uploaded their own exercises**: My exercises only · 50/50 mine & yours · Yours (from the course + written by Claude)
+4. Font: Atkinson Hyperlegible (most readable) · Lexend · OpenDyslexic (made for dyslexia) · IBM Plex Sans — "Other" to type any Google Font name
 
-Then, before building:
-- **Source = mine only** and some topics have none of the user's exercises → say which topics now, and ask once: leave them without exercises (with the notice) or fill those topics only with course / Claude exercises.
-- "Other" theme → copy the closest preset in `kit/themes.json`, change only colors, run `python3 kit/check_contrast.py <file>` until it passes, put the object in `pack.json` `theme`.
-- Formats → exercise types: *lesson-style* = its rules (below); *Como na fonte* = keep the sheet's form (open question → `free`; MCQ / true-false only where the sheet has them); *Escolha múltipla* = `mcq`; *Resposta livre* = `free`; *V/F* = `tf`. (Fill-in-the-blank is not in the kit.)
+**2c — Second call:**
+1. Exercises per topic:
+   - If source is *My exercises* or *50/50*: All my exercises · 5 (Recommended) · 8 · 3 — "Other" for any number.
+   - Otherwise: 3 · 5 (Recommended) · 8 · 10.
+2. Language of the artifacts: Français · Português · English
+3. Extra options (multiSelect): Exam countdown · Recall links to earlier topics · "Review only" filter for missed questions · Light/dark switch
+4. Study plan with a deadline? Yes · No
 
-## Step 3 — Write the content (JSON only)
+**2d — Third call** (only the questions whose condition is met; skip the call if none):
+1. Graph calculator — **only if the course is calculation-heavy**: Yes, add a graph calculator (Recommended) · No
+2. Tutor chat inside the artifacts (ask questions, auto-notes of what you didn't get): Yes (Recommended) · No
+3. Deadline — **only if Study plan = Yes**: the exam date found in the material (show it, only if found) · In 1 week · In 2 weeks — "Other" to type a date
+4. Hours per day — **only if Study plan = Yes**: You know (Recommended) · Enter my number
+   If "Enter my number": ask once more — 1h · 2h · 3h · 4h, "Other" for any number.
 
-Split the topics into groups and write them with **up to 4 subagents in parallel** (e.g. 1–3, 4–6, 7–9, 10–11). Give each: `kit/SCHEMA.md`, its topics' material, the answers from Step 2, and these rules. Each writes `pack/topics/<n>.json` with a Python script (`json.dump`, never by hand) and checks every computation with sympy. Then read their files and check they follow the rules.
+Defaults if the user skips a question: Focus theme if they mention concentration or dyslexia, else Dark blue & light blue · Sidebar + Focus highlight + Progress tracker · Multiple choice + Free answer · 50/50 if they uploaded exercises, else Yours · 5 per topic · Atkinson Hyperlegible · language of the conversation · no plan · graph calculator Yes when calculation-heavy · tutor chat Yes.
 
-**Sílabo** (`syllabus`): 2–6 bullets per topic, ≤ 12 words, noun phrases / rules / formulas, no sentences, no filler. Every exam-relevant rule, nothing invented.
+## Exercise selection rules (used by Resumo and Revision)
 
-**Resumo** (`resumo` + `examples`): every definition, theorem, rule and method of the topic, explained completely (intuition → formal statement → when and how to use it), course notation; `def` / `thm` / `formula` / `method` / `trap` blocks. **≥ 3 solved examples** per topic, simple → exam level, different methods: the user's exercises with resolutions first, then course examples, then new ones. Every step has `do` + `why` (+ `trap` where students slip). Origin label: the real source, or `"new"` → "Novo". Never label an invented example with a course source. When an MCQ is reused as an example, keep only the solution steps: drop sentences about the options ("A troca…", "A opção B…", "C e D…").
+**Source = My exercises**
+- *All my exercises*: use every one of the user's exercises, placed under its topic, nothing added. A topic with none gets a one-line notice ("No exercise of yours covers this topic") and no invented ones.
+- *A number*: per topic, pick the best N of the user's exercises: the most exam-relevant first, then variety — each method of the topic covered at least once, a spread of difficulty (easy → exam level), no two that test the same thing the same way. If a topic has fewer than N, use all of them and say so.
 
-**Revisão** (`lesson`, `worked`, `exercises`): short lesson blocks, one `worked` example, then the exercises.
+**Source = 50/50 mine & yours**
+- *All my exercises*: every one of the user's exercises, plus the same number written by Claude in the same style, aimed at the methods and traps the user's set covers least.
+- *A number*: half from the user's (chosen by the rules above, rounded up), half written by Claude, same style and notation, filling the gaps in methods and difficulty.
 
-Exercise selection:
-- *Mine only, All*: every user exercise under its topic, nothing added; a topic with none gets the notice. *Mine only, N*: the best N per topic — most exam-relevant first, then variety (each method once, easy → exam level, no two testing the same thing the same way); fewer than N → all of them + `shortage` notice.
-- *50/50, All*: every user exercise + as many by Claude, aimed at what theirs covers least. *50/50, N*: half the user's (chosen as above, rounded up), half Claude's in the same style.
-- *Yours*: course exercises first, then new ones in the same style.
+**Source = Yours**: course exercises first (keep sheet + number), then new ones in the same style to reach the count.
 
-Resolutions given by the user: they are the answer key — keep their steps and notation, explain each step (what, why, trap). Missing steps: complete them, `by_claude: true`. Check every resolution (recompute with sympy); a wrong step is never fixed silently: `flag` with the text and the correction. No resolution: write one and verify it.
+Always label each exercise's origin: "Your sheet 3, ex. 2" · "Course, sheet 1, ex. 4" · "New".
 
-**lesson-style rules** (when chosen; the Notion page wins if it says more): `mcq` with exactly 4 options A–D; calculation questions `gate: true` ("Resolve no papel primeiro" + "Já resolvi — mostrar opções") and `free_too: true` (paste working or a photo, Claude grades it); maths options one per line (default layout), each on a single line; every wrong option is a typical mistake and its `why` names it; the correct letter varies (never the same letter more than twice in a row).
+**Resolutions provided by the user**
+- When an exercise comes with a resolution, that resolution is the answer key. Keep its steps and notation, and explain it: for each step, *what* is done and *why* (the rule or definition it uses, linked to its topic), plus the trap a student would fall into at that step.
+- Partial resolution or final answer only: complete the missing steps in the same style and mark them "Completed by Claude".
+- Check every provided resolution (recompute in code when possible). If one looks wrong, don't silently fix it: show the original, flag "This step looks wrong", and give the corrected working next to it.
+- No resolution: write a full one and verify it.
 
-Text: `**bold**`, never italics; maths in `$…$` / `$$…$$`; recall links `[[n]]` when Recall is on.
+## Step 3 — Syllabus artifact
 
-## Step 4 — Plan (only if Plano = yes)
+Load `artifact-design` first, and `artifact-capabilities` for the notes (state). Hand-built HTML artifact (not a Docs type), so it carries the theme and the anchors.
 
-Put the settings in `pack.json` → `plan` (start = today, `hours`: "auto" or the number, `busy` days with other exams and their notes, `weights` for heavy topics, `hours_note` in the pack language), then `python3 kit/plan.py pack`. It prints what had to be cut when time is short: say it in the final message.
+- Title "Syllabus — <Course>", chosen theme, font and language.
+- One block per topic: big number + topic name (≤ 6 words), then 2–6 bullets of what must be known.
+- Each bullet ≤ 12 words: noun phrases, rules or formulas. No explanatory sentences, no intro, no conclusion, no filler ("it is important to", "note that").
+- Complete: every topic and every exam-relevant rule from the material is there. Nothing invented beyond it.
+- Math with MathJax (cdnjs). Anchor ids `t1`, `t2`…
+- Each topic links to `Resumo#r<n>` and `Revision#ch<n>` once those exist (republish with the links).
+- **Notes** on each topic block (see Notes below).
+- Re-read before publishing: if a bullet can lose a word without losing meaning, cut it.
 
-## Step 5 — Build, check, publish
+## Step 4 — Resumo artifact
 
-1. `python3 kit/build.py pack --out pack/out` (stops on any schema error: fix the JSON, never the HTML).
-2. `python3 kit/check.py pack/out --shots` must print **ALL CHECKS PASSED** (no page overflow at 400 / 1440 px light & dark, nothing clipped, 0 KaTeX errors, no raw `$`, no JS error, fixed header and tool order, no new-tab links, interactions work). Then **look** at `pack/out/shots/*` (header, dense maths blocks, phone dark). Fix the JSON, rebuild, re-check once.
-3. Load `artifact-capabilities` and declare what the pages use: account storage (`db`) and viewer identity (`user`) for notes, history and ticks; asking Claude (`sample`) for the tutor and the grading (Sílabo, Resumo, Revisão). Plano: `db` + `user` only.
-4. **New pack**: publish the 4 files (titles come from the pages, icon "book"), put the 4 URLs in `pack.json` → `urls`, rebuild, re-check, republish each to its URL (the tabs and cross-links need the URLs). **Update**: URLs are already in `pack.json`; publish each page to its `url`.
+Load `artifact-design` (and `artifact-capabilities` for notes, tutor chat and graph calculator state). Title "Resumo — <Course>", same theme, font and language. This is the complete reference: where the Syllabus is the skeleton and the Revision is practice, the Resumo is the full course, readable on its own.
+
+For each topic `n` (section id `r<n>`, heading "n · Name"):
+- **Full explanation**: every definition, theorem, rule and method of the topic from the material, explained completely — intuition first, then the formal statement, then when and how to use it. Definitions in boxed cards, properties and formulas in a formula card, traps in a red card ("Trap n"). Course notation throughout.
+- **At least 3 solved examples**, from simple to exam level, covering different methods of the topic. Take them from the user's exercises with resolutions first, then course examples, then new ones. Every step written out and justified (same rules as resolutions above). Each example has its origin label.
+- **Links** at the top and bottom of the section: "Essentials → Syllabus#t<n>" · "Practice → Revision#ch<n>"; recall links to earlier topics where a notion comes from (if Recall links is on).
+- **Notes**, tutor chat and graph calculator as chosen (see Shared components).
+- Header: table of contents with all topics; link to the Study Plan if it exists.
+
+Check before publishing: every topic of the master list is present, each has ≥ 3 solved examples, every result is verified (recompute math in code), nothing contradicts the source material, the page works at phone width.
+
+## Step 5 — Revision artifact
+
+Load `artifact-design`, and also `artifact-capabilities` whenever Free answer, Question history, notes, tutor chat or graph calculator is on. If the user already has revision artifacts (list the artifacts and read the most recent revision one), match their structure: one reading column, numbered sections, light/dark tokens, MathJax.
+
+For each topic `n` (section id `ch<n>`, heading "n · Name"):
+
+- **Explanation**: short paragraphs, definitions in boxed cards, traps in a red card ("Trap n"), one step-by-step worked example in the course's own notation. A "Full version → Resumo#r<n>" link at the top.
+- **Exercises**: the chosen number, types and source (Exercise selection rules). Each one has an answer and an explanation of *why*; for the user's exercises with a resolution, the explanation follows that resolution step by step. MCQ wrong options are plausible mistakes, and the explanation names the mistake behind each one.
+- Multiple choice: instant right/wrong coloring, then the explanation. Free answer: textarea + photo upload, sent to Claude for a verdict (correct / partly / wrong) and the corrected working; "Show answer key" as the fallback when the capability is unavailable.
+- **Notes** on each section and on each exercise.
+
+How each option is built:
+
+- **Sidebar** → left contents rail with per-topic progress dots and jump links; a floating button on phones.
+- **Focus highlight** → the paragraph or exercise being read stays at full contrast, everything else dims (opacity ≈ 0.15); toggle button; respects reduced motion.
+- **Question history** → panel listing every attempt (question, answer given, right/wrong, date), filterable, with "Redo"; saved with a state capability, else localStorage wrapped in try/catch.
+- **Progress tracker** → done / missed counts and a bar per topic and overall.
+- **Exam countdown** → header box with the date and days left.
+- **Recall links** → dotted accent links back to the earlier topic a notion comes from.
+- **Review only** → filter showing only missed questions.
+- **Light/dark switch** → toggle that sets `data-theme`.
+
+Check before publishing: every topic of the master list is present, the exercise count per topic matches the choice (or the notice explains why not), every answer is verified (recompute math in code when possible), every user resolution was checked, the page works at phone width.
+
+## Shared components (Syllabus, Resumo, Revision)
+
+### Notes (always on)
+- A small note icon on every topic block (Syllabus), every section and solved example (Resumo), every section and every exercise (Revision). Hidden by default: the icon only shows a dot/count when a note exists.
+- Click the icon → a note card unfolds under that block: free text (Markdown + `$…$` math rendered with MathJax), date, edit, delete. Click again to fold it.
+- A "My notes" panel (header button) lists all notes of the artifact by topic, with a filter (all / my notes / didn't-understand notes) and a jump link to each one.
+- Notes on an exercise also appear in that exercise's Question history entry.
+- Saved with a state capability (per viewer, survives republishes); fallback localStorage wrapped in try/catch, with a one-line warning that notes then live in this browser only.
+
+### Tutor chat (if Yes)
+- A chat button (bottom-right) opens a chat panel; on phones it is a full-height sheet. Uses the "ask Claude" runtime capability.
+- Every question is sent with context: course name, the current topic (the section in view), that topic's content from the artifact, and the exercise if the chat was opened from one ("Ask about this" button on each exercise and example). The tutor answers in the artifact's language, with the course's notation, MathJax-rendered, short, and links to the right `#r<n>` / `#ch<n>`. It never just gives the answer to an exercise the user hasn't attempted: hint first, full solution on request.
+- **Didn't-understand notes**: after each exchange, a "Save as note" button; and when the user says they don't get something (or after 2+ questions on the same point), the tutor offers to save automatically. The note is written by Claude: *what wasn't clear* (one line) + *the explanation that worked* (short) + link to the section. It is attached, hidden, to the section or exercise it's about, with a distinct "?" icon, and appears in "My notes" under "Didn't understand". Click to read, edit or delete.
+- Chat history per topic is kept with the same state capability.
+- If the capability is unavailable: hide the chat button and say so in one line in the finish message; notes still work.
+
+### Graph calculator (if Yes)
+- A "Graph calc" button in the header of Resumo and Revision. Click → a floating rectangle (≈ 380×320, resizable from the corner) appears over the page; drag it freely by its title bar (pointer events, works with touch); a minimize and a close button; it never blocks scrolling of the page beneath. Position, size and content are remembered.
+- Desmos-like behavior, built in-page (canvas + math.js from cdnjs for parsing):
+  - Expression list: one expression per line, each with its own color and a show/hide toggle; `y = f(x)`, `f(x) = …` definitions reusable in later lines, implicit-free explicit functions, `x = a` vertical lines, points `(a, b)`, parametric `(cos t, sin t)`, inequalities shaded.
+  - Unknown letters become sliders automatically (`a = 1` with a draggable slider, adjustable range).
+  - Plot: grid with labeled axes, pan by dragging, zoom with wheel / pinch, "reset view" button, trace a curve by hovering to show coordinates, mark zeros, extrema and intersections on click.
+  - A plain-number line acts as a scientific calculator (`2^10`, `sqrt(2)`, `sin(pi/6)`, `log`, `ln`, `e`, `pi`), result shown at the right of the line.
+  - Degrees/radians toggle; LaTeX preview of each expression.
+- "Plot this" button on formulas and examples that contain a function: opens the calculator pre-filled with it.
+
+### Config block
+Each artifact carries `<script type="application/json" id="pack-config">` with: course, version date, theme, font, language, features, exercise types, source, count, extras, graph calc, tutor chat, plan settings, the master topic list (number + name), the source files/pages used, and the URLs of the other artifacts. Update mode reads it.
+
+## Step 6 — Study Plan (only if the user said Yes)
+
+Build it after the other artifacts are published, so their URLs exist.
+
+- Days available: today up to the day before the deadline (the deadline day is the exam).
+- **"You know"**: estimate each topic's load from its size and difficulty in the material (and the number of the user's exercises in it). Default 2h on weekdays, 3h on weekends, never more than 4h. Structure: first pass in course order (read Resumo → do Revision exercises); spaced reviews of each topic at about +1, +3 and +7 days (Syllabus + missed questions + own notes); the last day is a mixed test built from missed questions; keep ~10 % buffer. If the time is too short, say so in one line and compress (fewer reviews, hardest topics first).
+- **User's number**: same structure, scaled exactly to that many hours per day; if it can't cover everything, say what was cut.
+- Artifact "Study Plan — <Course>", same theme, font and language:
+  - Summary row: deadline, days left, total hours, number of topics.
+  - Day-by-day list: date, hours, sessions. Each session = topic n + action (read / exercises / review / mock test) + duration + links to `Syllabus#t<n>`, `Resumo#r<n>` and `Revision#ch<n>`. One checkbox per session, saved (state capability, else localStorage).
+  - Graph view: stacked bar chart of hours per day colored by topic; a timeline (topic rows × days) showing when each topic is learned and reviewed; a done-vs-planned progress line. Load the `dataviz` skill if it is listed.
+- Add a link to the plan in the header of the Syllabus, Resumo and Revision.
+
+## Fonts
+- Atkinson Hyperlegible, Lexend, IBM Plex Sans and any typed name: Google Fonts.
+- **OpenDyslexic** is not on Google Fonts: get the woff2 files (regular + bold) from npm or GitHub (antijingoist/opendyslexic), both reachable from the workspace, and embed them with `@font-face` (asset upload or base64). If they can't be fetched, use Lexend and say so in one line. With OpenDyslexic, keep the Focus spacing rules (line height ≥ 1.6, no justified text, no italics).
 
 ## Finish
 
-A few lines only: what was built or updated (the cards carry the links), anything missing from the material, exercises from the user / the course / written by Claude, **the list of the user's resolutions flagged as wrong** (exercise + step), what the plan had to cut, and anything that couldn't be enabled (tutor, account storage). Say once that formulas copy as LaTeX (select + copy, or double-click a formula). No recap of the steps.
+A few lines only: what was built or updated (the artifact cards carry the links), anything missing from the material, how many exercises came from the user / the course / were written, how many user resolutions were flagged as wrong, and any feature that couldn't be enabled (chat, font). No recap of the steps.
