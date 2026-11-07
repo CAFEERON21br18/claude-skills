@@ -22,7 +22,9 @@ EXPECT_TOOLS = {  # fixed order of the header tools (ids / classes), optional on
     'silabo': ['count', 'focusBtn', 'notesBtn', 'themeBtn'],
     'resumo': ['count', 'gcbtn', 'focusBtn', 'notesBtn', 'themeBtn'],
     'revisao': ['count', 'gcbtn', 'focusBtn', 'reviewBtn', 'histBtn', 'notesBtn', 'themeBtn'],
-    'plano': ['count', 'todayBtn', 'hideDoneBtn', 'themeBtn'],
+    'testes': ['count', 'todayBtn', 'themeBtn'],
+    'mapa': ['count', 'themeBtn'],
+    'plano': ['count', 'origBtn', 'todayBtn', 'hideDoneBtn', 'themeBtn'],
 }
 
 def npm(pkg, ver, inner):
@@ -54,6 +56,7 @@ JS_CHECK = r"""(page)=>{
   out.clipped=clipped.slice(0,8);
   out.katexErr=document.querySelectorAll('.katex-error').length;
   out.katexN=document.querySelectorAll('.katex').length;
+  const _src=document.getElementById('pack-src'); out.hasMaths=!!_src&&/\$/.test(_src.textContent);
   const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement; if(!p||p.closest('script,style,textarea,.katex,code,pre,.nomath')) return NodeFilter.FILTER_REJECT; return /\$/.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
   const raw=[]; let n; while((n=w.nextNode())&&raw.length<5) raw.push(n.nodeValue.trim().slice(0,60)); out.rawDollar=raw;
   const wrap=document.querySelector('.top .band .wrap');
@@ -66,7 +69,7 @@ JS_CHECK = r"""(page)=>{
 
 async def run(out_dir, shots):
     out_dir = pathlib.Path(out_dir); fails = []
-    pages = [p for p in ('silabo', 'resumo', 'revisao', 'plano') if (out_dir / f'{p}.html').exists()]
+    pages = [p for p in ('silabo', 'resumo', 'revisao', 'testes', 'mapa', 'plano') if (out_dir / f'{p}.html').exists()]
     async with async_playwright() as pw:
         b = await pw.chromium.launch()
         for page in pages:
@@ -98,7 +101,7 @@ async def run(out_dir, shots):
                     if r['clipped']: fails.append(f'{tag}: clipped maths in {r["clipped"]}')
                     if r['katexErr']: fails.append(f'{tag}: {r["katexErr"]} .katex-error')
                     if r['rawDollar']: fails.append(f'{tag}: unrendered $ in {r["rawDollar"]}')
-                    if page != 'plano' and r['katexN'] == 0: fails.append(f'{tag}: no maths rendered at all (KaTeX not loaded?)')
+                    if page not in ('plano', 'mapa', 'testes') and r['hasMaths'] and r['katexN'] == 0: fails.append(f'{tag}: no maths rendered at all (KaTeX not loaded?)')
                     if r['headerKids'] != ['brand', 'navlinks', 'tools']: fails.append(f'{tag}: header must be brand|navlinks|tools, got {r["headerKids"]}')
                     exp = [t for t in EXPECT_TOOLS[page] if t in r['tools']]
                     if r['tools'] != exp: fails.append(f'{tag}: tools order {r["tools"]} ≠ {EXPECT_TOOLS[page]}')
@@ -127,6 +130,10 @@ async def run(out_dir, shots):
 
 async def interact(pg, page, fails, tag):
     try:
+        if page == 'mapa':
+            await interact_mapa(pg, fails, tag); return
+        if page == 'testes':
+            await interact_testes(pg, fails, tag); return
         if page != 'plano':
             await pg.click('.nbtn >> nth=0'); await pg.wait_for_selector('.notebox', timeout=2000)
             await pg.click('#focusBtn'); await pg.wait_for_selector('.fblk.is-focus', timeout=2000)
@@ -139,13 +146,66 @@ async def interact(pg, page, fails, tag):
                 await pg.evaluate("()=>{const ex=document.querySelector('.ex.mcq'); ex.querySelector('.opts').hidden=false;}")
                 await o.click(); await pg.wait_for_selector('.ex.mcq .badge:not([hidden])', timeout=2000)
             await pg.click('#histBtn'); await pg.wait_for_selector('#hist:not([hidden]) li.item', timeout=2000)
+            await pg.click('#histClose')
+            # every exercise must show a complete correction: method + steps + answer
+            bad = await pg.evaluate("()=>[...document.querySelectorAll('.ex .key')].filter(k=>!k.querySelector('.howto')||k.querySelectorAll('.steps li').length<1||!k.querySelector('.ans')).length")
+            if bad: fails.append(f'{tag}: {bad} exercise(s) without a complete correction (method, steps, answer)')
+            # a tutor note ("didn't understand") is shown at the start of its exercise
+            await pg.evaluate("""()=>{const c=JSON.parse(document.getElementById('pack-config').textContent); const pre=(c.storage&&c.storage.prefix)||c.slug+'-';
+              const ex=document.querySelector('.ex[data-note]'); localStorage.setItem(pre+'notes-revisao',JSON.stringify({items:{[ex.id]:[{id:'chk1',date:Date.now(),kind:'q',topic:1,label:'x',unclear:'CHECK-NOTE',text:'**Não percebi:** CHECK-NOTE\\n\\nexpl'}]}}));}""")
+            await pg.reload(); await pg.wait_for_timeout(900)
+            pos = await pg.evaluate("()=>{const q=document.querySelector('.ex > .qtop'); if(!q) return 'none'; return q.previousElementSibling&&q.previousElementSibling.classList.contains('exhead')&&q.innerText.includes('CHECK-NOTE')?'ok':'misplaced'}")
+            if pos != 'ok': fails.append(f'{tag}: tutor note on an exercise is {pos} (must be at the top of the exercise)')
         if page == 'plano':
             await pg.click('.sess input >> nth=0'); await pg.wait_for_timeout(200)
             t = await pg.inner_text('#oText')
             if not t.startswith('1'):
                 fails.append(f'{tag}: ticking a session did not update the strip ({t})')
+            past = await pg.evaluate("()=>{const t=new Date(); const iso=new Date(t-t.getTimezoneOffset()*60000).toISOString().slice(0,10); return PLAN_DAYS_PAST(iso)}".replace('PLAN_DAYS_PAST(iso)', "[...document.querySelectorAll('.day')].filter(d=>d.id.slice(1)<iso).length"))
+            if past:
+                moved = await pg.evaluate("()=>document.querySelectorAll('.tag.moved').length")
+                if not moved: fails.append(f'{tag}: past sessions left undone did not move to the next days')
+                if await pg.evaluate("()=>document.getElementById('adapt').hidden"): fails.append(f'{tag}: the adapted-plan box is not shown')
+                # a weak test result adds an extra review
+                await pg.evaluate("""()=>{const c=JSON.parse(document.getElementById('pack-config').textContent); if(!c.features.tests) return; const pre=(c.storage&&c.storage.prefix)||c.slug+'-';
+                  localStorage.setItem(pre+'testes',JSON.stringify({results:{m1:{t:Date.now()-86400000,ok:0,tot:2,byTopic:{'1':[0,2]},pending:0}}}));}""")
+                await pg.reload(); await pg.wait_for_timeout(900)
+                if await pg.evaluate("()=>JSON.parse(document.getElementById('pack-config').textContent).features.tests") and not await pg.evaluate("()=>document.querySelectorAll('.tag.boost').length"):
+                    fails.append(f'{tag}: a topic failed in a test did not get an extra review')
+                await pg.click('#origBtn'); await pg.wait_for_timeout(200)
+                if await pg.evaluate("()=>document.querySelectorAll('.tag.moved,.tag.boost').length"): fails.append(f'{tag}: "original plan" still shows adapted sessions')
     except Exception as e:
         fails.append(f'{tag}: interaction failed: {str(e)[:160]}')
+
+async def interact_testes(pg, fails, tag):
+    """Testes: open a test, answer one question, finish: every question shows its full correction and the score is saved."""
+    card = await pg.query_selector('.tst')
+    await pg.click('.tst >> nth=0 >> .tstart')
+    await pg.evaluate("()=>{const c=document.querySelector('.tst'); c.querySelectorAll('.gatebtn').forEach(b=>b.click());}")
+    o = await pg.query_selector('.tst >> nth=0 >> .ex.mcq .opt, .tst >> nth=0 >> .ex.tf .opt')
+    first = await pg.query_selector('.tst .ex.mcq .opt, .tst .ex.tf .opt')
+    if first: await first.click()
+    if await pg.evaluate("()=>document.querySelectorAll('.tst .opt.right').length"): fails.append(f'{tag}: a test shows the right answer before "finish"')
+    await pg.click('.tst >> nth=0 >> .tfinish'); await pg.wait_for_selector('.tst .tresult:not([hidden])', timeout=2000)
+    hidden_keys = await pg.evaluate("()=>[...document.querySelector('.tst').querySelectorAll('.ex .key')].filter(k=>k.hidden||!k.querySelector('.howto')).length")
+    if hidden_keys: fails.append(f'{tag}: {hidden_keys} test question(s) without their full correction after finishing')
+    await pg.reload(); await pg.wait_for_timeout(800)
+    if await pg.evaluate("()=>document.querySelector('.tst .tscore').hidden") and await pg.evaluate("()=>!document.querySelector('.tst .ex.free')"):
+        fails.append(f'{tag}: the test score was not saved')
+
+async def interact_mapa(pg, fails, tag):
+    """Mapa: pick a card, check the panel fields, follow a route, answer a training question, tick 'known'."""
+    await pg.click('.mp-card >> nth=3'); await pg.wait_for_selector('#mpPanel h2', timeout=2000)
+    n_sec = await pg.evaluate("()=>document.querySelectorAll('#mpPanel .mp-sec').length")
+    if n_sec < 4: fails.append(f'{tag}: mapa panel shows only {n_sec} sections (context, explanation, key points, links expected)')
+    if not await pg.query_selector('.mp-card.is-sel'): fails.append(f'{tag}: mapa: card not marked selected')
+    bad = await pg.evaluate("()=>{const t=document.getElementById('mpPanel').innerText;return (/\\$/.test(t)?1:0)+document.querySelectorAll('#mpPanel .katex-error').length}")
+    if bad: fails.append(f'{tag}: mapa panel shows raw $ or a KaTeX error')
+    await pg.click('#mpPanel [data-act=know]'); await pg.wait_for_selector('.mp-card.known', timeout=2000)
+    await pg.click('[data-tab][data-m=routes]'); await pg.click('#mpPanel [data-act=route] >> nth=0'); await pg.wait_for_selector('.mp-prog', timeout=2000)
+    await pg.click('#mpPanel [data-act=next]'); await pg.wait_for_selector('.mp-because', timeout=2000)
+    await pg.click('[data-tab][data-m=train]'); await pg.wait_for_selector('.mp-opt', timeout=2000)
+    await pg.click('.mp-opt >> nth=0'); await pg.wait_for_selector('.mp-fb', timeout=2000)
 
 if __name__ == '__main__':
     fails = asyncio.run(run(sys.argv[1], '--shots' in sys.argv))

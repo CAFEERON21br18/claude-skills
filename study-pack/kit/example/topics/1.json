@@ -8,28 +8,36 @@
  "resumo": [
   {
    "kind": "p",
-   "body": "Em CDI-I os reais são definidos pela **via axiomática**: tudo o resto é **provado** a partir dos axiomas."
+   "body": "Em CDI-I os números reais não são construídos a partir das dízimas: são definidos pela **via axiomática**. Isto quer dizer que se aceita uma pequena lista de regras (os axiomas) e tudo o resto — as regras de cálculo que já usas desde o secundário, a regra dos sinais, as propriedades do módulo, o princípio de indução — é **provado** a partir delas. Na prática continuas a calcular como sempre; a diferença é que, numa prova, cada passo tem de ser justificado por um axioma ou por uma propriedade já demonstrada."
   },
   {
    "kind": "def",
    "title": "Módulo",
-   "body": "$|x|=x$ se $x\\ge0$ e $|x|=-x$ se $x<0$. Distância de $x$ a $0$.",
+   "body": "$|x|=x$ se $x\\ge0$ e $|x|=-x$ se $x<0$.",
+   "explain": "O módulo é a **distância** de $x$ a $0$ na reta real, por isso nunca é negativo. Do mesmo modo, $|x-a|$ é a distância entre $x$ e $a$. Pensar em distâncias torna as inequações com módulo quase visuais: $|x-1|<2$ são os pontos a menos de 2 unidades de 1.",
    "plot": "abs(x)"
   },
   {
    "kind": "formula",
-   "title": "Regras de ouro",
-   "body": "$$|x|<a\\Leftrightarrow -a<x<a\\qquad |x|>a\\Leftrightarrow x>a\\lor x<-a\\qquad \\big||x|-|y|\\big|\\le|x+y|\\le|x|+|y|$$"
+   "title": "Regras de ouro do módulo",
+   "body": "$$|x|<a\\Leftrightarrow -a<x<a\\qquad |x|>a\\Leftrightarrow x>a\\lor x<-a\\qquad \\big||x|-|y|\\big|\\le|x+y|\\le|x|+|y|$$",
+   "explain": "A primeira diz que estar a menos de $a$ do zero é estar entre $-a$ e $a$ (um intervalo, «e»). A segunda é o contrário: estar a mais de $a$ é estar à direita de $a$ **ou** à esquerda de $-a$ (dois pedaços, «ou»). A desigualdade triangular diz que somar números com sinais diferentes pode «encolher» o resultado, nunca aumentá-lo além da soma dos módulos."
+  },
+  {
+   "kind": "method",
+   "title": "Resolver uma inequação com vários módulos",
+   "body": "1. Encontrar os zeros do que está dentro de cada módulo.\n2. Partir a reta em intervalos por esses zeros.\n3. Em cada intervalo, tirar os módulos (o argumento ou o simétrico) e resolver.\n4. Intersectar cada solução com o seu intervalo e reunir tudo.",
+   "explain": "Num mesmo intervalo cada argumento tem sempre o mesmo sinal, por isso cada módulo é substituído por uma expressão sem módulo. O passo 4 é o que mais se esquece: uma solução só vale dentro do intervalo em que foi calculada."
   },
   {
    "kind": "trap",
    "title": "Armadilha 1",
-   "body": "Multiplicar uma desigualdade por um número **negativo** inverte o sinal."
+   "body": "Multiplicar ou dividir uma desigualdade por um número **negativo** inverte o sinal: de $-2x<4$ vem $x>-2$, não $x<-2$."
   },
   {
    "kind": "bookerr",
    "title": "Gralha no livro",
-   "body": "O livro escreve $|x+y|\\ge|x|+|y|$ na p. 12; o correto é $\\le$."
+   "body": "O livro escreve $|x+y|\\ge|x|+|y|$ na p. 12; o correto é $\\le$ (com $x=1$, $y=-1$: $0\\ge2$ é falso)."
   }
  ],
  "examples": [
@@ -37,49 +45,66 @@
    "title": "Soma de potências de 2",
    "origin": "Aula 1",
    "statement": "Prove que $\\displaystyle\\sum_{k=0}^n2^k=2^{n+1}-1$ para todo o $n\\in\\mathbb N_0$.",
+   "method": "Uma igualdade que tem de valer **para todo o natural** $n$ pede uma prova por **indução**: verificar a base e mostrar que, se vale para $n$, vale para $n+1$.",
    "steps": [
     {
-     "do": "Base ($n=0$): $2^0=1=2^1-1$.",
-     "why": "Princípio de indução: substitui-se só $n$.",
-     "trap": "Substituir também $k$."
+     "do": "Base ($n=0$): $\\sum_{k=0}^0 2^k=2^0=1$ e $2^{0+1}-1=1$. Os dois lados são iguais.",
+     "why": "Princípio de indução: começa-se no primeiro valor do domínio, aqui $n=0$; substitui-se só $n$.",
+     "trap": "Substituir também $k$ por 0 no termo e esquecer que o somatório ainda tem um termo."
     },
     {
-     "do": "$\\sum_{k=0}^{n+1}2^k=(2^{n+1}-1)+2^{n+1}=2^{n+2}-1$.",
-     "why": "Separar o último termo e usar a hipótese."
+     "do": "Hipótese: $\\sum_{k=0}^n2^k=2^{n+1}-1$. Tese: $\\sum_{k=0}^{n+1}2^k=2^{n+2}-1$.",
+     "why": "Escrever hipótese e tese antes de calcular mostra exatamente o que falta provar."
+    },
+    {
+     "do": "$\\sum_{k=0}^{n+1}2^k=\\sum_{k=0}^n2^k+2^{n+1}=(2^{n+1}-1)+2^{n+1}=2^{n+2}-1$.",
+     "why": "Separar o último termo do somatório faz aparecer a hipótese, que se substitui."
     }
    ],
-   "answer": "Verdadeira para todo o $n\\in\\mathbb N_0$."
+   "answer": "Verdadeira para todo o $n\\in\\mathbb N_0$.",
+   "check": "Para $n=2$: $1+2+4=7$ e $2^3-1=7$."
   },
   {
    "title": "Inequação com módulo",
    "origin": "Ficha 1, ex. 2",
    "statement": "Resolva $|2x-1|<3$.",
+   "method": "Um só módulo com «menor que» positivo: aplica-se diretamente $|u|<a\\Leftrightarrow -a<u<a$ e resolve-se a dupla desigualdade.",
    "steps": [
     {
      "do": "$-3<2x-1<3$",
-     "why": "Regra $|u|<a\\Leftrightarrow -a<u<a$."
+     "why": "Regra $|u|<a\\Leftrightarrow -a<u<a$ com $u=2x-1$ e $a=3>0$."
+    },
+    {
+     "do": "$-2<2x<4$",
+     "why": "Somar 1 aos três membros não muda o sentido das desigualdades."
     },
     {
      "do": "$-1<x<2$",
-     "why": "Somar 1 e dividir por 2 (positivo, não inverte).",
+     "why": "Dividir por 2, que é positivo, não inverte as desigualdades.",
      "by_claude": true
     }
    ],
    "answer": "$x\\in\\,]-1,2[$",
+   "check": "$x=0$ dá $|-1|=1<3$ (está na solução) e $x=2$ dá $|3|=3$, que não é $<3$ (fica de fora).",
    "plot": "abs(2x-1)"
   },
   {
    "title": "Módulos encadeados",
    "origin": "new",
    "statement": "Resolva $\\big||x|-2\\big|\\le 1$.",
+   "method": "Há um módulo dentro de outro: tira-se primeiro o de fora (com $u=|x|-2$), o que deixa uma condição só sobre $|x|$.",
    "steps": [
     {
-     "do": "$1\\le|x|\\le3$",
-     "why": "Regra do módulo aplicada a $u=|x|-2$."
+     "do": "$-1\\le|x|-2\\le1$, ou seja $1\\le|x|\\le3$.",
+     "why": "Regra do módulo aplicada a $u=|x|-2$, depois somar 2."
+    },
+    {
+     "do": "$|x|\\ge1$ dá $x\\le-1\\lor x\\ge1$; $|x|\\le3$ dá $-3\\le x\\le3$.",
+     "why": "Cada desigualdade em $|x|$ resolve-se pela sua regra («ou» para $\\ge$, intervalo para $\\le$)."
     },
     {
      "do": "$x\\in[-3,-1]\\cup[1,3]$",
-     "why": "Cada desigualdade em $|x|$ separadamente.",
+     "why": "A solução tem de cumprir as duas condições: intersecção.",
      "flag": {
       "text": "A resolução original escreve $[-3,3]$.",
       "fix": "Falta excluir $]-1,1[$: fica $[-3,-1]\\cup[1,3]$."
@@ -92,29 +117,32 @@
  "lesson": [
   {
    "kind": "p",
-   "body": "Revê os axiomas e as regras do módulo. Ver também [[2|matrizes]]."
+   "body": "O módulo mede uma **distância**: $|x|$ é a distância de $x$ a $0$ e $|x-a|$ a distância de $x$ a $a$. Quase todas as inequações com módulo resolvem-se com duas regras: «menor que» dá um intervalo, «maior que» dá dois pedaços. Revê também como se faz uma prova por indução e liga com [[2|as matrizes]]."
   },
   {
    "kind": "formula",
    "title": "Módulo",
-   "body": "$|x|<a\\Leftrightarrow -a<x<a$"
+   "body": "$|x|<a\\Leftrightarrow -a<x<a$",
+   "explain": "Os pontos a menos de $a$ do zero são exatamente os que estão entre $-a$ e $a$; por isso a solução é um só intervalo."
   }
  ],
  "worked": {
   "title": "Inequação com módulo",
   "origin": "Ficha 1, ex. 2",
   "statement": "Resolva $|x-1|\\le 2$.",
+  "method": "É a distância de $x$ a 1 ser no máximo 2: um intervalo centrado em 1, que se obtém pela regra do «menor ou igual».",
   "steps": [
    {
     "do": "$-2\\le x-1\\le 2$",
-    "why": "Regra do módulo."
+    "why": "Regra $|u|\\le a\\Leftrightarrow -a\\le u\\le a$ com $u=x-1$."
    },
    {
     "do": "$-1\\le x\\le3$",
-    "why": "Somar 1."
+    "why": "Somar 1 aos três membros."
    }
   ],
-  "answer": "$[-1,3]$"
+  "answer": "$[-1,3]$",
+  "check": "Os extremos $-1$ e $3$ estão exatamente a distância 2 de 1."
  },
  "exercises": [
   {
@@ -131,20 +159,27 @@
     "$[3,+\\infty[$"
    ],
    "why": [
-    "Certo: $x+2\\ge5$ ou $x+2\\le-5$.",
-    "Confunde $\\ge$ com $\\le$: isto é $|x+2|\\le5$.",
-    "Troca o sinal de $2$.",
-    "Esquece o ramo $x+2\\le-5$."
+    "Certo: $|u|\\ge5$ dá $u\\ge5$ ou $u\\le-5$, com $u=x+2$.",
+    "Este é o conjunto de $|x+2|\\le5$: confundiu «maior» com «menor».",
+    "Trocou o sinal do 2: resolveu $|x-2|\\ge5$.",
+    "Só ficou com o ramo $x+2\\ge5$ e esqueceu o ramo negativo."
    ],
    "correct": 0,
    "key": {
+    "method": "«Maior ou igual» com módulo dá **dois ramos** («ou»): escreve-se cada um e resolve-se separadamente.",
     "steps": [
      {
-      "do": "$x+2\\ge5\\lor x+2\\le-5$",
-      "why": "$|u|\\ge a\\Leftrightarrow u\\ge a\\lor u\\le -a$."
+      "do": "$x+2\\ge5\\ \\lor\\ x+2\\le-5$",
+      "why": "Regra $|u|\\ge a\\Leftrightarrow u\\ge a\\lor u\\le -a$.",
+      "trap": "Escrever «e» em vez de «ou»."
+     },
+     {
+      "do": "$x\\ge3\\ \\lor\\ x\\le-7$",
+      "why": "Subtrair 2 em cada ramo."
      }
     ],
-    "answer": "$]-\\infty,-7]\\cup[3,+\\infty[$"
+    "answer": "$]-\\infty,-7]\\cup[3,+\\infty[$",
+    "check": "$x=3$: $|5|=5\\ge5$ ✓; $x=0$: $|2|=2$, não serve ✓."
    }
   },
   {
@@ -153,15 +188,16 @@
    "origin": "new",
    "q": "$|a+b|=|a|+|b|$ para todos os reais $a,b$.",
    "why": [
-    "Falso: com $a=1,b=-1$ dá $0\\ne2$.",
-    "Certo: só vale se $ab\\ge0$."
+    "Não: com $a=1$ e $b=-1$ fica $0=2$, que é falso.",
+    "Certo: a igualdade só vale quando $ab\\ge0$ (mesmo sinal)."
    ],
    "correct": 1,
    "key": {
+    "method": "Para mostrar que uma afirmação «para todos» é falsa basta **um contraexemplo**.",
     "steps": [
      {
-      "do": "Contraexemplo $a=1$, $b=-1$.",
-      "why": "Basta um caso."
+      "do": "Com $a=1$, $b=-1$: $|a+b|=0$ e $|a|+|b|=2$.",
+      "why": "Um único caso em que falha chega para a afirmação geral ser falsa."
      }
     ],
     "answer": "Falso."
@@ -173,18 +209,24 @@
    "origin": "Semana 2, ex. 1a",
    "q": "Mostre que $6^{2n}-1$ é divisível por 7 para todo o $n\\in\\mathbb N^+$.",
    "key": {
+    "method": "«Para todo o $n$» pede **indução**; «divisível por 7» quer dizer escrever como $7\\times$ um inteiro, e o truque é fazer aparecer a expressão da hipótese.",
     "steps": [
      {
       "do": "Base: $6^2-1=35=7\\cdot5$.",
-      "why": "Base em $p=1$."
+      "why": "Base da indução em $p=1$, com o inteiro $5$."
      },
      {
-      "do": "$6^{2n+2}-1=36(6^{2n}-1)+35=7(36k+5)$.",
-      "why": "Fazer aparecer a hipótese.",
+      "do": "Hipótese: $6^{2n}-1=7k$ com $k\\in\\mathbb Z$. Tese: $6^{2n+2}-1=7k'$.",
+      "why": "Escrever o que se assume e o que se quer.",
       "trap": "Usar o mesmo $k$ na tese."
+     },
+     {
+      "do": "$6^{2n+2}-1=36\\cdot6^{2n}-1=36(6^{2n}-1)+35=7(36k+5)$.",
+      "why": "Fazer aparecer $6^{2n}-1$ e usar a hipótese; $36k+5$ é inteiro."
      }
     ],
-    "answer": "Divisível por 7 para todo o $n\\ge1$."
+    "answer": "Divisível por 7 para todo o $n\\ge1$.",
+    "check": "$n=2$: $6^4-1=1295=7\\cdot185$."
    }
   }
  ]

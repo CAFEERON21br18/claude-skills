@@ -1,0 +1,199 @@
+{
+ "kind": "prereq",
+ "layout": "layers",
+ "groups": [
+  {
+   "id": "A",
+   "name": "Reais e indução"
+  },
+  {
+   "id": "B",
+   "name": "Matrizes e sistemas"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "r",
+   "group": "A",
+   "label": "Números reais",
+   "text": "Os números que enchem a reta: racionais e irracionais.",
+   "ctx": "Tudo o que vem a seguir usa os reais. É o chão do curso.",
+   "what": [
+    "Os reais **medem** distâncias na reta.",
+    "Têm soma, produto e ordem."
+   ],
+   "keys": [
+    "$\\mathbb R$ é um corpo ordenado",
+    "Inclui racionais e irracionais"
+   ],
+   "topic": 1,
+   "hook": "Uma reta sem buracos.",
+   "terms": [
+    {
+     "t": "Corpo",
+     "d": "Conjunto onde se soma, multiplica e divide (menos por 0)."
+    }
+   ]
+  },
+  {
+   "id": "m",
+   "group": "A",
+   "label": "Módulo",
+   "text": "A distância de um número a 0.",
+   "ctx": "Precisas dos reais para falar de distância.",
+   "what": [
+    "$|x|$ é a distância de $x$ a $0$.",
+    "$|x-a|$ é a distância entre $x$ e $a$."
+   ],
+   "keys": [
+    "$|x|\\ge 0$ sempre",
+    "Desigualdade triangular"
+   ],
+   "topic": 1,
+   "hook": "Uma régua a partir do zero."
+  },
+  {
+   "id": "i",
+   "group": "A",
+   "label": "Indução",
+   "text": "Provar algo para todos os naturais, passo a passo.",
+   "ctx": "Usa a ordem dos números e a ideia de «próximo».",
+   "what": [
+    "Prova-se o **caso base**.",
+    "Prova-se que $n$ implica $n+1$."
+   ],
+   "keys": [
+    "Base + passo",
+    "Dominós a cair"
+   ],
+   "topic": 1,
+   "hook": "Dominós: cai o primeiro, caem todos."
+  },
+  {
+   "id": "s",
+   "group": "B",
+   "label": "Sistemas lineares",
+   "text": "Várias equações ao mesmo tempo.",
+   "ctx": "Resolver sistemas usa só operações com reais.",
+   "what": [
+    "Cada equação é uma reta ou um plano.",
+    "A solução é onde todos se cruzam."
+   ],
+   "keys": [
+    "Pode haver 0, 1 ou infinitas soluções"
+   ],
+   "topic": 2,
+   "hook": "Retas que se cruzam."
+  },
+  {
+   "id": "x",
+   "group": "B",
+   "label": "Matrizes",
+   "text": "Tabelas de números que representam sistemas.",
+   "ctx": "Uma matriz arruma os coeficientes de um sistema.",
+   "what": [
+    "Cada linha é uma equação.",
+    "Somam-se e multiplicam-se."
+   ],
+   "keys": [
+    "Produto não é comutativo",
+    "Dimensões têm de bater"
+   ],
+   "topic": 2,
+   "hook": "Uma grelha de números."
+  },
+  {
+   "id": "g",
+   "group": "B",
+   "label": "Eliminação de Gauss",
+   "text": "Simplificar a matriz até ler a solução.",
+   "ctx": "Combina sistemas e matrizes.",
+   "what": [
+    "Trocam-se linhas e somam-se múltiplos.",
+    "Chega-se a uma forma em escada."
+   ],
+   "keys": [
+    "Operações elementares não mudam a solução"
+   ],
+   "topic": 2,
+   "hook": "Descascar uma cebola."
+  },
+  {
+   "id": "d",
+   "group": "B",
+   "label": "Determinante",
+   "text": "Um número que diz se a matriz é invertível.",
+   "ctx": "Calcula-se por Gauss ou por fórmula.",
+   "what": [
+    "$\\det A\\ne0$ ⇒ invertível.",
+    "Mede o fator de área."
+   ],
+   "keys": [
+    "$\\det(AB)=\\det A\\det B$"
+   ],
+   "topic": 2,
+   "hook": "O fator de esticar o plano."
+  }
+ ],
+ "edges": [
+  {
+   "a": "r",
+   "b": "m",
+   "why": "O módulo mede distâncias entre reais."
+  },
+  {
+   "a": "r",
+   "b": "i",
+   "why": "A indução usa a ordem dos naturais, dentro dos reais."
+  },
+  {
+   "a": "r",
+   "b": "s",
+   "why": "Os coeficientes e soluções são reais."
+  },
+  {
+   "a": "s",
+   "b": "x",
+   "why": "Uma matriz arruma os coeficientes do sistema."
+  },
+  {
+   "a": "x",
+   "b": "g",
+   "why": "Gauss trabalha sobre as linhas da matriz."
+  },
+  {
+   "a": "s",
+   "b": "g",
+   "why": "Gauss é o método para resolver o sistema."
+  },
+  {
+   "a": "g",
+   "b": "d",
+   "why": "O determinante calcula-se por eliminação."
+  },
+  {
+   "a": "x",
+   "b": "d",
+   "why": "O determinante só existe para matrizes quadradas."
+  }
+ ],
+ "routes": [
+  {
+   "name": "Dos reais ao determinante",
+   "nodes": [
+    "r",
+    "s",
+    "x",
+    "g",
+    "d"
+   ]
+  },
+  {
+   "name": "Provar por indução",
+   "nodes": [
+    "r",
+    "i"
+   ]
+  }
+ ]
+}

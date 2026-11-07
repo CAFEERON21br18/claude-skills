@@ -7,7 +7,7 @@ function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 const LSK=k=>PACK.store.prefix+k;
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-const OWN_PREFIX={resumo:'r',revisao:'ch',silabo:'t',plano:'d'}[PACK.page];
+const OWN_PREFIX={resumo:'r',revisao:'ch',silabo:'t',testes:'x',mapa:'m',plano:'d'}[PACK.page];
 const ANCHOR_URL={r:PACK.urls.resumo,ch:PACK.urls.revisao,t:PACK.urls.silabo};
 /* links between pack pages always open in the same tab (no blank target) */
 function anchorHref(id){const m=/^(r|ch|t)(\d+)/.exec(id);if(!m)return '#'+id;return m[1]===OWN_PREFIX?'#'+id:((ANCHOR_URL[m[1]]||'')+'#'+id)}
@@ -203,6 +203,21 @@ const Notes=(function(){
       b.setAttribute('aria-label',ns.length?tf(N.count,{n:ns.length}):N.add);
     });
     $$('[data-notecount]').forEach(el=>{const n=Object.values(data.items).reduce((a,l)=>a+l.length,0); el.textContent=n?` (${n})`:''});
+    renderTops();
+  }
+  /* tutor notes ("didn't understand") are shown at the START of the block they belong to, folded to one line */
+  const firstLine=t=>String(t||'').replace(/\*\*[^*]+\*\*\s*/,'').split('\n')[0].slice(0,140);
+  function renderTops(){
+    hosts().forEach(h=>{
+      const ns=list(h.dataset.note).filter(n=>n.kind==='q'); let t=[...h.children].find(c=>c.classList.contains('qtop'));
+      if(!ns.length){ if(t) t.remove(); return; }
+      if(!t){ t=document.createElement('div'); t.className='qtop';
+        const after=[...h.children].find(c=>c.matches('.exhead,.xh,.th,h4'));
+        if(after) after.after(t); else h.prepend(t); }
+      const sig=ns.map(n=>n.id+n.date).join('|'); if(t.dataset.sig===sig) return; t.dataset.sig=sig;
+      t.innerHTML=ns.map(n=>`<details data-id="${n.id}"><summary><span class="nkind">${N.kindQ}</span><span>${esc(n.unclear||firstLine(n.text))}</span></summary><div class="qbody">${md(String(n.text||'').replace(/^\*\*[^*]+\*\*[^\n]*\n*/,'')||n.text)}<div class="nmeta"><span>${fmtD(n.date)}</span><button type="button" class="linkbtn" data-qdel="${n.id}">${N.del}</button></div></div></details>`).join('');
+      typeset(t);
+    });
   }
   function noteHTML(n){
     return `<div class="note ${n.kind==='q'?'q':''}" data-id="${n.id}"><div class="nmeta"><span class="nkind">${n.kind==='q'?N.kindQ:N.kindMine}</span><span>${fmtD(n.date)}</span><span class="nacts"><button type="button" class="linkbtn" data-nedit>${N.edit}</button><button type="button" class="linkbtn" data-ndel>${N.del}</button></span></div><div class="nbody">${md(n.text)}</div></div>`;
@@ -229,6 +244,7 @@ const Notes=(function(){
   }
   document.addEventListener('click',e=>{
     const b=e.target.closest('.nbtn[data-k]'); if(b){toggle(b);return;}
+    const qd=e.target.closest('[data-qdel]'); if(qd){ const h=qd.closest('[data-note]'); del(h.dataset.note,qd.dataset.qdel); const box=$(`.notebox[data-for="${CSS.escape(h.dataset.note)}"]`); if(box) renderBox(h.dataset.note); return; }
     const box=e.target.closest('.notebox'); if(!box) return; const key=box.dataset.for;
     if(e.target.closest('[data-nnew]')) openEditor(box,null);
     else if(e.target.closest('[data-ncancel]')){ if(!list(key).length){const btn=$(`.nbtn[data-k="${CSS.escape(key)}"]`); btn&&toggle(btn);} else renderBox(key); }
@@ -274,14 +290,14 @@ const Notes=(function(){
     refreshIcons(); renderPanel();
     const w=$('#notesWhere'); if(w) w.textContent=remote?N.whereAccount:N.whereLocal;
   }
-  return {init,add,list,attach,refreshIcons,all:()=>data.items};
+  return {init,add,list,attach,refreshIcons,renderTops,all:()=>data.items};
 })();
 
 /* ===== tutor chat ===== */
 const Tutor=(function(){
   const U=T.tutor;
   let sample=null, conv=[], ctx=null, busy=null, sinceSave=0, offered=false;
-  const CONF=new RegExp(U.conf,'i');
+  const CONF=new RegExp(U.conf,'i'); const NOTEREQ=new RegExp(U.noteReq,'i');
   const SKIP='.notebox,.nbtn,.nicon,button,textarea,input,label,.key[hidden],.verdict,.fb[hidden],.photo,.err,.xact,.gate,.sol:not([open])>*:not(summary)';
   const topicKey=n=>({resumo:'r',revisao:'ch',silabo:'t'}[PACK.page])+n;
   const topicOf=()=>ctx&&ctx.topic||CUR_TOPIC||1;
@@ -302,6 +318,7 @@ const Tutor=(function(){
     const n=topicOf();
     let s=tf(U.sys,{course:PACK.course,title:PACK.title,langName:T.langName,topics:Object.entries(PACK.topics).map(([k,v])=>k+' '+v).join('; '),n,name:PACK.topics[n],text:topicText(n)});
     if(ctx&&ctx.text){ s+=tf(U.ctx,{label:ctx.label,text:ctx.text}); if(ctx.kind==='ex'&&!ctx.attempted) s+=U.noSpoil; }
+    const last=[...conv].reverse().find(m=>m.role==='user'); if(last&&NOTEREQ.test(last.content)) s+=U.noteSys;
     return s;
   }
   function bubble(role,content){const d=document.createElement('div'); d.className='msg '+(role==='user'?'u':'a'); d.innerHTML=md(content); $('#msgs').appendChild(d); $('#msgs').scrollTop=1e9; return d;}
@@ -347,7 +364,9 @@ const Tutor=(function(){
       if(busy!==job) return;
       const t=(r&&r.text)||job.streamed||'';
       conv.push({role:'assistant',content:t}); out.innerHTML=md(t); out.appendChild(saveBtn(conv.length-1)); typeset(out);
-      sinceSave++; if(!offered&&(CONF.test(text)||sinceSave>=2)) offer(conv.length-1);
+      sinceSave++;
+      if(NOTEREQ.test(text)){ const b=out.querySelector('[data-savenote]'); saveNote(conv.length-1,b); }
+      else if(!offered&&(CONF.test(text)||sinceSave>=2)) offer(conv.length-1);
     }catch(e){
       if(busy!==job) return;
       if(job.streamed){ conv.push({role:'assistant',content:job.streamed}); out.appendChild(saveBtn(conv.length-1)); typeset(out); }
@@ -360,15 +379,23 @@ const Tutor=(function(){
     d.innerHTML=`<span>${tf(U.offer,{where:ctx&&ctx.label?' — <b>'+esc(ctx.label)+'</b> —':''})}</span><div class="ntools"><button type="button" class="btn sm solid" data-savenote="${i}">${U.offerYes}</button><button type="button" class="btn sm ghost" data-nooffer>${U.offerNo}</button></div>`;
     $('#msgs').appendChild(d); $('#msgs').scrollTop=1e9;
   }
+  /* where the note goes: the exercise / block the chat is about, else the topic, else the first topic */
+  function noteTarget(n){
+    for(const k of [ctx&&ctx.key, topicKey(n)]){ if(k&&$(`[data-note="${CSS.escape(k)}"]`)) return k; }
+    const f=$('[data-topic-sec][data-note]'); return f?f.dataset.note:topicKey(n);
+  }
   async function saveNote(i,btn){
     if(!conv[i]) return; const n=topicOf();
-    btn.disabled=true; btn.textContent=U.writing;
+    if(btn){ if(btn.disabled) return; btn.disabled=true; btn.textContent=U.writing; }
     const talk=conv.slice(Math.max(0,i-5),i+1).map(m=>(m.role==='user'?U.student+': ':U.tutorW+': ')+m.content).join('\n\n');
     let note; try{ note=await sample.json(tf(U.notePrompt,{course:PACK.course,langName:T.langName,talk}),{modelTier:'quick'}); }
     catch(e){ note={unclear:(conv[i-1]||{}).content||U.doubt,explanation:conv[i].content}; }
-    const targetKey=(ctx&&ctx.key)||topicKey(n); const host=$(`[data-note="${CSS.escape(targetKey)}"]`);
-    Notes.add(targetKey,{kind:'q',topic:n,label:(host&&host.dataset.label)||(ctx&&ctx.label)||(T.topic+' '+n),text:`**${U.unclearLbl}** ${note.unclear||''}\n\n${note.explanation||''}`});
-    btn.textContent=U.saved; sinceSave=0; offered=false;
+    const targetKey=noteTarget(n); const host=$(`[data-note="${CSS.escape(targetKey)}"]`);
+    const label=(host&&host.dataset.label)||(ctx&&ctx.label)||(T.topic+' '+n);
+    Notes.add(targetKey,{kind:'q',topic:+(host&&host.dataset.topic)||n,label,unclear:String(note.unclear||'').slice(0,200),text:`**${U.unclearLbl}** ${note.unclear||''}\n\n${note.explanation||''}`});
+    const msg=tf(U.savedOn,{where:label});
+    if(btn) btn.textContent=msg; else { const d=document.createElement('div'); d.className='offer'; d.textContent=msg; $('#msgs').appendChild(d); $('#msgs').scrollTop=1e9; }
+    sinceSave=0; offered=false;
   }
   document.addEventListener('click',e=>{
     const a=e.target.closest('[data-ask]');

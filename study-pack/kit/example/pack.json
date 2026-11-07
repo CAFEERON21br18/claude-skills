@@ -6,7 +6,7 @@
  "lang": "pt",
  "exam": {
   "label": "1.º Teste",
-  "date": "2026-11-01",
+  "date": "2026-11-12",
   "time": "18:00"
  },
  "theme": "focus",
@@ -21,7 +21,9 @@
   "review_only": true,
   "calc": true,
   "tutor": true,
-  "plan": true
+  "plan": true,
+  "map": true,
+  "tests": true
  },
  "exercise": {
   "types": [
@@ -36,7 +38,9 @@
   "silabo": "silabo.html",
   "resumo": "resumo.html",
   "revisao": "revisao.html",
-  "plano": "plano.html"
+  "plano": "plano.html",
+  "mapa": "mapa.html",
+  "testes": "testes.html"
  },
  "topics": [
   {
@@ -51,9 +55,10 @@
   }
  ],
  "plan": {
+  "start": "2026-11-02",
   "hours": "auto",
   "busy": {
-   "2026-10-26": {
+   "2026-11-07": {
     "hours": 1,
     "note": "Exame de IEI às 10:30"
    }

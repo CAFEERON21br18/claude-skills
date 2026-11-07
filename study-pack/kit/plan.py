@@ -13,6 +13,9 @@ and the exam date in pack.json → "exam".
 Rules (fixed): days from start to the day before the exam. "auto" = 2h weekdays, 3h weekends, never above 4h.
 First pass in course order (learn + exercises, 50/50); reviews at about +1, +3 and +7 days; the last day is a
 mixed test (90 min) + review; ~10 % of the time is left free. Prints what had to be cut when time is short.
+With features.tests on, every day but the last ends with a 15-min "quiz" (the daily test) on that day's topics
+(learned or practised that day; else the ones reviewed), linked to Testes#d<date>. Then run tests.py.
+The Plano page adapts this plan live (unfinished sessions move on, pace, weak topics from the tests).
 """
 import json, sys, datetime, pathlib, math
 
@@ -47,6 +50,12 @@ def main(d):
     if left[last] >= 15:
         sched[last].append({'t': 0, 'a': 'rev', 'm': left[last]}); left[last] = 0
     work_days = [x.isoformat() for x in days[:-1]]
+    quiz = bool(pack.get('features', {}).get('tests'))
+    QUIZ_M = 15; reserved = set()
+    if quiz:
+        for x in work_days:
+            if left[x] >= QUIZ_M + 30:
+                left[x] -= QUIZ_M; reserved.add(x)
     total = sum(cap[x] for x in work_days) * 0.9
     topics = [t['n'] for t in pack['topics']]
     W = {n: float((ps.get('weights') or {}).get(str(n), 1.0)) for n in topics}
@@ -89,6 +98,17 @@ def main(d):
                     sched[x].append({'t': n, 'a': 'rev', 'm': left[x]}); left[x] = 0; placed = True; break
             if not placed:
                 cut.append(f'topic {n}: review +{off}d')
+    if quiz:
+        for x in work_days:
+            ss = sched[x]
+            if not ss or x not in reserved:
+                continue
+            tq = [s['t'] for s in ss if s['a'] in ('learn', 'ex') and s['t']]
+            if not tq:
+                tq = [s['t'] for s in ss if s['a'] == 'rev' and s['t']]
+            tq = sorted(set(tq))[:4]
+            if tq:
+                ss.append({'t': 0, 'a': 'quiz', 'm': QUIZ_M, 'q': tq})
     out = {'days': [{'d': x, 'note': (busy.get(x) or {}).get('note', ''), 's': sched[x]} for x in sched if sched[x]],
            'hours_note': ps.get('hours_note', ''), 'cut': cut}
     json.dump(out, open(d / 'plan.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

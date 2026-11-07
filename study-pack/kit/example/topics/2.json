@@ -6,14 +6,20 @@
  ],
  "resumo": [
   {
+   "kind": "p",
+   "body": "Uma matriz é uma tabela de números; serve para escrever sistemas de equações de forma compacta e para os resolver sempre pelo mesmo método. O **método de Gauss** transforma a matriz do sistema numa matriz em escada usando só operações que não mudam as soluções: trocar linhas, multiplicar uma linha por um número não nulo e somar a uma linha um múltiplo de outra. No fim, a matriz em escada mostra logo se o sistema tem uma, nenhuma ou infinitas soluções."
+  },
+  {
    "kind": "def",
    "title": "Matriz em escada",
-   "body": "Nenhuma linha nula acima de uma não nula; cada pivô fica à direita do pivô de cima. Ex.: $\\begin{bmatrix}1&2&3\\\\0&1&4\\\\0&0&1\\end{bmatrix}$"
+   "body": "Nenhuma linha nula acima de uma não nula; cada pivô fica à direita do pivô da linha de cima. Ex.: $\\begin{bmatrix}1&2&3\\\\0&1&4\\\\0&0&1\\end{bmatrix}$",
+   "explain": "O **pivô** é o primeiro número não nulo de cada linha. Em escada, os pivôs descem como degraus para a direita; é essa forma que permite resolver o sistema de baixo para cima, uma incógnita de cada vez."
   },
   {
    "kind": "thm",
    "title": "Inversa 2×2",
-   "body": "$$\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}^{-1}=\\frac1{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}$$ se $ad-bc\\ne0$. Usa o módulo de [[1]]."
+   "body": "$$\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}^{-1}=\\frac1{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}$$ se $ad-bc\\ne0$. Usa o módulo de [[1]].",
+   "explain": "Troca-se a posição de $a$ e $d$, muda-se o sinal de $b$ e $c$ e divide-se tudo pelo determinante $ad-bc$. Se o determinante é zero, a matriz não tem inversa: o sistema correspondente não tem solução única."
   }
  ],
  "examples": [
@@ -21,38 +27,50 @@
    "title": "Inversa",
    "origin": "Ficha 2, ex. 1",
    "statement": "Calcule a inversa de $A=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}$.",
+   "method": "Matriz $2\\times2$: usa-se a fórmula da inversa, depois de confirmar que o determinante não é zero.",
    "steps": [
     {
-     "do": "$\\det A=2-1=1$",
-     "why": "Fórmula da inversa 2×2."
+     "do": "$\\det A=2\\cdot1-1\\cdot1=1\\neq0$",
+     "why": "A inversa só existe se o determinante for diferente de zero."
+    },
+    {
+     "do": "$A^{-1}=\\frac11\\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}$",
+     "why": "Fórmula: trocar a e d, mudar o sinal de b e c, dividir pelo determinante."
     }
    ],
-   "answer": "$A^{-1}=\\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}$"
+   "answer": "$A^{-1}=\\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}$",
+   "check": "$AA^{-1}=I$."
   },
   {
    "title": "Sistema",
    "origin": "Ficha 2, ex. 4",
    "statement": "Resolva $\\begin{cases}x+y=3\\\\x-y=1\\end{cases}$",
+   "method": "Duas equações com coeficientes simétricos em $y$: somá-las elimina $y$ de imediato.",
    "steps": [
     {
-     "do": "Somar: $2x=4$, $x=2$.",
-     "why": "Eliminação."
+     "do": "Somar as equações: $2x=4$, logo $x=2$.",
+     "why": "Eliminação: $y$ e $-y$ anulam-se."
     },
     {
-     "do": "$y=1$",
-     "why": "Substituir."
+     "do": "Substituir na 1.ª: $2+y=3$, logo $y=1$.",
+     "why": "Com $x$ conhecido, uma equação basta para $y$."
     }
    ],
-   "answer": "$(2,1)$"
+   "answer": "$(x,y)=(2,1)$"
   },
   {
    "title": "Característica",
    "origin": "new",
    "statement": "Calcule $\\operatorname{car}\\begin{bmatrix}1&2\\\\2&4\\end{bmatrix}$.",
+   "method": "A característica é o número de pivôs depois de pôr a matriz em escada pelo método de Gauss.",
    "steps": [
     {
-     "do": "$L_2-2L_1$ dá linha nula.",
-     "why": "Gauss."
+     "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&2\\\\0&0\\end{bmatrix}$",
+     "why": "Gauss: anular o elemento abaixo do primeiro pivô."
+    },
+    {
+     "do": "Há um só pivô.",
+     "why": "Contam-se as linhas não nulas da matriz em escada."
     }
    ],
    "answer": "$1$"
@@ -60,9 +78,14 @@
  ],
  "lesson": [
   {
+   "kind": "p",
+   "body": "Para resolver um sistema pelo método de Gauss, escreve-se a matriz aumentada e põe-se em **escada** com operações de linha que não mudam as soluções. Depois lê-se a escada de baixo para cima: cada pivô dá uma incógnita, e uma linha do tipo $0\\cdots0\\,|\\,c$ com $c\\ne0$ quer dizer que o sistema é impossível."
+  },
+  {
    "kind": "def",
    "title": "Escada",
-   "body": "Pivôs em escada; linhas nulas no fim."
+   "body": "Pivôs em escada; linhas nulas no fim.",
+   "explain": "Cada pivô fica mais à direita do que o de cima, como degraus; as linhas só de zeros ficam todas em baixo."
   }
  ],
  "exercises": [
@@ -79,17 +102,23 @@
     "$\\begin{pmatrix}2&-1\\\\-\\tfrac32&\\tfrac12\\end{pmatrix}$"
    ],
    "why": [
-    "Certo: $\\det=-2$, divide a adjunta por $-2$.",
-    "Esquece de dividir pelo determinante.",
-    "Divide por $+1$ e troca sinais.",
-    "Troca o sinal do determinante."
+    "Certo: o determinante é $-2$ e divide-se a adjunta por $-2$.",
+    "Esqueceu-se de dividir pelo determinante $-2$.",
+    "Dividiu por $-1$ em vez de $-2$.",
+    "Usou $+2$ como determinante: trocou o sinal."
    ],
    "correct": 0,
    "key": {
+    "method": "Matriz $2\\times2$: calcula-se o determinante e aplica-se a fórmula da inversa (trocar, mudar sinais, dividir).",
     "steps": [
      {
-      "do": "$\\det=4-6=-2$",
-      "why": "Fórmula 2×2."
+      "do": "$\\det=1\\cdot4-2\\cdot3=-2$",
+      "why": "Determinante $ad-bc$.",
+      "trap": "Calcular $ad+bc$."
+     },
+     {
+      "do": "$\\frac1{-2}\\begin{pmatrix}4&-2\\\\-3&1\\end{pmatrix}=\\begin{pmatrix}-2&1\\\\\\tfrac32&-\\tfrac12\\end{pmatrix}$",
+      "why": "Fórmula da inversa $2\\times2$ e divisão de cada entrada por $-2$."
      }
     ],
     "answer": "$\\begin{pmatrix}-2&1\\\\\\tfrac32&-\\tfrac12\\end{pmatrix}$"

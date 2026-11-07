@@ -19,7 +19,7 @@ L = {
               'De onde vêm os exercícios?', 'Quantos exercícios por tópico?', 'Em que língua?', 'Juntar uma calculadora gráfica?',
               'Juntar o chat tutor (perguntas e notas do que não percebeste)?', 'Fazer um plano de estudo?', 'Data do teste ou exame', 'Horas por dia'],
         'fonts': [('Atkinson Hyperlegible', 'a mais legível'), ('Lexend', 'leitura fluida'), ('OpenDyslexic', 'feita para dislexia'), ('IBM Plex Sans', 'clássica')],
-        'feat': ['Barra lateral', 'Modo foco', 'Histórico', 'Progresso', 'Contagem decrescente', 'Links para tópicos anteriores', 'Só erradas'],
+        'feat': ['Barra lateral', 'Modo foco', 'Histórico', 'Progresso', 'Contagem decrescente', 'Links para tópicos anteriores', 'Só erradas', 'Mapa de ideias (página extra)', 'Testes tipo e teste do dia (página extra)'],
         'fmt': ['A minha página lesson-style', 'Como na fonte', 'Escolha múltipla', 'Resposta livre corrigida pelo Claude', 'Verdadeiro / falso'],
         'src': [('Só os meus', 'mine'), ('50/50 meus e teus', 'mix'), ('Os teus (curso + Claude)', 'yours')],
         'all': 'Todos os meus', 'yes': 'Sim', 'no': 'Não', 'auto': 'Decides tu', 'theme_other': 'Outro (descreve)'},
@@ -28,7 +28,7 @@ L = {
               "D'où viennent les exercices ?", "Combien d'exercices par thème ?", 'Dans quelle langue ?', 'Ajouter une calculatrice graphique ?',
               "Ajouter le chat tuteur (questions et notes de ce que tu n'as pas compris) ?", "Faire un plan d'étude ?", "Date du test ou de l'examen", 'Heures par jour'],
         'fonts': [('Atkinson Hyperlegible', 'la plus lisible'), ('Lexend', 'lecture fluide'), ('OpenDyslexic', 'faite pour la dyslexie'), ('IBM Plex Sans', 'classique')],
-        'feat': ['Barre latérale', 'Mode focus', 'Historique', 'Progression', 'Compte à rebours', 'Liens vers les thèmes précédents', 'Erreurs seulement'],
+        'feat': ['Barre latérale', 'Mode focus', 'Historique', 'Progression', 'Compte à rebours', 'Liens vers les thèmes précédents', 'Erreurs seulement', "Carte d'idées (page en plus)", 'Tests types et test du jour (page en plus)'],
         'fmt': ['Ma page lesson-style', 'Comme dans la source', 'QCM', 'Réponse libre corrigée par Claude', 'Vrai / faux'],
         'src': [('Seulement les miens', 'mine'), ('50/50 les miens et les tiens', 'mix'), ('Les tiens (cours + Claude)', 'yours')],
         'all': 'Tous les miens', 'yes': 'Oui', 'no': 'Non', 'auto': 'Tu décides', 'theme_other': 'Autre (décris)'},
@@ -37,12 +37,12 @@ L = {
               'Where should the exercises come from?', 'How many exercises per topic?', 'Which language?', 'Add a graph calculator?',
               "Add the tutor chat (questions, and notes of what you didn't get)?", 'Make a study plan?', 'Test or exam date', 'Hours per day'],
         'fonts': [('Atkinson Hyperlegible', 'most readable'), ('Lexend', 'smooth reading'), ('OpenDyslexic', 'made for dyslexia'), ('IBM Plex Sans', 'classic')],
-        'feat': ['Sidebar', 'Focus mode', 'Question history', 'Progress', 'Exam countdown', 'Links to earlier topics', 'Missed only'],
+        'feat': ['Sidebar', 'Focus mode', 'Question history', 'Progress', 'Exam countdown', 'Links to earlier topics', 'Missed only', 'Idea map (extra page)', 'Practice tests and daily test (extra page)'],
         'fmt': ['My lesson-style page', 'As in the source', 'Multiple choice', 'Free answer graded by Claude', 'True / false'],
         'src': [('Mine only', 'mine'), ('50/50 mine and yours', 'mix'), ('Yours (course + Claude)', 'yours')],
         'all': 'All of mine', 'yes': 'Yes', 'no': 'No', 'auto': 'You decide', 'theme_other': 'Other (describe)'},
 }
-FEAT_KEYS = ['sidebar', 'focus', 'history', 'progress', 'countdown', 'recall', 'review_only']
+FEAT_KEYS = ['sidebar', 'focus', 'history', 'progress', 'countdown', 'recall', 'review_only', 'map', 'tests']
 FMT_KEYS = ['lesson-style', 'source', 'mcq', 'free', 'tf']
 HEAD = '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M11.586 2a1.5 1.5 0 0 1 1.06.44l2.914 2.914a1.5 1.5 0 0 1 .44 1.06V16.5a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.492-1.347L4 16.5v-13A1.5 1.5 0 0 1 5.5 2zM5.5 3a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h-2.5A1.5 1.5 0 0 1 11 5.5V3zm7.04 10.304a.5.5 0 0 1 .92.392c-.295.69-.871 1.304-1.66 1.304-.487 0-.892-.234-1.2-.574-.309.34-.713.574-1.2.574-.486 0-.892-.233-1.2-.574-.31.34-.714.574-1.2.574a.5.5 0 0 1 0-1c.212 0 .52-.18.74-.696l.034-.067a.5.5 0 0 1 .886.067c.221.516.528.696.74.696.213 0 .52-.18.74-.696l.035-.067a.5.5 0 0 1 .885.067c.22.516.527.696.74.696s.519-.18.74-.696m0-4a.5.5 0 0 1 .92.392c-.295.69-.871 1.304-1.66 1.304-.487 0-.892-.234-1.2-.574-.309.34-.713.574-1.2.574-.486 0-.892-.233-1.2-.574-.31.34-.714.574-1.2.574a.5.5 0 0 1 0-1c.212 0 .52-.18.74-.696l.034-.067a.5.5 0 0 1 .886.067c.221.516.528.696.74.696.213 0 .52-.18.74-.696l.035-.067a.5.5 0 0 1 .885.067c.22.516.527.696.74.696s.519-.18.74-.696M12 5.5a.5.5 0 0 0 .5.5h2.293L12 3.207z"/></svg>'
 CARD = 'border-radius:12px; padding:12px 14px; display:flex; flex-direction:column; gap:8px; align-items:flex-start; text-align:left; min-width:150px; box-shadow:0 1px 2px rgba(0,0,0,0.04)'

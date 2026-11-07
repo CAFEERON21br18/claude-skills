@@ -16,7 +16,7 @@ def block(s, id_):
 
 def main(d, files):
     d = pathlib.Path(d); (d / 'topics').mkdir(parents=True, exist_ok=True)
-    pack = None; topics = {}; plan = None; old = []
+    pack = None; topics = {}; plan = None; mp = None; tests = None; old = []
     for f in files:
         s = open(f, encoding='utf-8').read()
         cfg, src = block(s, 'pack-config'), block(s, 'pack-src')
@@ -26,6 +26,10 @@ def main(d, files):
         pack = pack or cfg
         if page == 'plano':
             plan = src
+        elif page == 'mapa':
+            mp = src
+        elif page == 'testes':
+            tests = src
         else:
             for n, part in src.items():
                 topics.setdefault(int(n), {'n': int(n)}).update({k: v for k, v in part.items() if v is not None})
@@ -35,7 +39,11 @@ def main(d, files):
             json.dump(t, open(d / 'topics' / f'{n}.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
         if plan:
             json.dump(plan, open(d / 'plan.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-        print(f'pack.json + {len(topics)} topics' + (' + plan.json' if plan else '') + f' written to {d}')
+        if mp:
+            json.dump(mp, open(d / 'map.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+        if tests:
+            json.dump(tests, open(d / 'tests.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+        print(f'pack.json + {len(topics)} topics' + (' + plan.json' if plan else '') + (' + map.json' if mp else '') + (' + tests.json' if tests else '') + f' written to {d}')
     for f in old:
         print(f'OLD PACK (no kit data): {f} — infer settings from the page, keep its storage keys')
 

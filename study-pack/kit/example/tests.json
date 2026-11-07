@@ -1,0 +1,1740 @@
+{
+ "tests": [
+  {
+   "id": "d2026-11-02",
+   "kind": "daily",
+   "date": "2026-11-02",
+   "title": "Teste do dia · 1",
+   "topics": [
+    1
+   ],
+   "need": 4,
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "d2026-11-02-q1",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "d2026-11-02-q2",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    },
+    {
+     "id": "d2026-11-02-q3",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "d2026-11-02-q4",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    }
+   ]
+  },
+  {
+   "id": "d2026-11-03",
+   "kind": "daily",
+   "date": "2026-11-03",
+   "title": "Teste do dia · 1",
+   "topics": [
+    1
+   ],
+   "need": 4,
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "d2026-11-03-q1",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "d2026-11-03-q2",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    },
+    {
+     "id": "d2026-11-03-q3",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "d2026-11-03-q4",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    }
+   ]
+  },
+  {
+   "id": "d2026-11-04",
+   "kind": "daily",
+   "date": "2026-11-04",
+   "title": "Teste do dia · 1",
+   "topics": [
+    1
+   ],
+   "need": 4,
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "d2026-11-04-q1",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "d2026-11-04-q2",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    },
+    {
+     "id": "d2026-11-04-q3",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "d2026-11-04-q4",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    }
+   ]
+  },
+  {
+   "id": "d2026-11-05",
+   "kind": "daily",
+   "date": "2026-11-05",
+   "title": "Teste do dia · 1, 2",
+   "topics": [
+    1,
+    2
+   ],
+   "need": 4,
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "d2026-11-05-q1",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "d2026-11-05-q2",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "d2026-11-05-q3",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    },
+    {
+     "id": "d2026-11-05-q4",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    }
+   ]
+  },
+  {
+   "id": "d2026-11-06",
+   "kind": "daily",
+   "date": "2026-11-06",
+   "title": "Teste do dia · 2",
+   "topics": [
+    2
+   ],
+   "need": 4,
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "d2026-11-06-q1",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "d2026-11-06-q2",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    },
+    {
+     "id": "d2026-11-06-q3",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "d2026-11-06-q4",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    }
+   ]
+  },
+  {
+   "id": "d2026-11-07",
+   "kind": "daily",
+   "date": "2026-11-07",
+   "title": "Teste do dia · 2",
+   "topics": [
+    2
+   ],
+   "need": 4,
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "d2026-11-07-q1",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "d2026-11-07-q2",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    },
+    {
+     "id": "d2026-11-07-q3",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "d2026-11-07-q4",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    }
+   ]
+  },
+  {
+   "id": "d2026-11-08",
+   "kind": "daily",
+   "date": "2026-11-08",
+   "title": "Teste do dia · 2",
+   "topics": [
+    2
+   ],
+   "need": 4,
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "d2026-11-08-q1",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "d2026-11-08-q2",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    },
+    {
+     "id": "d2026-11-08-q3",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "d2026-11-08-q4",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    }
+   ]
+  },
+  {
+   "id": "d2026-11-09",
+   "kind": "daily",
+   "date": "2026-11-09",
+   "title": "Teste do dia · 2",
+   "topics": [
+    2
+   ],
+   "need": 4,
+   "minutes": 15,
+   "questions": [
+    {
+     "id": "d2026-11-09-q1",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "d2026-11-09-q2",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    },
+    {
+     "id": "d2026-11-09-q3",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "d2026-11-09-q4",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    }
+   ]
+  },
+  {
+   "id": "b1-2",
+   "kind": "topics",
+   "title": "Temas 1–2",
+   "topics": [
+    1,
+    2
+   ],
+   "need": 4,
+   "minutes": 20,
+   "questions": [
+    {
+     "id": "b1-2-q1",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "b1-2-q2",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "b1-2-q3",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    },
+    {
+     "id": "b1-2-q4",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    }
+   ]
+  },
+  {
+   "id": "m1",
+   "kind": "mock",
+   "title": "Teste geral 1",
+   "topics": [
+    1,
+    2
+   ],
+   "need": 10,
+   "minutes": 40,
+   "questions": [
+    {
+     "id": "m1-q1",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "m1-q2",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "m1-q3",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    },
+    {
+     "id": "m1-q4",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    },
+    {
+     "id": "m1-q5",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "m1-q6",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "m1-q7",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    },
+    {
+     "id": "m1-q8",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    },
+    {
+     "id": "m1-q9",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "m1-q10",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    }
+   ]
+  },
+  {
+   "id": "m2",
+   "kind": "mock",
+   "title": "Teste geral 2",
+   "topics": [
+    1,
+    2
+   ],
+   "need": 10,
+   "minutes": 40,
+   "questions": [
+    {
+     "id": "m2-q1",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "m2-q2",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "m2-q3",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    },
+    {
+     "id": "m2-q4",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    },
+    {
+     "id": "m2-q5",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "m2-q6",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    },
+    {
+     "id": "m2-q7",
+     "topic": 1,
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-x|=|x|$ para todo o $x\\in\\mathbb R$.",
+     "why": [
+      "Certo: $x$ e $-x$ estão à mesma distância de 0.",
+      "Não: a distância a 0 não depende do sinal."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Usa a definição de módulo como distância a zero.",
+      "steps": [
+       {
+        "do": "$-x$ e $x$ são simétricos em relação a 0, logo estão à mesma distância de 0.",
+        "why": "Definição de módulo como distância."
+       }
+      ],
+      "answer": "Verdadeiro."
+     }
+    },
+    {
+     "id": "m2-q8",
+     "topic": 2,
+     "type": "free",
+     "origin": "new",
+     "q": "Resolva $\\begin{cases}2x+y=5\\\\x-y=1\\end{cases}$.",
+     "key": {
+      "method": "Os coeficientes de $y$ são simétricos: somar as equações elimina $y$.",
+      "steps": [
+       {
+        "do": "Somar: $3x=6$, logo $x=2$.",
+        "why": "Eliminação de $y$."
+       },
+       {
+        "do": "$2-y=1$, logo $y=1$.",
+        "why": "Substituir $x$ na 2.ª equação."
+       }
+      ],
+      "answer": "$(2,1)$",
+      "check": "$2\\cdot2+1=5$ e $2-1=1$."
+     }
+    },
+    {
+     "id": "m2-q9",
+     "topic": 1,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Qual é a solução de $|x-3|<1$?",
+     "options": [
+      "$]2,4[$",
+      "$]-\\infty,2[\\cup]4,+\\infty[$",
+      "$]-4,-2[$",
+      "$[2,4]$"
+     ],
+     "why": [
+      "Certo: é o intervalo dos pontos a menos de 1 de 3.",
+      "É o conjunto de $|x-3|>1$: inverteu a regra.",
+      "Trocou o sinal do 3: resolveu $|x+3|<1$.",
+      "Incluiu os extremos, mas a desigualdade é estrita."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "«Menor que» com um só módulo dá um intervalo: aplica-se $|u|<a\\Leftrightarrow -a<u<a$.",
+      "steps": [
+       {
+        "do": "$-1<x-3<1$",
+        "why": "Regra do módulo com $u=x-3$."
+       },
+       {
+        "do": "$2<x<4$",
+        "why": "Somar 3 aos três membros."
+       }
+      ],
+      "answer": "$]2,4[$"
+     }
+    },
+    {
+     "id": "m2-q10",
+     "topic": 2,
+     "type": "mcq",
+     "origin": "new",
+     "q": "Quantos pivôs tem $\\begin{bmatrix}1&1\\\\2&2\\end{bmatrix}$ em escada?",
+     "options": [
+      "1",
+      "2",
+      "0",
+      "4"
+     ],
+     "why": [
+      "Certo: a 2.ª linha é o dobro da 1.ª e anula-se.",
+      "Não viu que as linhas são proporcionais.",
+      "A 1.ª linha não é nula, por isso há pelo menos um pivô.",
+      "Contou todas as entradas da matriz, não os pivôs."
+     ],
+     "correct": 0,
+     "key": {
+      "method": "Põe-se em escada com Gauss e contam-se as linhas não nulas.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}$",
+        "why": "Gauss: anular abaixo do pivô."
+       },
+       {
+        "do": "Uma linha não nula: um pivô.",
+        "why": "Cada linha não nula da escada tem um pivô."
+       }
+      ],
+      "answer": "1"
+     }
+    }
+   ]
+  }
+ ]
+}

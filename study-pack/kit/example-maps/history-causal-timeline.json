@@ -1,0 +1,2215 @@
+{
+ "kind": "causal",
+ "layout": "timeline",
+ "groups": [
+  {
+   "id": "P",
+   "name": "Guerra, paz e economia"
+  },
+  {
+   "id": "R",
+   "name": "Rússia e revolução"
+  },
+  {
+   "id": "S",
+   "name": "Sociedade e ciência"
+  },
+  {
+   "id": "A",
+   "name": "Arte"
+  }
+ ],
+ "cols": [
+  {
+   "id": "c. 1900",
+   "label": "c. 1900"
+  },
+  {
+   "id": "1903",
+   "label": "1903"
+  },
+  {
+   "id": "1905",
+   "label": "1905"
+  },
+  {
+   "id": "1907",
+   "label": "1907"
+  },
+  {
+   "id": "1909",
+   "label": "1909"
+  },
+  {
+   "id": "1910",
+   "label": "1910"
+  },
+  {
+   "id": "1911",
+   "label": "1911"
+  },
+  {
+   "id": "1914–18",
+   "label": "1914–18"
+  },
+  {
+   "id": "1916",
+   "label": "1916"
+  },
+  {
+   "id": "fev. 1917",
+   "label": "fev. 1917"
+  },
+  {
+   "id": "abr. 1917",
+   "label": "abr. 1917"
+  },
+  {
+   "id": "1917",
+   "label": "1917"
+  },
+  {
+   "id": "out. 1917",
+   "label": "out. 1917"
+  },
+  {
+   "id": "jan. 1918",
+   "label": "jan. 1918"
+  },
+  {
+   "id": "mar. 1918",
+   "label": "mar. 1918"
+  },
+  {
+   "id": "nov. 1918",
+   "label": "nov. 1918"
+  },
+  {
+   "id": "1918–20",
+   "label": "1918–20"
+  },
+  {
+   "id": "jan. 1919",
+   "label": "jan. 1919"
+  },
+  {
+   "id": "mar. 1919",
+   "label": "mar. 1919"
+  },
+  {
+   "id": "1919",
+   "label": "1919"
+  },
+  {
+   "id": "1919–20",
+   "label": "1919–20"
+  },
+  {
+   "id": "1919–21",
+   "label": "1919–21"
+  },
+  {
+   "id": "1921",
+   "label": "1921"
+  },
+  {
+   "id": "1922",
+   "label": "1922"
+  },
+  {
+   "id": "1923",
+   "label": "1923"
+  },
+  {
+   "id": "1924",
+   "label": "1924"
+  },
+  {
+   "id": "anos 20",
+   "label": "anos 20"
+  },
+  {
+   "id": "1927",
+   "label": "1927"
+  }
+ ],
+ "eras": [
+  {
+   "label": "Antes de 1914",
+   "col": "c. 1900"
+  },
+  {
+   "label": "1914–1918",
+   "col": "1914–18"
+  },
+  {
+   "label": "1919–1922",
+   "col": "jan. 1919"
+  },
+  {
+   "label": "Anos 20",
+   "col": "1923"
+  }
+ ],
+ "nodes": [
+  {
+   "id": "e1",
+   "group": "P",
+   "col": "1914–18",
+   "label": "I Guerra Mundial",
+   "text": "Guerra total: envolve quase todos os continentes e mobiliza economias inteiras.",
+   "topic": 1,
+   "ctx": "A guerra começou em 1914 e opôs duas coligações. Os Aliados incluíam a França, a Grã-Bretanha, a Rússia e, mais tarde, os EUA. As Potências Centrais eram a Alemanha, o Império Austro-Húngaro, o Império Otomano e a Bulgária.",
+   "what": [
+    "Foi uma **guerra total**: quase todos os continentes entraram no conflito.",
+    "As economias inteiras trabalharam para a guerra.",
+    "Morreram milhões de pessoas. Só a Alemanha perdeu cerca de 2 milhões.",
+    "Os países ficaram arruinados, com campos e fábricas destruídos.",
+    "Terminou a 11 de novembro de 1918, com o **armistício**."
+   ],
+   "keys": [
+    "1914–1918",
+    "Guerra total: quase todos os continentes e economias inteiras",
+    "Duas coligações: Aliados e Potências Centrais",
+    "Fim: armistício de 11 de novembro de 1918",
+    "Alemanha: cerca de 2 milhões de mortos"
+   ],
+   "terms": [
+    {
+     "t": "Guerra total",
+     "d": "Guerra que mobiliza países inteiros: população, economia e indústria."
+    },
+    {
+     "t": "Armistício",
+     "d": "Acordo militar que pára os combates e abre caminho à paz."
+    }
+   ],
+   "hook": "Um incêndio que salta de país em país e queima o mundo inteiro."
+  },
+  {
+   "id": "e2",
+   "group": "P",
+   "col": "jan. 1918",
+   "label": "14 pontos de Wilson",
+   "text": "O presidente dos EUA propõe uma paz justa: autodeterminação, diplomacia aberta e uma liga das nações.",
+   "topic": 1,
+   "ctx": "Em janeiro de 1918, a guerra ainda continuava. O presidente americano Wilson queria uma paz que durasse. Por isso falou ao Congresso dos EUA.",
+   "what": [
+    "Wilson apresentou **14 pontos** ao Congresso dos EUA, em janeiro de 1918.",
+    "Pedia diplomacia aberta, sem acordos secretos.",
+    "Pedia liberdade de navegação e de comércio, e menos armamentos.",
+    "Defendia a **autodeterminação**: cada povo decide o seu destino.",
+    "O ponto 14 propunha uma organização geral das nações."
+   ],
+   "keys": [
+    "Janeiro de 1918, Woodrow Wilson, presidente dos EUA",
+    "14 pontos: princípios para uma paz justa",
+    "Autodeterminação dos povos",
+    "Ponto 14: uma liga das nações",
+    "Os 14 pontos não são o Tratado de Versalhes"
+   ],
+   "terms": [
+    {
+     "t": "Autodeterminação",
+     "d": "Direito de cada povo a decidir o seu destino e formar o Estado."
+    },
+    {
+     "t": "Diplomacia aberta",
+     "d": "Nada de acordos secretos entre Estados."
+    }
+   ],
+   "hook": "Wilson pendura na porta da paz uma lista de 14 regras."
+  },
+  {
+   "id": "e3",
+   "group": "P",
+   "col": "nov. 1918",
+   "label": "Armistício",
+   "text": "11 de novembro de 1918, em Compiègne: termina a guerra.",
+   "topic": 1,
+   "ctx": "Depois de quatro anos de destruição e morte, a Alemanha capitulou. Os generais aliados e alemães reuniram-se para pôr fim aos combates.",
+   "what": [
+    "A 11 de novembro de 1918, a Alemanha capitulou.",
+    "O **armistício** foi assinado em Rethondes, na floresta de Compiègne, em França.",
+    "Assinaram os generais aliados e alemães, numa carruagem de comboio.",
+    "Os combates pararam, mas ainda não era a paz.",
+    "A paz seria negociada em Paris, a partir de janeiro de 1919."
+   ],
+   "keys": [
+    "11 de novembro de 1918",
+    "Local: Rethondes, floresta de Compiègne (França)",
+    "Armistício é uma pausa nos combates, não é a paz",
+    "Fim da guerra total",
+    "Depois: Conferência de Paz de Paris, em 1919"
+   ],
+   "terms": [
+    {
+     "t": "Armistício",
+     "d": "Acordo militar que pára os combates e abre caminho à paz."
+    },
+    {
+     "t": "Capitulação",
+     "d": "Rendição de um país vencido."
+    }
+   ],
+   "hook": "Um vagão de comboio no meio da floresta: aqui param os canhões."
+  },
+  {
+   "id": "e4",
+   "group": "P",
+   "col": "jan. 1919",
+   "label": "Conferência de Paz de Paris",
+   "text": "Só os vencedores participam. Decidem os «Quatro Grandes»: Wilson, Clemenceau, Lloyd George e Orlando.",
+   "topic": 1,
+   "ctx": "Com o armistício, os soldados saíram de cena e os políticos entraram. Os 14 pontos de Wilson serviam de base. Mas cada país tinha o seu próprio plano para a paz.",
+   "what": [
+    "A **Conferência de Paz** abriu em Paris, em janeiro de 1919.",
+    "Estiveram representados 27 países, mas só os vencedores.",
+    "Os vencidos e a Rússia bolchevique ficaram de fora.",
+    "Quem decidiu foram os **Quatro Grandes**: Wilson, Clemenceau, Lloyd George e Orlando.",
+    "Os interesses eram diferentes, por isso foi difícil chegar a acordo."
+   ],
+   "keys": [
+    "Janeiro de 1919, Paris",
+    "Só os vencedores: 27 países representados",
+    "Quatro Grandes: EUA, França, Grã-Bretanha e Itália",
+    "Resultado: cinco tratados, um por cada vencido",
+    "Lenine não era um dos Quatro Grandes"
+   ],
+   "terms": [
+    {
+     "t": "Quatro Grandes",
+     "d": "Os quatro líderes que decidiram: Wilson, Clemenceau, Lloyd George e Orlando."
+    }
+   ],
+   "hook": "Uma sala com 27 países, mas só quatro cadeiras decidem."
+  },
+  {
+   "id": "e5",
+   "group": "P",
+   "col": "1919",
+   "label": "Tratado de Versalhes",
+   "text": "A Alemanha é declarada culpada, perde territórios, é desarmada e paga reparações.",
+   "topic": 1,
+   "ctx": "A Conferência de Paz fez um tratado para cada vencido. A Alemanha foi a grande perdedora, por isso o seu tratado foi o mais duro. Foi assinado a 28 de junho de 1919, na Galeria dos Espelhos.",
+   "what": [
+    "A Alemanha foi declarada **responsável pela guerra** (art. 231).",
+    "Perdeu 1/7 do território, 1/10 da população e todas as colónias.",
+    "O **corredor de Danzig** separou a Prússia Oriental do resto do país.",
+    "O exército ficou reduzido a 100 000 homens, sem tanques nem artilharia pesada.",
+    "Teve ainda de pagar **reparações** de guerra."
+   ],
+   "keys": [
+    "28 de junho de 1919, Galeria dos Espelhos",
+    "Art. 231: Alemanha culpada pela guerra",
+    "Perdas: 1/7 do solo, 1/10 da população, colónias",
+    "Exército: 100 000 homens; Renânia desmilitarizada",
+    "Sarre: minas de carvão para a França durante 15 anos"
+   ],
+   "terms": [
+    {
+     "t": "Reparações",
+     "d": "Dinheiro que o vencido paga para reparar os prejuízos da guerra."
+    },
+    {
+     "t": "Desmilitarizada",
+     "d": "Zona onde a Alemanha não pode ter tropas."
+    },
+    {
+     "t": "Diktat",
+     "d": "Tratado ditado pelos fortes aos fracos, sem negociação."
+    }
+   ],
+   "hook": "A Alemanha leva o castigo todo: perde terra, exército e paga a conta."
+  },
+  {
+   "id": "e6",
+   "group": "P",
+   "col": "1919",
+   "label": "Nasce a SDN",
+   "text": "A Sociedade das Nações, em Genebra, quer garantir a paz pela arbitragem e pelo desarmamento.",
+   "topic": 2,
+   "ctx": "Wilson propôs uma liga das nações para evitar novas guerras. Os vencedores aceitaram a ideia. Escreveram o Pacto da Sociedade das Nações dentro do Tratado de Versalhes.",
+   "what": [
+    "Em 1919 nasceu a **Sociedade das Nações** (SDN).",
+    "O seu Pacto fazia parte do Tratado de Versalhes.",
+    "A sede era em **Genebra**, na Suíça.",
+    "Devia promover a cooperação, o desarmamento e a arbitragem dos conflitos.",
+    "Tinha três órgãos: Assembleia Geral, Conselho (nove membros) e Secretariado."
+   ],
+   "keys": [
+    "1919, sede em Genebra",
+    "Missão: paz pela arbitragem e pelo desarmamento",
+    "Órgãos: Assembleia Geral, Conselho, Secretariado",
+    "Ideia de Wilson, mas sem os EUA",
+    "Sem força militar própria; Alemanha excluída"
+   ],
+   "terms": [
+    {
+     "t": "SDN",
+     "d": "Organização criada em 1919 para defender a paz e a segurança."
+    },
+    {
+     "t": "Arbitragem",
+     "d": "Resolver um conflito por uma decisão aceite, sem guerra."
+    }
+   ],
+   "hook": "Um tribunal de vizinhos, mas sem polícia para obrigar ninguém."
+  },
+  {
+   "id": "e7",
+   "group": "P",
+   "col": "1919–20",
+   "label": "EUA ficam fora",
+   "text": "Os EUA não ratificam Versalhes nem aderem à SDN.",
+   "topic": 2,
+   "ctx": "A SDN foi ideia do presidente americano. Mas, desde 1919, o Congresso dos EUA tinha maioria de republicanos isolacionistas. Eles queriam os EUA longe dos assuntos europeus.",
+   "what": [
+    "O Congresso americano **não ratificou** o Tratado de Versalhes.",
+    "Por isso, os EUA não entraram na SDN.",
+    "A maioria dos senadores votou contra.",
+    "Tinham medo de perder a neutralidade nos conflitos europeus.",
+    "Sem os EUA, a SDN não conseguiu organizar a paz."
+   ],
+   "keys": [
+    "1919–1920: o Congresso dos EUA recusa Versalhes",
+    "Maioria republicana e isolacionista",
+    "Os EUA nunca aderiram à SDN",
+    "Proposta americana, mas sem os EUA",
+    "Sem os EUA, a SDN ficou fraca"
+   ],
+   "terms": [
+    {
+     "t": "Isolacionismo",
+     "d": "Política americana de não intervenção nos assuntos europeus."
+    },
+    {
+     "t": "Ratificar",
+     "d": "Aprovar um tratado para ele passar a valer no país."
+    }
+   ],
+   "hook": "Quem inventou o jogo e depois não quis jogar."
+  },
+  {
+   "id": "e8",
+   "group": "P",
+   "col": "1919–20",
+   "label": "Uma paz frágil",
+   "text": "Vencidos humilhados («diktat»), vencedores descontentes (Itália: «vitória mutilada») e minorias nacionais em tensão.",
+   "topic": 2,
+   "ctx": "Os tratados de 1919 não agradaram a quase ninguém. Os vencidos não os negociaram. Alguns vencedores queriam mais. As novas fronteiras deixaram povos dentro de Estados estrangeiros.",
+   "what": [
+    "Os vencidos rejeitaram o que não negociaram. A Alemanha chamou-lhe **diktat**.",
+    "O orgulho ferido dos alemães foi manipulado. Isso ajudou a subida do nazismo.",
+    "A Itália falou de uma **vitória mutilada**: não recebeu a Dalmácia nem Fiume.",
+    "Portugal também protestou: queria ser pago das despesas e dos prejuízos da guerra.",
+    "As **minorias nacionais** e as reparações criaram novas tensões."
+   ],
+   "keys": [
+    "Diktat: tratado ditado, sem negociação",
+    "Itália: «vitória mutilada», sem Dalmácia nem Fiume",
+    "Portugal: Afonso Costa exigia o pagamento dos prejuízos",
+    "Minorias nacionais dentro de Estados estrangeiros",
+    "França dizia: «a Alemanha pagará»"
+   ],
+   "terms": [
+    {
+     "t": "Diktat",
+     "d": "Palavra alemã para «coisa ditada»: tratado imposto, sem negociação."
+    },
+    {
+     "t": "Vitória mutilada",
+     "d": "Queixa da Itália: ganhou a guerra, mas não recebeu o prometido."
+    },
+    {
+     "t": "Minorias nacionais",
+     "d": "Grupos de uma nacionalidade a viver num Estado dominado por outra."
+    }
+   ],
+   "hook": "Uma festa onde ninguém saiu contente: nem quem perdeu, nem quem ganhou."
+  },
+  {
+   "id": "e9",
+   "group": "P",
+   "col": "1919–21",
+   "label": "Europa arruinada e endividada",
+   "text": "Reconversão difícil da economia de guerra, dívidas e notas emitidas em excesso: inflação.",
+   "topic": 3,
+   "ctx": "A guerra destruiu campos, minas e fábricas. Morreram milhões de homens em idade ativa. As economias estavam habituadas a produzir armas, não bens para a paz.",
+   "what": [
+    "A Europa ficou **arruinada**: milhões de mortos, campos e fábricas destruídos.",
+    "A **reconversão** da economia de guerra para a de paz foi lenta.",
+    "A Europa ficou endividada e dependente dos EUA.",
+    "Para pagar dívidas, os governos emitiram muitas notas, sem produzir mais bens.",
+    "Mais notas para os mesmos bens fez os preços subirem: **inflação**."
+   ],
+   "keys": [
+    "Alemanha: cerca de 2 milhões de mortos",
+    "Reconversão lenta da economia de guerra",
+    "Causa da inflação: emissão massiva de notas",
+    "Efeito: moeda desvalorizada e preços a subir",
+    "A Europa perde a hegemonia e depende dos EUA"
+   ],
+   "terms": [
+    {
+     "t": "Reconversão",
+     "d": "Passagem da economia de guerra a uma economia de paz."
+    },
+    {
+     "t": "Inflação",
+     "d": "Subida geral dos preços, por haver demasiada moeda para poucos bens."
+    },
+    {
+     "t": "Desvalorização",
+     "d": "A moeda passa a valer menos."
+    }
+   ],
+   "hook": "Muitas notas a correr atrás de poucos pães: o pão fica caro."
+  },
+  {
+   "id": "e12",
+   "group": "P",
+   "col": "1919–21",
+   "label": "EUA, credores do mundo",
+   "text": "Os EUA saem da guerra com grandes reservas de ouro e a emprestar dinheiro à Europa.",
+   "topic": 3,
+   "ctx": "Os EUA só entraram na guerra em 1917. Durante o conflito, forneceram bens aos países em guerra e aos mercados mundiais. A Europa comprava-lhes muito.",
+   "what": [
+    "Os EUA foram **fornecedores** dos países em guerra.",
+    "Ficaram com grande parte do ouro mundial.",
+    "Entre 1913 e 1921, as reservas de ouro subiram de 691,5 para 2529,6 milhões de dólares.",
+    "Passaram de **devedores** a **credores** do mundo.",
+    "Subiram a primeira potência mundial."
+   ],
+   "keys": [
+    "Os EUA entram na guerra em 1917",
+    "Ouro: 691,5 (1913) para 2529,6 milhões de dólares (1921)",
+    "De devedores a credores",
+    "Primeira potência mundial",
+    "Crise breve em 1920–21, mas a subida continua"
+   ],
+   "terms": [
+    {
+     "t": "Credor",
+     "d": "Quem empresta dinheiro e tem direito a recebê-lo de volta."
+    },
+    {
+     "t": "Hegemonia",
+     "d": "Domínio de um país sobre os outros."
+    }
+   ],
+   "hook": "Os EUA viram banco do mundo e a Europa bate à porta."
+  },
+  {
+   "id": "e10",
+   "group": "P",
+   "col": "1923",
+   "label": "Hiperinflação na Alemanha",
+   "text": "O marco perde todo o valor.",
+   "topic": 3,
+   "ctx": "A Alemanha perdeu a guerra e tinha de pagar pesadas reparações. Estava arruinada e endividada. O governo imprimia notas sem produzir mais bens.",
+   "what": [
+    "Em 1923, o marco perdeu todo o valor: foi a **hiperinflação**.",
+    "No fim de 1922, o dólar valia cerca de 500 marcos.",
+    "Em agosto de 1923, o dólar chegou a **um milhão de marcos**.",
+    "Meio quilo de batatas custava 50 mil marcos num dia e 100 mil no seguinte.",
+    "As notas serviram de combustível e o comércio parou."
+   ],
+   "keys": [
+    "1923",
+    "Causas: reparações e emissão massiva de notas",
+    "Fim de 1922: cerca de 500 marcos por dólar",
+    "Agosto de 1923: um milhão de marcos por dólar",
+    "O desespero da classe média alimentou os extremismos"
+   ],
+   "terms": [
+    {
+     "t": "Hiperinflação",
+     "d": "Inflação extrema: os preços sobem de um dia para o outro."
+    }
+   ],
+   "hook": "Notas viram lenha na lareira: valem mais como lenha do que como dinheiro."
+  },
+  {
+   "id": "e11",
+   "group": "P",
+   "col": "1924",
+   "label": "Empréstimos dos EUA à Europa",
+   "text": "Desde 1924, o dinheiro americano circula num triângulo financeiro. Começa a prosperidade dos anos 20.",
+   "topic": 3,
+   "ctx": "Em 1923, a Alemanha sofria hiperinflação. Os EUA tinham muito ouro e eram credores do mundo. A partir de 1924, passaram a emprestar dinheiro à Europa.",
+   "what": [
+    "Desde **1924**, os EUA emprestam muito dinheiro à Alemanha.",
+    "A Alemanha usa-o para pagar reparações à França e à Grã-Bretanha.",
+    "Estas pagam as suas dívidas de guerra aos EUA.",
+    "O dinheiro dá a volta e regressa aos EUA: o **triângulo financeiro**.",
+    "Daí vieram os anos de otimismo, de 1925 a 1929."
+   ],
+   "keys": [
+    "1924: começam os grandes empréstimos americanos",
+    "Triângulo: EUA, Alemanha, França e Grã-Bretanha, EUA",
+    "1925–1929: «felizes anos 20»",
+    "A prosperidade dependia do crédito americano",
+    "Se os EUA parassem de emprestar, o sistema parava"
+   ],
+   "terms": [
+    {
+     "t": "Triângulo financeiro",
+     "d": "Circuito do dinheiro: EUA, Alemanha, França e Grã-Bretanha, e de volta aos EUA."
+    }
+   ],
+   "hook": "Uma roda de dinheiro: o mesmo dólar dá a volta e regressa aos EUA."
+  },
+  {
+   "id": "r1",
+   "group": "R",
+   "col": "1905",
+   "label": "Revolução de 1905",
+   "text": "Derrota com o Japão, Domingo Sangrento, couraçado Potemkin, sovietes. O czar concede a Duma.",
+   "topic": 4,
+   "ctx": "A Rússia era um império enorme, governado pelo czar Nicolau II. Os camponeses eram 85% da população e queriam terras. Em 1905, a derrota frente ao Japão fez rebentar o descontentamento.",
+   "what": [
+    "Em 9 de janeiro deu-se o **Domingo Sangrento**, em São Petersburgo.",
+    "Milhares de pessoas foram ao Palácio de Inverno entregar uma petição ao czar.",
+    "As tropas dispararam e fizeram centenas de mortos e feridos.",
+    "Em junho, os marinheiros do couraçado Potemkin revoltaram-se contra as más condições a bordo.",
+    "Formaram-se os primeiros sovietes e o czar permitiu a Duma, mas a liberalização foi tímida."
+   ],
+   "keys": [
+    "Ano: 1905, depois da derrota com o Japão",
+    "9 de janeiro: Domingo Sangrento",
+    "Junho: revolta do couraçado Potemkin",
+    "Primeiros sovietes nas fábricas",
+    "Duma concedida, mas a revolução foi esmagada"
+   ],
+   "terms": [
+    {
+     "t": "Soviete",
+     "d": "Conselho de operários, soldados, marinheiros e camponeses."
+    },
+    {
+     "t": "Duma",
+     "d": "Parlamento russo, permitido pelo czar depois de 1905."
+    },
+    {
+     "t": "Domingo Sangrento",
+     "d": "Tropas dispararam sobre manifestantes que levavam uma petição ao czar."
+    }
+   ],
+   "hook": "Uma panela de pressão: em 1905 a tampa aguenta, mas a pressão fica lá dentro."
+  },
+  {
+   "id": "r2",
+   "group": "R",
+   "col": "1914–18",
+   "label": "Rússia em guerra",
+   "text": "Derrotas, fome, carestia e greves.",
+   "topic": 4,
+   "ctx": "Em 1914, a Rússia entrou na Primeira Guerra Mundial. O regime já era frágil e a guerra agravou tudo.",
+   "what": [
+    "A economia ficou desorganizada e faltavam géneros.",
+    "Havia **fome** e o preço do pão chegou a triplicar.",
+    "As derrotas frente à Alemanha aumentavam o ódio ao czar.",
+    "Multiplicaram-se as greves e as manifestações.",
+    "Em dezembro de 1916, o czar recusou conceder uma Constituição, mesmo a pedido da família."
+   ],
+   "keys": [
+    "A Rússia está em guerra desde 1914",
+    "Derrotas frente à Alemanha",
+    "Fome, falta de pão e carestia",
+    "Greves e anticzarismo crescem",
+    "Dezembro de 1916: czar recusa Constituição"
+   ],
+   "terms": [
+    {
+     "t": "Carestia",
+     "d": "Subida forte dos preços, que torna a vida muito cara."
+    },
+    {
+     "t": "Anticzarismo",
+     "d": "Oposição ao czar e ao seu regime."
+    }
+   ],
+   "hook": "Uma fila enorme para o pão, cada dia mais longa e mais cara."
+  },
+  {
+   "id": "r3",
+   "group": "R",
+   "col": "fev. 1917",
+   "label": "Revolução de Fevereiro",
+   "text": "Greves em Petrogrado. Nicolau II abdica.",
+   "topic": 5,
+   "ctx": "Em 1917 a Rússia estava em guerra e havia fome. O czar tinha recusado qualquer reforma. Ficou sem apoio dos operários, dos camponeses e da burguesia liberal.",
+   "what": [
+    "Entre 23 e 27 de fevereiro, houve manifestações de mulheres e greves em **Petrogrado**.",
+    "Participaram operários, jovens estudantes e soldados.",
+    "A greve parou 131 empresas e 158 583 trabalhadores.",
+    "Muitos soldados simpatizaram com os manifestantes e os operários criaram um soviete.",
+    "Sem apoios, Nicolau II **abdicou** a 2 de março e a Rússia passou a república."
+   ],
+   "keys": [
+    "Fevereiro de 1917: greves em Petrogrado",
+    "2 de março: Nicolau II abdica",
+    "Fim do czarismo e início da república",
+    "Revolução liberal, que derruba o czar",
+    "Calendário juliano: 13 dias de atraso"
+   ],
+   "terms": [
+    {
+     "t": "Petrogrado",
+     "d": "Nome da capital russa nesta época."
+    },
+    {
+     "t": "Calendário juliano",
+     "d": "Calendário russo, com 13 dias de atraso face ao nosso."
+    }
+   ],
+   "hook": "Quando até os soldados simpatizam com o povo, o trono fica sozinho.",
+   "pages": "Manual, p. 28 (Doc. 14)"
+  },
+  {
+   "id": "r4",
+   "group": "R",
+   "col": "fev. 1917",
+   "label": "Dois poderes",
+   "text": "O Governo Provisório (liberal, continua a guerra) disputa o poder aos sovietes.",
+   "topic": 5,
+   "ctx": "Com a queda do czar, o poder ficou à disputa. De um lado, a burguesia liberal formou um governo. Do outro, os sovietes controlavam a rua.",
+   "what": [
+    "O **Governo Provisório** era liberal e foi dirigido por Lvov e depois por Kerensky.",
+    "O programa de 16 de março prometia amnistia, liberdades e uma Assembleia Constituinte.",
+    "Mas o governo continuou a guerra, porque acreditava poder ganhá-la.",
+    "Ao mesmo tempo, os **sovietes** proliferaram por todo o território.",
+    "Esta disputa chama-se dualidade de poderes e deixava prever uma nova revolução."
+   ],
+   "keys": [
+    "Duração: de fevereiro a outubro de 1917",
+    "Governo Provisório: Lvov, depois Kerensky",
+    "Governo liberal, mantém a guerra",
+    "Sovietes: operários, camponeses e soldados",
+    "Dualidade de poderes: dois poderes em disputa"
+   ],
+   "terms": [
+    {
+     "t": "Dualidade de poderes",
+     "d": "Governo Provisório e sovietes a disputar o poder ao mesmo tempo."
+    },
+    {
+     "t": "Governo Provisório",
+     "d": "Governo da burguesia liberal, formado depois da queda do czar."
+    },
+    {
+     "t": "Soviete",
+     "d": "Assembleia de operários, camponeses, soldados e marinheiros."
+    }
+   ],
+   "hook": "Um barco com dois capitães: cada um puxa o leme para o seu lado.",
+   "pages": "Manual, p. 28 (Doc. 14)"
+  },
+  {
+   "id": "r5",
+   "group": "R",
+   "col": "abr. 1917",
+   "label": "Teses de Abril",
+   "text": "Lenine exige paz, terra e todo o poder aos sovietes.",
+   "topic": 5,
+   "ctx": "Lenine vivia exilado na Suíça. Queria tirar a Rússia da guerra. A Alemanha deixou-o atravessar o seu território, porque lhe convinha.",
+   "what": [
+    "Entre 9 e 16 de abril, Lenine viajou de Zurique até Petrogrado.",
+    "Atravessou a Alemanha num comboio autorizado pelos próprios alemães.",
+    "Logo que chegou, divulgou as **Teses de Abril**.",
+    "Pedia a saída imediata da guerra e o derrube do Governo Provisório.",
+    "Pedia também **poder aos sovietes** e a nacionalização das terras."
+   ],
+   "keys": [
+    "Abril de 1917: Lenine regressa do exílio",
+    "Pede paz, terra e poder aos sovietes",
+    "Contra o Governo Provisório",
+    "Partido passa a chamar-se comunista",
+    "Propõe uma Internacional revolucionária"
+   ],
+   "terms": [
+    {
+     "t": "Bolcheviques",
+     "d": "Facção do partido social-democrata russo, liderada por Lenine, defensora da revolução."
+    },
+    {
+     "t": "Internacional",
+     "d": "Associação de partidos operários de vários países."
+    }
+   ],
+   "hook": "Lenine chega de comboio com três pedidos: paz, terra e poder aos sovietes.",
+   "pages": "Manual, p. 29 (Doc. 15)"
+  },
+  {
+   "id": "r6",
+   "group": "R",
+   "col": "out. 1917",
+   "label": "Revolução de Outubro",
+   "text": "24–25 de outubro: os bolcheviques tomam o Palácio de Inverno. Decretos sobre paz, terra e controlo operário.",
+   "topic": 5,
+   "ctx": "O Governo Provisório era fraco e continuava a guerra. Os sovietes eram controlados sobretudo pelos bolcheviques. Lenine queria que o poder passasse para os sovietes.",
+   "what": [
+    "A 24 e 25 de outubro, os **Guardas Vermelhos** ocuparam pontes, correios e estações de Petrogrado.",
+    "Depois assaltaram o Palácio de Inverno e derrubaram o Governo Provisório.",
+    "O II Congresso dos Sovietes entregou o poder ao Conselho dos Comissários do Povo.",
+    "Só tinha bolcheviques: Lenine na presidência, Trotsky na Guerra e Estaline nas Nacionalidades.",
+    "Seguiram-se os **decretos** sobre a paz, a terra, o controlo operário e as nacionalidades."
+   ],
+   "keys": [
+    "24–25 de outubro (6–7 de novembro)",
+    "Palácio de Inverno tomado pelos bolcheviques",
+    "Lenine, Trotsky e Estaline no governo",
+    "Decreto da paz: sem anexações nem indemnizações",
+    "Decreto da terra: abolida sem indemnização"
+   ],
+   "terms": [
+    {
+     "t": "Guardas Vermelhos",
+     "d": "Milícias bolcheviques que ocuparam Petrogrado em outubro."
+    },
+    {
+     "t": "Conselho dos Comissários do Povo",
+     "d": "Primeiro governo bolchevique, só com bolcheviques."
+    },
+    {
+     "t": "Controlo operário",
+     "d": "Operários passam a gerir a produção das empresas."
+    }
+   ],
+   "hook": "Primeiro tomam as pontes e os correios, só depois o palácio.",
+   "pages": "Manual, p. 30 (Doc. 16)"
+  },
+  {
+   "id": "r7",
+   "group": "R",
+   "col": "jan. 1918",
+   "label": "Constituinte dissolvida",
+   "text": "Os bolcheviques só tinham 25% dos deputados.",
+   "topic": 6,
+   "ctx": "O Governo Provisório tinha prometido uma Assembleia Constituinte. As eleições fizeram-se em novembro de 1917. Os bolcheviques já estavam no poder desde outubro.",
+   "what": [
+    "As eleições foram por sufrágio universal e as mulheres puderam votar.",
+    "Os bolcheviques obtiveram apenas **25%** dos votos.",
+    "A primeira e única sessão foi a 18 de janeiro de 1918.",
+    "Como estavam em minoria, a Assembleia foi **dissolvida** nesse mês.",
+    "A oposição cresceu e rebentou a guerra civil."
+   ],
+   "keys": [
+    "Eleições: novembro de 1917",
+    "Bolcheviques: só 25% dos votos",
+    "Única sessão: 18 de janeiro de 1918",
+    "Dissolvida em janeiro de 1918",
+    "Reforça a oposição aos bolcheviques"
+   ],
+   "terms": [
+    {
+     "t": "Assembleia Constituinte",
+     "d": "Assembleia eleita para escrever a Constituição do novo regime."
+    },
+    {
+     "t": "Sufrágio universal",
+     "d": "Voto de todos os cidadãos, incluindo as mulheres."
+    }
+   ],
+   "hook": "Em cada quatro votos, só um era bolchevique, e a Assembleia foi fechada."
+  },
+  {
+   "id": "r8",
+   "group": "R",
+   "col": "mar. 1918",
+   "label": "Brest-Litovsk",
+   "text": "3 de março: paz separada com a Alemanha, com perdas enormes.",
+   "topic": 6,
+   "ctx": "O decreto sobre a paz propunha acabar já com a guerra. Os trabalhadores e camponeses estavam esgotados. Lenine queria manter o poder, mesmo a um preço alto.",
+   "what": [
+    "A 15 de dezembro de 1917, assinou-se um armistício em Brest-Litovsk.",
+    "As negociações foram dirigidas por Trotsky.",
+    "A 3 de março de 1918, a Rússia aceitou a **paz separada** com a Alemanha.",
+    "Perdeu a Polónia, os países bálticos, a Finlândia e a Ucrânia.",
+    "Perdeu 1/4 da população e 3/4 das minas de ferro e carvão."
+   ],
+   "keys": [
+    "Armistício: 15 de dezembro de 1917",
+    "Paz de Brest-Litovsk: 3 de março de 1918",
+    "Paz separada com a Alemanha",
+    "Perdas: Polónia, bálticos, Finlândia, Ucrânia",
+    "Lenine: paz desastrosa, mas necessária"
+   ],
+   "terms": [
+    {
+     "t": "Paz separada",
+     "d": "Um país faz a paz sozinho, sem esperar pelos aliados."
+    },
+    {
+     "t": "Armistício",
+     "d": "Acordo para parar os combates, antes da paz."
+    }
+   ],
+   "hook": "Salvar a casa pagando com o jardim: paz já, mas terra perdida.",
+   "pages": "Manual, p. 34 (Doc. 18)"
+  },
+  {
+   "id": "r9",
+   "group": "R",
+   "col": "1918–20",
+   "label": "Guerra civil",
+   "text": "Brancos contra Vermelhos (Trotsky). Comunismo de guerra: requisições, nacionalizações, trabalho obrigatório. Terror da Tcheka.",
+   "topic": 6,
+   "ctx": "Os bolcheviques tinham o poder, mas muitos russos opunham-se. Proprietários, kulaks e empresários perderam com os decretos. Países estrangeiros também ajudaram os opositores.",
+   "what": [
+    "A **guerra civil** começou em março de 1918 e durou até 1920.",
+    "Os Brancos eram opositores dos bolcheviques, apoiados por Inglaterra, França, EUA e Japão.",
+    "Os Vermelhos tinham o Exército Vermelho, organizado por Trotsky.",
+    "Foi o tempo do **comunismo de guerra**: requisições de cereais, nacionalizações e trabalho obrigatório.",
+    "A polícia política, a Tcheka, aplicou o Terror com prisões e execuções."
+   ],
+   "keys": [
+    "Guerra civil: 1918–1920",
+    "Brancos contra Vermelhos",
+    "Exército Vermelho organizado por Trotsky",
+    "Comunismo de guerra: 1918–1921",
+    "Custou cerca de 10 milhões de vidas"
+   ],
+   "terms": [
+    {
+     "t": "Brancos",
+     "d": "Opositores dos bolcheviques, apoiados por tropas estrangeiras."
+    },
+    {
+     "t": "Tcheka",
+     "d": "Polícia política bolchevique, criada no fim de 1917."
+    },
+    {
+     "t": "Comunismo de guerra",
+     "d": "Economia toda do Estado e requisições forçadas, para sustentar a guerra."
+    }
+   ],
+   "hook": "Dois exércitos, duas cores: Brancos contra Vermelhos.",
+   "pages": "Manual, p. 35 e 36 (Doc. 20 e 21)"
+  },
+  {
+   "id": "r11",
+   "group": "R",
+   "col": "jan. 1919",
+   "label": "Revolta espartaquista",
+   "text": "Alemanha, janeiro de 1919: revolta comunista, com Rosa Luxemburgo.",
+   "topic": 8,
+   "ctx": "A Alemanha capitulou em novembro de 1918. Formaram-se conselhos de operários e soldados, inspirados nos sovietes. O governo da República de Weimar era social-democrata.",
+   "what": [
+    "Os **espartaquistas** eram uma ala radical, ligada à Liga Espartaquista.",
+    "Eram liderados por Rosa Luxemburgo e Karl Liebknecht.",
+    "Em janeiro de 1919, revoltaram-se em Berlim contra a República de Weimar.",
+    "Proclamaram uma república socialista, mas as forças leais ao governo dominaram a revolta.",
+    "Os dois líderes foram detidos e fuzilados."
+   ],
+   "keys": [
+    "Janeiro de 1919, em Berlim",
+    "Líderes: Rosa Luxemburgo e Karl Liebknecht",
+    "Reprimidos por um governo social-democrata",
+    "A Liga deu origem ao Partido Comunista alemão",
+    "Falhou: dirigentes indecisos e poucos apoios"
+   ],
+   "terms": [
+    {
+     "t": "Espartaquistas",
+     "d": "Fação radical alemã que tentou uma revolução de tipo soviético."
+    },
+    {
+     "t": "República de Weimar",
+     "d": "Regime alemão do pós-guerra, com a Assembleia Constituinte em Weimar."
+    }
+   ],
+   "hook": "Uma revolução ao estilo de Moscovo, travada por socialistas alemães."
+  },
+  {
+   "id": "r10",
+   "group": "R",
+   "col": "mar. 1919",
+   "label": "Komintern",
+   "text": "III Internacional, em Moscovo: quer a revolução proletária mundial. Divide comunistas e socialistas.",
+   "topic": 8,
+   "ctx": "A Revolução de Outubro entusiasmou operários de todo o mundo. O pós-guerra era difícil, com inflação e salários baixos. Lenine e Trotsky queriam espalhar a revolução.",
+   "what": [
+    "A **III Internacional**, ou Komintern, nasceu em Moscovo, em março de 1919.",
+    "Queria coordenar os partidos operários e fazer a revolução mundial.",
+    "Os partidos deviam seguir o modelo russo e ser fiéis ao marxismo-leninismo.",
+    "No congresso de julho de 1920, tinham de romper com os reformistas.",
+    "O movimento operário dividiu-se em **comunistas** e socialistas."
+   ],
+   "keys": [
+    "Março de 1919: fundação em Moscovo",
+    "Também se chama Internacional Comunista",
+    "Objetivo: revolução proletária mundial",
+    "Mentores: Lenine e Trotsky",
+    "Cisão: comunistas contra socialistas"
+   ],
+   "terms": [
+    {
+     "t": "Komintern",
+     "d": "Internacional Comunista, criada em Moscovo para coordenar a revolução mundial."
+    },
+    {
+     "t": "Internacionalismo proletário",
+     "d": "Os operários de todos os países unem-se."
+    },
+    {
+     "t": "Reformismo",
+     "d": "Melhorar a sociedade por reformas graduais, sem revolução."
+    }
+   ],
+   "hook": "Moscovo como central de comando para todos os partidos comunistas.",
+   "pages": "Manual, p. 40 (Doc. 23)"
+  },
+  {
+   "id": "r12",
+   "group": "R",
+   "col": "1919–21",
+   "label": "Greves e revoltas",
+   "text": "Hungria soviética (1919) e greves na Grã-Bretanha, França, EUA, Austrália e Portugal.",
+   "topic": 8,
+   "ctx": "Depois da guerra, a Europa estava arruinada e endividada. Os salários não acompanhavam os preços. O exemplo russo e o Komintern davam esperança aos operários.",
+   "what": [
+    "Na Hungria, formou-se em 1919 uma república soviética de curta duração.",
+    "Houve greves na Áustria, Grã-Bretanha, Itália, Espanha, França e Estados Unidos.",
+    "Na Austrália, mineiros em greve ergueram a bandeira vermelha.",
+    "Em Portugal, a **inflação** e o baixo nível de vida levaram a greves violentas.",
+    "Estas greves duraram de 1919 a 1921."
+   ],
+   "keys": [
+    "Hungria, 1919: república soviética efémera",
+    "Greves em vários países, 1919–1921",
+    "Portugal: greves de 1919 a 1921",
+    "Dois motivos: economia e exemplo soviético",
+    "Partido Comunista Português: 1921"
+   ],
+   "terms": [
+    {
+     "t": "Inflação",
+     "d": "Subida geral dos preços, que faz perder valor aos salários."
+    },
+    {
+     "t": "República soviética",
+     "d": "Estado governado por sovietes, como na Rússia."
+    }
+   ],
+   "hook": "O espírito de Petrogrado espalha-se: bandeiras vermelhas até na Austrália.",
+   "pages": "Manual, p. 41 (Doc. 25)"
+  },
+  {
+   "id": "r13",
+   "group": "R",
+   "col": "1921",
+   "label": "Kronstadt",
+   "text": "Fevereiro: os marinheiros revoltam-se contra o regime, num país arruinado e com fome.",
+   "topic": 7,
+   "ctx": "Em 1921, a Rússia estava em ruínas depois da guerra civil. A produção de cereais caiu para metade da de 1913. A indústria diminuiu 3/4 e os camponeses escondiam as colheitas.",
+   "what": [
+    "Em fevereiro de 1921, operários e marinheiros de **Kronstadt** revoltaram-se.",
+    "Pediam liberdade de expressão e de imprensa e eleições democráticas.",
+    "Pediam também a libertação dos prisioneiros políticos.",
+    "Criticavam o Partido Comunista por se ter afastado das massas.",
+    "O Exército Vermelho esmagou a revolta, mas Lenine percebeu que tinha de mudar."
+   ],
+   "keys": [
+    "Fevereiro de 1921: revolta de Kronstadt",
+    "Revoltosos: operários e marinheiros",
+    "Pedem liberdade, eleições e presos libertados",
+    "Esmagada pelo Exército Vermelho",
+    "Leva Lenine a mudar de rumo"
+   ],
+   "terms": [
+    {
+     "t": "Requisição",
+     "d": "Entrega forçada de cereais ao Estado."
+    },
+    {
+     "t": "Prisioneiros políticos",
+     "d": "Pessoas presas por se oporem ao regime."
+    }
+   ],
+   "hook": "Marinheiros da revolução pedem liberdade num país com fome.",
+   "pages": "Manual, p. 38 (Doc. 22)"
+  },
+  {
+   "id": "r14",
+   "group": "R",
+   "col": "1921",
+   "label": "NEP",
+   "text": "Recuo estratégico: imposto em géneros, venda de excedentes, pequenas empresas privadas. O Estado guarda bancos, grande indústria e transportes.",
+   "topic": 7,
+   "ctx": "O comunismo de guerra já não funcionava. Com a Rússia em ruínas, Lenine mudou de rumo. Disse que o socialismo não se podia construir sobre ruínas.",
+   "what": [
+    "A **NEP**, Nova Política Económica, durou de 1921 a 1927.",
+    "Foi um recuo estratégico, com um regresso parcial ao capitalismo.",
+    "No campo, as requisições deram lugar a um imposto em géneros.",
+    "Os camponeses podiam vender os excedentes e as empresas com menos de 20 operários voltaram a ser privadas.",
+    "O Estado guardou os bancos, a grande indústria, os transportes e o comércio externo."
+   ],
+   "keys": [
+    "NEP: 1921–1927",
+    "Imposto em géneros e venda de excedentes",
+    "Pequenas empresas privadas, menos de 20 operários",
+    "Estado guarda bancos, indústria pesada e transportes",
+    "Surgem os kulaks e os nepmen"
+   ],
+   "terms": [
+    {
+     "t": "NEP",
+     "d": "Nova Política Económica: regresso parcial ao mercado, sob controlo do Estado."
+    },
+    {
+     "t": "Kulak",
+     "d": "Camponês rico, dono de terras e gado."
+    },
+    {
+     "t": "Nepman",
+     "d": "Comerciante ou pequeno empresário enriquecido com a NEP."
+    }
+   ],
+   "hook": "Um passo atrás para a economia respirar, sem largar o volante.",
+   "pages": "Manual, p. 38 (Doc. 22)"
+  },
+  {
+   "id": "r15",
+   "group": "R",
+   "col": "1922",
+   "label": "Nasce a URSS",
+   "text": "União das Repúblicas Socialistas Soviéticas, com partido único.",
+   "topic": 6,
+   "ctx": "Os bolcheviques venceram a guerra civil. Em março de 1918, o partido passou a chamar-se Comunista. Até 1922, todos os outros partidos foram proibidos.",
+   "what": [
+    "Em dezembro de 1922, a Rússia converteu-se na **URSS**.",
+    "É a União das Repúblicas Socialistas Soviéticas.",
+    "Era um Estado multinacional e federal, com repúblicas iguais em direitos.",
+    "Cada república tinha uma certa autonomia.",
+    "Mas mandava um só partido, o **Partido Comunista**."
+   ],
+   "keys": [
+    "Dezembro de 1922: nasce a URSS",
+    "Estado multinacional e federal",
+    "Partido único: o Partido Comunista",
+    "Outros partidos proibidos até 1922",
+    "Sovietes ficam como elo com a população"
+   ],
+   "terms": [
+    {
+     "t": "Partido único",
+     "d": "Só um partido é permitido e os outros são proibidos."
+    },
+    {
+     "t": "Estado federal",
+     "d": "Estado formado por várias repúblicas, com alguma autonomia."
+    }
+   ],
+   "hook": "Muitas repúblicas debaixo de um só partido a mandar."
+  },
+  {
+   "id": "s11",
+   "group": "S",
+   "col": "c. 1900",
+   "label": "Freud e o inconsciente",
+   "text": "Psicanálise: inconsciente, recalcamento, pulsão sexual.",
+   "topic": 12,
+   "ctx": "No século XIX, o positivismo confiava na razão. A Física começou a abalar essas certezas. Freud mostrou que a mente também tem uma zona que não controlamos.",
+   "what": [
+    "Sigmund Freud era um médico austríaco.",
+    "A partir de 1897, criou a **psicanálise**.",
+    "Descobriu que a mente tem uma zona obscura e irracional: o **inconsciente**.",
+    "Aí ficam as memórias e os desejos dolorosos ou vergonhosos. É o **recalcamento**.",
+    "A pulsão sexual é uma das pulsões vitais mais importantes."
+   ],
+   "keys": [
+    "Freud, médico austríaco, cria a psicanálise",
+    "Começa a elaborá-la em 1897",
+    "Inconsciente: zona obscura e irracional da mente",
+    "Recalcamento: empurrar o que dói para o inconsciente",
+    "Inspira o Surrealismo e contesta as convenções"
+   ],
+   "terms": [
+    {
+     "t": "Psicanálise",
+     "d": "Ciência criada por Freud que explora o inconsciente."
+    },
+    {
+     "t": "Inconsciente",
+     "d": "Zona da mente que não controlamos, mas que influencia o comportamento."
+    },
+    {
+     "t": "Recalcamento",
+     "d": "Mecanismo que afasta da consciência recordações e desejos penosos."
+    }
+   ],
+   "hook": "A mente é um icebergue: só vês a ponta, o resto está debaixo de água."
+  },
+  {
+   "id": "s5",
+   "group": "S",
+   "col": "1903",
+   "label": "Sufragistas",
+   "text": "Emmeline Pankhurst funda a WSPU e luta pelo direito de voto.",
+   "topic": 10,
+   "ctx": "Por volta de 1900, o feminismo concentrou-se no direito de voto. O feminismo vinha do século XIX. As petições e os protestos não deram resultado.",
+   "what": [
+    "Em 1903, **Emmeline Pankhurst** fundou a WSPU, no Reino Unido.",
+    "Era a associação sufragista mais ativa e mais extremista.",
+    "Primeiro tentaram petições e súplicas. Sem resultado.",
+    "Depois usaram marchas, piquetes, destruição de bens e **greves de fome**.",
+    "A Nova Zelândia foi pioneira em 1893. Nos EUA o voto feminino chegou em 1920."
+   ],
+   "keys": [
+    "Emmeline Pankhurst funda a WSPU em 1903",
+    "Sufragismo: movimento pelo voto das mulheres",
+    "Nova Zelândia: primeiro país, 1893",
+    "EUA: 19.ª Emenda, voto em 1920",
+    "Meios extremos: piquetes, destruição, greves de fome"
+   ],
+   "terms": [
+    {
+     "t": "Sufragismo",
+     "d": "Movimento que luta pelo direito de voto das mulheres."
+    },
+    {
+     "t": "WSPU",
+     "d": "Associação sufragista britânica fundada por Pankhurst em 1903."
+    }
+   ],
+   "hook": "Pankhurst bate à porta do Parlamento: se ninguém abre, ela arromba."
+  },
+  {
+   "id": "s1",
+   "group": "S",
+   "col": "1905",
+   "label": "Relatividade e quântica",
+   "text": "Einstein (1905) e a física quântica (Planck, Bohr, Heisenberg): o mundo deixa de ser previsível.",
+   "topic": 12,
+   "ctx": "No século XIX, o positivismo dizia que a ciência explicava tudo com leis claras. Pensava-se que o Universo era ordenado. No início do século XX, a Física mudou isso.",
+   "what": [
+    "Em 1905, **Einstein** apresentou a Teoria da Relatividade.",
+    "Para ele, o espaço e o tempo não são absolutos. Dependem do observador.",
+    "Planck, Bohr e Heisenberg criaram a **mecânica quântica**.",
+    "No mundo microscópico não há regras fixas. Não se consegue prever tudo.",
+    "Caiu o Universo ordenado. Ganhou força o **relativismo**."
+   ],
+   "keys": [
+    "Einstein, Relatividade, 1905",
+    "Quântica: Planck, Bohr e Heisenberg",
+    "Indeterminismo: impossível prever tudo com rigor",
+    "Fim do positivismo e das certezas",
+    "Relatividade não é o mesmo que relativismo"
+   ],
+   "terms": [
+    {
+     "t": "Positivismo",
+     "d": "Confiança na ciência para explicar o Universo por leis rigorosas."
+    },
+    {
+     "t": "Indeterminismo",
+     "d": "Impossibilidade de prever com rigor o que acontece no mundo microscópico."
+    },
+    {
+     "t": "Relativismo",
+     "d": "Ideia de que o conhecimento depende de quem conhece."
+    }
+   ],
+   "hook": "O relógio já não bate igual para todos: depende de quem se move."
+  },
+  {
+   "id": "s6",
+   "group": "S",
+   "col": "1911",
+   "label": "Voto em Portugal",
+   "text": "Carolina Beatriz Ângelo vota (1911), depois da Liga Republicana (1909).",
+   "topic": 10,
+   "ctx": "Em Portugal, as mulheres organizaram-se como no resto da Europa. A lei eleitoral da República tinha uma brecha. Carolina aproveitou-a.",
+   "what": [
+    "Em 1909, nasceu a **Liga Republicana das Mulheres Portuguesas**.",
+    "A lei dava voto aos chefes de família. Não dizia o sexo.",
+    "**Carolina Beatriz Ângelo**, médica, exigiu ser recenseada.",
+    "O juiz deu-lhe razão a 28 de abril de 1911. Foi a primeira mulher a votar.",
+    "Depois, a lei excluiu as mulheres. Só em 1931 votaram, com restrições."
+   ],
+   "keys": [
+    "Liga Republicana das Mulheres: 1909",
+    "Carolina Beatriz Ângelo vota em 1911",
+    "Brecha da lei: «chefes de família»",
+    "Caso único, não foi direito geral",
+    "Portuguesas votam em 1931, com restrições"
+   ],
+   "terms": [
+    {
+     "t": "Chefe de família",
+     "d": "Expressão da lei de 1911, que não referia o sexo."
+    }
+   ],
+   "hook": "Uma porta esquecida aberta na lei: Carolina entra, e depois fecham-na."
+  },
+  {
+   "id": "s4",
+   "group": "S",
+   "col": "1914–18",
+   "label": "Mulheres no trabalho",
+   "text": "Substituem os homens mobilizados nas fábricas e nos serviços.",
+   "topic": 10,
+   "ctx": "Em 1914, a guerra levou os homens para as trincheiras. As fábricas, os transportes e os campos ficaram sem trabalhadores. Alguém tinha de os substituir.",
+   "what": [
+    "As mulheres ficaram com a autoridade do lar e o sustento da família.",
+    "Trabalharam em fábricas de armamento e conduziram ambulâncias e autocarros.",
+    "No campo fizeram o trabalho dos homens.",
+    "Na frente, foram **enfermeiras**, com risco de vida.",
+    "O trabalho deu-lhes **autoconfiança** e valorização social."
+   ],
+   "keys": [
+    "Guerra: 1914–1918",
+    "Mulheres substituem os homens mobilizados",
+    "Fábricas de armamento, transportes, campos",
+    "Ganham autoconfiança e valorização social",
+    "Reforça a luta pelo voto"
+   ],
+   "hook": "Os homens saem para a trincheira e as mulheres vestem o fato-macaco."
+  },
+  {
+   "id": "s2",
+   "group": "S",
+   "col": "1919",
+   "label": "Crise de valores",
+   "text": "Valéry: «as civilizações são mortais». Spengler: A Decadência do Ocidente. Anomia.",
+   "topic": 9,
+   "ctx": "Antes de 1914, a sociedade burguesa acreditava no progresso, na razão e na ciência. A guerra destruiu essa confiança. A ciência tinha dado gases e metralhadoras.",
+   "what": [
+    "O choque da guerra criou descrença e pessimismo.",
+    "Em 1919, **Paul Valéry** escreveu: «as civilizações são mortais».",
+    "**Spengler**, em A Decadência do Ocidente, previu o fim da Europa e a «vitória dos césares».",
+    "Instalou-se a **anomia**: falta de normas aceites.",
+    "Perderam força a família, o casamento, a moral e o papel tradicional da mulher."
+   ],
+   "keys": [
+    "Valéry, 1919: «civilizações… somos mortais»",
+    "Spengler: A Decadência do Ocidente",
+    "«Vitória dos césares»: homens fortes e ditaduras",
+    "Anomia: ausência de normas",
+    "Crise moral e intelectual, não económica"
+   ],
+   "terms": [
+    {
+     "t": "Anomia",
+     "d": "Ausência de normas aceites; já não se distingue o certo do errado."
+    },
+    {
+     "t": "Vitória dos césares",
+     "d": "Spengler previa o triunfo dos homens fortes sobre a democracia."
+    }
+   ],
+   "hook": "Um navio a balouçar tanto que até as luzes mais seguras caem."
+  },
+  {
+   "id": "t2",
+   "group": "S",
+   "col": "1922",
+   "label": "Atlântico Sul por ar",
+   "text": "Gago Coutinho e Sacadura Cabral: Lisboa → Rio de Janeiro.",
+   "topic": 11,
+   "ctx": "Depois da Primeira Guerra Mundial, a aviação deu passos de gigante. O avião passou a encurtar distâncias. Faltava uma grande travessia com navegação rigorosa.",
+   "what": [
+    "**Gago Coutinho** era o navegador. **Sacadura Cabral** era o piloto.",
+    "Partiram de Lisboa a 30 de março de 1922.",
+    "Fizeram escalas nas Canárias, em Cabo Verde e em Fernando de Noronha.",
+    "Perderam o primeiro avião, o «Lusitânia». Receberam o «Santa Cruz».",
+    "Chegaram ao Rio de Janeiro a 15 de junho. Foi a primeira grande viagem aérea com navegação rigorosa."
+   ],
+   "keys": [
+    "Travessia do Atlântico Sul, 1922",
+    "Lisboa a Rio de Janeiro",
+    "Gago Coutinho: navegador",
+    "Sacadura Cabral: piloto",
+    "Lufthansa e voos comerciais só em 1926"
+   ],
+   "hook": "Um avião afunda-se no mar, mas eles continuam com outro e chegam ao Rio."
+  },
+  {
+   "id": "s7",
+   "group": "S",
+   "col": "anos 20",
+   "label": "Mulher «flapper»",
+   "text": "Cabelo curto, saia curta, fumar, conduzir, dançar. A moda de Chanel e o desporto libertam o corpo.",
+   "topic": 10,
+   "ctx": "A guerra tinha abalado os valores tradicionais. As mulheres tinham trabalhado fora de casa e ganho confiança. Nos anos 20, quiseram também viver de outra maneira.",
+   "what": [
+    "A **flapper** é o símbolo dos «loucos anos 20».",
+    "Tem cabelo curto, saia curta e maquilhagem.",
+    "Fuma, conduz, dança e vai a clubes noturnos.",
+    "**Coco Chanel** acaba com o espartilho. O desporto liberta o corpo.",
+    "A moda foi curta, mas deixou roupas mais soltas e mais liberdade."
+   ],
+   "keys": [
+    "Flapper: símbolo dos loucos anos 20",
+    "Cabelo curto, saia curta, fumar, conduzir, dançar",
+    "Chanel: fim do espartilho",
+    "Desporto liberta o corpo (Suzanne Lenglen)",
+    "Novos padrões de conduta"
+   ],
+   "terms": [
+    {
+     "t": "Flapper",
+     "d": "Rapariga estouvada que desafia todas as regras dos anos 20."
+    }
+   ],
+   "hook": "Cabelo cortado, saia a subir e o espartilho esquecido no armário."
+  },
+  {
+   "id": "t1",
+   "group": "S",
+   "col": "anos 20",
+   "label": "Automóvel (Ford)",
+   "text": "Torna-se bem de consumo: velocidade e liberdade.",
+   "topic": 11,
+   "ctx": "Nas primeiras décadas do século XX, as descobertas técnicas invadiram o dia a dia. Os EUA eram o país do automóvel. Faltava um carro ao alcance de todos.",
+   "what": [
+    "**Henry Ford** tornou o automóvel um bem de consumo corrente.",
+    "Passou a ser possível viver nos subúrbios e trabalhar na cidade.",
+    "Os passeios e os piqueniques de fim de semana tornaram-se rotina.",
+    "Nasceu o gosto pela **velocidade** e uma sensação nova de liberdade.",
+    "As mulheres também ganharam mobilidade."
+   ],
+   "keys": [
+    "Henry Ford: automóvel de consumo corrente",
+    "Subúrbios: viver fora, trabalhar na cidade",
+    "Velocidade e liberdade",
+    "EUA, o país do automóvel",
+    "Mais mobilidade para as mulheres"
+   ],
+   "terms": [
+    {
+     "t": "Bem de consumo",
+     "d": "Produto que muita gente compra e usa no dia a dia."
+    }
+   ],
+   "hook": "Pôr a família no carro e partir de piquenique ao domingo."
+  },
+  {
+   "id": "t3",
+   "group": "S",
+   "col": "anos 20",
+   "label": "Rádio, cinema e imprensa",
+   "text": "Mass media: telefone, telégrafo sem fios, TSF e Hollywood chegam a todos.",
+   "topic": 11,
+   "ctx": "Depois da guerra, a técnica encurtou as distâncias. Com o telefone e a TSF, a informação passou a correr depressa. Os EUA foram o país do automóvel e do telefone.",
+   "what": [
+    "Os **mass media** levam a mesma informação a milhões de pessoas.",
+    "A imprensa ficou mais barata, com fotografias e títulos bombásticos.",
+    "A **rádio** chega também aos analfabetos. Foi usada na propaganda política.",
+    "O **cinema** difundiu modelos de moda e de vida.",
+    "Os gostos, as modas e os valores tornaram-se mais parecidos."
+   ],
+   "keys": [
+    "Mass media: imprensa, rádio, cinema",
+    "Rádio chega aos analfabetos",
+    "TSF: Marconi, 1896",
+    "Telefone: 6 milhões de americanos, cerca de 1910",
+    "Homogeneização de gostos e valores"
+   ],
+   "terms": [
+    {
+     "t": "Mass media",
+     "d": "Meios que levam informação a um público vasto: imprensa, rádio, cinema."
+    },
+    {
+     "t": "TSF",
+     "d": "Telegrafia sem fios, aperfeiçoada por Marconi, que abriu caminho à rádio."
+    }
+   ],
+   "hook": "Milhões de pessoas ouvem a mesma música ao mesmo tempo, em casa."
+  },
+  {
+   "id": "t4",
+   "group": "S",
+   "col": "1927",
+   "label": "Cinema sonoro",
+   "text": "The Jazz Singer. Hollywood e o jazz ganham o mundo.",
+   "topic": 11,
+   "ctx": "O cinema nasceu em França com os irmãos Lumière e conquistou o mundo. Era mudo. O jazz enchia os clubes noturnos dos anos 20.",
+   "what": [
+    "Em 1927, **The Jazz Singer** inaugurou o **cinema sonoro**.",
+    "O filme conta a história de um cantor apaixonado por jazz.",
+    "O jazz nasceu entre as comunidades negras de Nova Orleães.",
+    "O cinema cultivou o género musical e ficou mais próximo da realidade.",
+    "As estrelas de **Hollywood** tornaram-se modelos de moda e de vida."
+   ],
+   "keys": [
+    "The Jazz Singer: 1927, primeiro filme sonoro",
+    "Jazz: Nova Orleães, comunidades negras",
+    "Hollywood: estrelas como modelos",
+    "Technicolor: 1932",
+    "Cinema: o mass media que mais difundiu modelos"
+   ],
+   "terms": [
+    {
+     "t": "Jazz",
+     "d": "Música de ritmo sincopado e espontâneo, nascida em Nova Orleães."
+    }
+   ],
+   "hook": "O ecrã mudo ganha voz: o público ouve o cantor de jazz pela primeira vez."
+  },
+  {
+   "id": "a0",
+   "group": "A",
+   "col": "c. 1900",
+   "label": "Modernismo",
+   "text": "Paris, capital da arte: rutura com a arte académica e com a imitação do real.",
+   "topic": 13,
+   "ctx": "No início do século XX, Paris era o centro da arte europeia. Artistas de vários países encontravam-se em Montmartre e Montparnasse. Queriam romper com as regras da arte académica.",
+   "what": [
+    "O **Modernismo** é um movimento cultural das primeiras décadas do século XX.",
+    "Mudou as artes plásticas, a literatura e a música.",
+    "O artista passa a ser livre para criar.",
+    "A arte já não copia o mundo. Mostra o mundo como o artista o vê e sente.",
+    "As várias correntes do Modernismo chamam-se **vanguardas**."
+   ],
+   "keys": [
+    "Paris, início do século XX",
+    "Rutura com a arte académica",
+    "Liberdade de criação do artista",
+    "Vanguardas são as correntes (Fauvismo, Cubismo...)",
+    "Modernismo não é uma corrente como as outras"
+   ],
+   "terms": [
+    {
+     "t": "Modernismo",
+     "d": "Movimento cultural que rompe com a arte académica e defende a liberdade de criação."
+    },
+    {
+     "t": "Vanguardas",
+     "d": "Correntes inovadoras que rompem as regras e parecem inaceitáveis ao senso comum."
+    }
+   ],
+   "hook": "Um aluno rasga o caderno de regras e pinta o que sente."
+  },
+  {
+   "id": "a1",
+   "group": "A",
+   "col": "1905",
+   "label": "Fauvismo",
+   "text": "Salon d'Automne. Matisse, Derain, Vlaminck: cor pura e arbitrária.",
+   "topic": 13,
+   "ctx": "Em Paris, os artistas queriam romper com a arte académica. O Fauvismo foi a primeira vaga de assalto da arte moderna. O escândalo rebentou em 1905.",
+   "what": [
+    "Em 1905, o **Salon d'Automne** mostrou telas de Matisse, Derain, Vlaminck e Rouault.",
+    "O crítico Louis Vauxcelles sentiu-se rodeado de «fauves», que quer dizer feras.",
+    "Os pintores davam o primado à **cor** sobre a forma.",
+    "A cor era pura e intensa, sem ligação à cor real dos objetos.",
+    "Os temas eram leves e serenos: retratos, paisagens e cenas de lazer."
+   ],
+   "keys": [
+    "1905, Salon d'Automne, Paris",
+    "Matisse, Derain, Vlaminck",
+    "Vauxcelles: «fauves» quer dizer feras",
+    "Primado da cor sobre a forma",
+    "Durou pouco: até cerca de 1908"
+   ],
+   "terms": [
+    {
+     "t": "Fauvismo",
+     "d": "Corrente francesa de 1905, liderada por Matisse, que valoriza a cor pura."
+    },
+    {
+     "t": "Primado da cor",
+     "d": "A cor é mais importante do que o desenho e a forma."
+    }
+   ],
+   "hook": "Uma caixa de tintas aberta de uma vez: rosto azul, árvore laranja, tudo alegre."
+  },
+  {
+   "id": "a2",
+   "group": "A",
+   "col": "1905",
+   "label": "Die Brücke",
+   "text": "Expressionismo em Dresden (Kirchner, Nolde): grito de revolta e formas distorcidas.",
+   "topic": 14,
+   "ctx": "Na Alemanha, a sociedade era moralista e hierarquizada. A arte oficial era conservadora e apadrinhada pelo kaiser Guilherme II. Em 1905, jovens artistas quiseram abalar tudo isto.",
+   "what": [
+    "Em 1905, quatro estudantes de Arquitetura fundaram o grupo em **Dresden**.",
+    "O líder era Ernst Ludwig Kirchner. Mais tarde juntou-se Emil Nolde.",
+    "O nome A Ponte significa atrair todos os potenciais revolucionários.",
+    "Usavam formas distorcidas, desenho caricatural e cores fortes e contrastantes.",
+    "Os temas eram pesados: angústia, morte, sexo e miséria social. Queriam **chocar** a moral burguesa."
+   ],
+   "keys": [
+    "Dresden, 1905",
+    "Kirchner (líder) e Nolde",
+    "Grito de revolta contra a sociedade moralista",
+    "Temas: angústia, morte, miséria social",
+    "O grupo durou até 1913"
+   ],
+   "terms": [
+    {
+     "t": "Expressionismo",
+     "d": "Vanguarda alemã que exprime as emoções e as inquietações do artista."
+    },
+    {
+     "t": "Die Brücke",
+     "d": "Grupo expressionista de Dresden. O nome quer dizer A Ponte."
+    }
+   ],
+   "hook": "Uma ponte para os revolucionários, cheia de cores gritantes e rostos tortos."
+  },
+  {
+   "id": "a3",
+   "group": "A",
+   "col": "1907",
+   "label": "Cubismo",
+   "text": "Picasso e Braque: Les Demoiselles d'Avignon. Vários ângulos ao mesmo tempo.",
+   "topic": 15,
+   "ctx": "O Fauvismo e o Expressionismo já tinham libertado a cor e a forma. Em Paris, dois amigos foram mais longe. Quiseram mudar a maneira de mostrar o espaço.",
+   "what": [
+    "O espanhol Pablo **Picasso** e o francês Georges **Braque** criaram o Cubismo em 1907–1908.",
+    "A obra que abre o caminho é Les Demoiselles d'Avignon, de 1907.",
+    "Os rostos lembram máscaras africanas. Cada figura mostra partes vistas de ângulos diferentes.",
+    "Seguem Cézanne: reduzem a Natureza ao cilindro, ao cone e à esfera.",
+    "A grande novidade é destruir a **perspetiva**. O cubista pinta o que sabe que existe, não o que vê."
+   ],
+   "keys": [
+    "1907: Les Demoiselles d'Avignon, de Picasso",
+    "Picasso e Braque, em Paris",
+    "Destrói a perspetiva: vários ângulos ao mesmo tempo",
+    "Analítico 1909–1911; sintético desde 1912",
+    "Sintético = colagem e novos materiais"
+   ],
+   "terms": [
+    {
+     "t": "Perspetiva",
+     "d": "Regras do Renascimento que criam a ilusão de profundidade numa tela plana."
+    },
+    {
+     "t": "Cubismo analítico",
+     "d": "Decompõe o objeto em facetas geométricas, com cores neutras."
+    },
+    {
+     "t": "Cubismo sintético",
+     "d": "Recompõe o objeto, traz a cor de volta e usa colagem."
+    }
+   ],
+   "hook": "Um copo desmontado em peças, mostrado de frente, de lado e de cima ao mesmo tempo."
+  },
+  {
+   "id": "a4",
+   "group": "A",
+   "col": "1909",
+   "label": "Futurismo",
+   "text": "Manifesto de Marinetti: rejeita o passado e exalta a máquina, a velocidade e a guerra.",
+   "topic": 17,
+   "ctx": "Em 1909, o Cubismo desenvolvia-se em França. Em Milão, o poeta Marinetti quis uma estética nova, ligada à técnica. O progresso da técnica fazia o futuro parecer prodigioso.",
+   "what": [
+    "Em fevereiro de 1909, Marinetti publicou o **Manifesto do Futurismo**.",
+    "Rejeita o passado. Quer destruir museus, bibliotecas e academias.",
+    "Exalta a máquina, a velocidade, a cidade industrial e a guerra. «Um automóvel de corrida é mais belo do que a Vitória de Samotrácia.»",
+    "Em 1910, pintores como Boccioni, Carrà, Balla, Russolo e Severini quiseram pintar o **movimento**.",
+    "Aproximam-se do Cubismo na fragmentação da figura. Mas o Futurismo mostra o movimento."
+   ],
+   "keys": [
+    "1909, Marinetti, poeta italiano",
+    "Rejeita o passado; exalta máquina e velocidade",
+    "Dinamismo universal: tudo se move",
+    "Manifesto da Pintura Futurista: 1910",
+    "Boccioni morreu em 1916, na guerra"
+   ],
+   "terms": [
+    {
+     "t": "Dinamismo universal",
+     "d": "Ideia de que tudo se move, corre e se transforma."
+    },
+    {
+     "t": "Vitória de Samotrácia",
+     "d": "Estátua grega, vista então como essência da beleza ocidental."
+    }
+   ],
+   "hook": "Um cavalo a galope com vinte patas: o movimento deixa rasto na tela."
+  },
+  {
+   "id": "a5",
+   "group": "A",
+   "col": "1910",
+   "label": "Primeira aguarela abstrata",
+   "text": "Kandinsky: arte sem representar o real.",
+   "topic": 16,
+   "ctx": "Desde o fim do século XIX, a arte ia ficando mais abstrata. Mas representava sempre algo reconhecível. Kandinsky, do grupo O Cavaleiro Azul, deu o passo final.",
+   "what": [
+    "Kandinsky vivia em Munique. Um dia viu no ateliê um quadro cheio de cores.",
+    "Só distinguia formas e cores. Era um quadro seu, encostado à parede e posto de lado.",
+    "Concluiu que descrever objetos só prejudicava os seus quadros.",
+    "Em **1910**, pintou uma aguarela sem tema reconhecível. Nascia o **Abstracionismo**.",
+    "Para ele, cores e formas têm força própria, como as notas de música. É a abstração lírica."
+   ],
+   "keys": [
+    "1910: primeira aguarela abstrata",
+    "Kandinsky, pintor russo, em Munique",
+    "Sem tema real: só formas e cores",
+    "Via lírica ou sensível: emoção e alma",
+    "Cores como a música (Do Espiritual na Arte)"
+   ],
+   "terms": [
+    {
+     "t": "Abstracionismo",
+     "d": "Movimento que rejeita a realidade concreta e usa só formas e cores."
+    },
+    {
+     "t": "Abstração lírica",
+     "d": "Via que usa a cor e a emoção para exprimir a alma do pintor."
+    }
+   ],
+   "hook": "Um quadro virado de lado: já não se vê nada, só cor e música."
+  },
+  {
+   "id": "a6",
+   "group": "A",
+   "col": "1911",
+   "label": "Cavaleiro Azul",
+   "text": "Expressionismo em Munique, com Kandinsky e Marc.",
+   "topic": 14,
+   "ctx": "Em Dresden, o Die Brücke já tinha feito um grito de revolta. Em Munique, dois artistas quiseram um caminho mais lírico. O grupo nasceu em 1911.",
+   "what": [
+    "Em **1911**, Kandinsky e Franz Marc fundaram o grupo em Munique.",
+    "O nome terá vindo do gosto de Kandinsky pelo azul e da paixão de Marc pelos cavalos.",
+    "O desenho é menos pesado do que o de Dresden. Tem mais intelectualização.",
+    "Marc usa a **cor** como símbolo: amarelo é feminino, azul é masculino, vermelho é matéria.",
+    "Durou pouco, de 1911 a 1913. Mas levou Kandinsky ao **Abstracionismo**."
+   ],
+   "keys": [
+    "Munique, 1911",
+    "Kandinsky e Franz Marc",
+    "Variante mais lírica do Expressionismo",
+    "Marc: Grandes cavalos azuis (1911)",
+    "Durou de 1911 a 1913"
+   ],
+   "terms": [
+    {
+     "t": "Der Blaue Reiter",
+     "d": "O Cavaleiro Azul. Grupo expressionista lírico de Munique."
+    }
+   ],
+   "hook": "Um cavalo azul a galope: a cor tem um significado escondido."
+  },
+  {
+   "id": "a7",
+   "group": "A",
+   "col": "1916",
+   "label": "Dadaísmo",
+   "text": "Zurique: Tzara e Hugo Ball. Antiarte, absurdo, acaso e provocação.",
+   "topic": 18,
+   "ctx": "A Grande Guerra mostrou uma civilização cruel, capaz da carnificina. Em Zurique, na Suíça, reuniram-se jovens que fugiam da guerra. Viam na arte o reflexo desse mundo decadente.",
+   "what": [
+    "Em **1916**, em Zurique, jovens como Hugo Ball e Tristan Tzara criaram o Dadaísmo.",
+    "Achavam que era preciso destruir esse mundo e a arte que ele produzira.",
+    "Criaram a **antiarte**: o absurdo, o acaso e a provocação.",
+    "Faziam espetáculos de escândalo. Ball dizia poemas sem palavras inteligíveis, como Karawane.",
+    "Por volta de 1922, esgotou-se. Muitos dadaístas foram para o Surrealismo."
+   ],
+   "keys": [
+    "Zurique, Suíça, 1916",
+    "Tristan Tzara e Hugo Ball",
+    "Antiarte: absurdo, acaso e provocação",
+    "Nasce da carnificina da Grande Guerra",
+    "Esgota-se por volta de 1922"
+   ],
+   "terms": [
+    {
+     "t": "Dadaísmo",
+     "d": "Movimento que recusa todos os modelos e a própria ideia de arte."
+    },
+    {
+     "t": "Antiarte",
+     "d": "Arte que nega a arte. Usa o absurdo e o acaso."
+    }
+   ],
+   "hook": "Um poema dito ao som de campainhas, sem uma palavra que se perceba."
+  },
+  {
+   "id": "a8",
+   "group": "A",
+   "col": "1917",
+   "label": "A Fonte, de Duchamp",
+   "text": "Ready-made: um objeto comum passa a ser obra de arte.",
+   "topic": 18,
+   "ctx": "O Dadaísmo queria atacar o conceito burguês de arte. Marcel Duchamp levou essa ideia ao extremo. Usou um objeto do dia a dia.",
+   "what": [
+    "Em 1917, Duchamp enviou um urinol invertido a uma exposição em **Nova Iorque**.",
+    "Assinou-o «R. Mutt» e chamou-lhe A Fonte.",
+    "É um **ready-made**: um objeto comum que o artista escolhe e assina.",
+    "A exposição abriu a 10 de abril de 1917, sem júri nem prémios.",
+    "A Fonte não foi exposta. A polémica deixou uma pergunta: o que é arte?"
+   ],
+   "keys": [
+    "1917, Marcel Duchamp",
+    "Urinol invertido assinado «R. Mutt»",
+    "Ready-made: objeto comum passa a obra de arte",
+    "Enviada para Nova Iorque; não foi exposta",
+    "Pergunta que ficou: o que é arte?"
+   ],
+   "terms": [
+    {
+     "t": "Ready-made",
+     "d": "Objeto do quotidiano, feito em série, que o artista escolhe e assina."
+    }
+   ],
+   "hook": "Um urinol assinado num museu, a perguntar-te: isto é arte?"
+  },
+  {
+   "id": "a9",
+   "group": "A",
+   "col": "1917",
+   "label": "De Stijl",
+   "text": "Mondrian: abstração geométrica, linhas retas e cores primárias.",
+   "topic": 16,
+   "ctx": "O sofrimento de um mundo em guerra impressionou Mondrian. Ele quis dar à arte uma função social. Passou a procurar verdades universais, não emoções pessoais.",
+   "what": [
+    "Em **1917**, Mondrian e Theo van Doesburg fundaram a revista De Stijl, que quer dizer O Estilo.",
+    "A corrente ficou conhecida por **Neoplasticismo**.",
+    "Baniram a emotividade pessoal e tudo o que é acessório.",
+    "Ficaram só linhas retas, horizontais e verticais, e figuras como quadrados e retângulos.",
+    "As cores são as **primárias**: vermelho, azul e amarelo. Juntam-se o preto, o branco e o cinzento."
+   ],
+   "keys": [
+    "1917: revista De Stijl (O Estilo)",
+    "Mondrian e Theo van Doesburg",
+    "Abstração geométrica = Neoplasticismo",
+    "Linhas retas e cores primárias",
+    "Mondrian: Composição A (1919)"
+   ],
+   "terms": [
+    {
+     "t": "Neoplasticismo",
+     "d": "Nome da corrente de De Stijl: retas e cores puras."
+    },
+    {
+     "t": "Abstração geométrica",
+     "d": "Via que usa só formas geométricas, linhas retas e cores puras."
+    }
+   ],
+   "hook": "Um tabuleiro de linhas pretas retas, com quadrados vermelhos, azuis e amarelos.",
+   "extra": [
+    "Mondrian foi influenciado pelo Cubismo quando viveu em Paris, por volta de 1912."
+   ]
+  },
+  {
+   "id": "a10",
+   "group": "A",
+   "col": "1924",
+   "label": "Manifesto Surrealista",
+   "text": "André Breton, inspirado em Freud: sonho, inconsciente e automatismo psíquico.",
+   "topic": 18,
+   "ctx": "O Dadaísmo esgotou-se por volta de 1922. Muitos dadaístas refugiaram-se no Surrealismo. Freud tinha mostrado que a mente tem uma zona obscura, o inconsciente.",
+   "what": [
+    "Em **1924**, o poeta André Breton publicou o primeiro Manifesto do Surrealismo.",
+    "Breton era poeta, médico e antigo dadaísta.",
+    "O Surrealismo quer exprimir o **inconsciente** e o sonho.",
+    "Usa o **automatismo psíquico**: criar sem controlo da razão e sem preocupação moral ou estética.",
+    "O modelo da arte já não está no mundo exterior. Passa para a mente do artista."
+   ],
+   "keys": [
+    "1924: Manifesto de André Breton, em França",
+    "Inspirado em Freud e na psicanálise",
+    "Sonho, inconsciente e automatismo psíquico",
+    "Modelo interior: a mente do artista",
+    "Dalí, Magritte, Miró, Max Ernst, Tanguy"
+   ],
+   "terms": [
+    {
+     "t": "Surrealismo",
+     "d": "Movimento de 1924 que explora o inconsciente, o sonho e o automatismo."
+    },
+    {
+     "t": "Automatismo psíquico",
+     "d": "Criar sem controlo da razão nem preocupação moral ou estética."
+    },
+    {
+     "t": "Inconsciente",
+     "d": "Zona obscura da mente onde ficam desejos e memórias recalcados."
+    }
+   ],
+   "hook": "Pintar a meio de um sonho, sem a razão a vigiar: relógios que derretem."
+  },
+  {
+   "id": "a11",
+   "group": "A",
+   "col": "anos 20",
+   "label": "Nova Objetividade",
+   "text": "Expressionismo do pós-guerra: Otto Dix e George Grosz.",
+   "topic": 14,
+   "ctx": "A Alemanha perdeu a Grande Guerra. A derrota e o horror das trincheiras deixaram pessimismo e descrença. Os valores tradicionais perderam força.",
+   "what": [
+    "Nos anos 20, a corrente expressionista ficou mais **dura** e provocadora.",
+    "Otto Dix, George Grosz e Max Beckmann pintaram a sociedade do pós-guerra com amargura.",
+    "Mostram o feio e o sórdido.",
+    "Denunciam a guerra, a miséria e os vícios privados da burguesia.",
+    "Exemplos: Os jogadores de Skat, de Dix, 1920, e Anoitecer, de Grosz, 1922."
+   ],
+   "keys": [
+    "Anos 20, Alemanha, pós-guerra",
+    "Otto Dix, George Grosz, Max Beckmann",
+    "Crítica social dura: guerra, miséria, burguesia",
+    "Figuras reconhecíveis: não é abstração",
+    "Continua o Expressionismo do Die Brücke"
+   ],
+   "terms": [
+    {
+     "t": "Nova Objetividade",
+     "d": "Expressionismo alemão do pós-guerra, duro e de crítica social."
+    },
+    {
+     "t": "Crise de valores",
+     "d": "Perda de fé no progresso, na razão e na ciência depois da guerra."
+    }
+   ],
+   "hook": "Uma fotografia sem filtro da Alemanha derrotada: feia, mas verdadeira."
+  }
+ ],
+ "edges": [
+  {
+   "a": "e1",
+   "b": "e3",
+   "why": "A guerra total chega ao fim."
+  },
+  {
+   "a": "e1",
+   "b": "r2",
+   "why": "A guerra desgasta a Rússia."
+  },
+  {
+   "a": "e1",
+   "b": "e9",
+   "why": "A guerra destrói campos e fábricas e deixa dívidas."
+  },
+  {
+   "a": "e1",
+   "b": "e12",
+   "why": "A guerra enriquece os EUA e endivida a Europa."
+  },
+  {
+   "a": "e1",
+   "b": "s4",
+   "why": "Os homens vão para a frente e as mulheres ocupam o trabalho."
+  },
+  {
+   "a": "e1",
+   "b": "s2",
+   "why": "Os horrores da guerra destroem a fé no progresso e na razão."
+  },
+  {
+   "a": "e1",
+   "b": "a7",
+   "why": "Perante o absurdo da guerra, os dadaístas negam a arte."
+  },
+  {
+   "a": "e1",
+   "b": "a11",
+   "why": "O pós-guerra marca a Nova Objetividade."
+  },
+  {
+   "a": "e2",
+   "b": "e6",
+   "why": "Os 14 pontos pedem uma liga das nações."
+  },
+  {
+   "a": "e2",
+   "b": "e4",
+   "why": "Wilson leva os 14 pontos à Conferência."
+  },
+  {
+   "a": "e3",
+   "b": "e4",
+   "why": "Acabada a guerra, os vencedores negociam a paz."
+  },
+  {
+   "a": "e3",
+   "b": "r11",
+   "why": "Alemanha derrotada e em crise: revolta de janeiro de 1919."
+  },
+  {
+   "a": "e4",
+   "b": "e5",
+   "why": "Os «Quatro Grandes» impõem a paz à Alemanha."
+  },
+  {
+   "a": "e4",
+   "b": "e6",
+   "why": "A Conferência cria a SDN."
+  },
+  {
+   "a": "e5",
+   "b": "e7",
+   "why": "Os EUA não ratificam Versalhes nem entram na SDN."
+  },
+  {
+   "a": "e5",
+   "b": "e8",
+   "why": "Versalhes humilha a Alemanha: é visto como «diktat»."
+  },
+  {
+   "a": "e7",
+   "b": "e8",
+   "why": "Sem os EUA, a SDN nasce fraca."
+  },
+  {
+   "a": "e5",
+   "b": "e10",
+   "why": "Reparações e dívidas pesam na Alemanha."
+  },
+  {
+   "a": "e9",
+   "b": "e10",
+   "why": "Emitir notas sem parar faz o marco perder o valor."
+  },
+  {
+   "a": "e10",
+   "b": "e11",
+   "why": "Para estabilizar a Alemanha chegam empréstimos americanos."
+  },
+  {
+   "a": "e12",
+   "b": "e11",
+   "why": "Os EUA emprestam dólares à Europa."
+  },
+  {
+   "a": "e12",
+   "b": "t1",
+   "why": "Os EUA ricos fazem do automóvel um bem de consumo."
+  },
+  {
+   "a": "e12",
+   "b": "t3",
+   "why": "Nos EUA ricos cresce a cultura de massas: Hollywood e jazz."
+  },
+  {
+   "a": "e9",
+   "b": "r12",
+   "why": "Crise económica e inflação alimentam greves."
+  },
+  {
+   "a": "r1",
+   "b": "r3",
+   "why": "Em 1905 o czar só fez reformas tímidas: os problemas ficaram."
+  },
+  {
+   "a": "r2",
+   "b": "r3",
+   "why": "Fome, derrotas e greves levam à queda do czar."
+  },
+  {
+   "a": "r3",
+   "b": "r4",
+   "why": "Sem czar, o Governo Provisório divide o poder com os sovietes."
+  },
+  {
+   "a": "r4",
+   "b": "r5",
+   "why": "O Governo Provisório continua a guerra. Lenine propõe paz, terra e poder aos sovietes."
+  },
+  {
+   "a": "r5",
+   "b": "r6",
+   "why": "Com este programa, os bolcheviques tomam o poder."
+  },
+  {
+   "a": "r6",
+   "b": "r7",
+   "why": "No poder, os bolcheviques dissolvem a Constituinte onde só tinham 25%."
+  },
+  {
+   "a": "r6",
+   "b": "r8",
+   "why": "O decreto da paz leva à paz separada com a Alemanha."
+  },
+  {
+   "a": "r6",
+   "b": "r9",
+   "why": "Os adversários do novo regime combatem os bolcheviques."
+  },
+  {
+   "a": "r6",
+   "b": "r10",
+   "why": "A Rússia quer exportar a revolução."
+  },
+  {
+   "a": "r6",
+   "b": "r11",
+   "why": "O exemplo russo inspira revoltas na Europa."
+  },
+  {
+   "a": "r9",
+   "b": "r13",
+   "why": "O comunismo de guerra deixa o país em ruína, com fome e revoltas."
+  },
+  {
+   "a": "r9",
+   "b": "r15",
+   "why": "Os Vermelhos vencem: nasce a URSS, com partido único."
+  },
+  {
+   "a": "r13",
+   "b": "r14",
+   "why": "O regime recua e admite um pouco de capitalismo."
+  },
+  {
+   "a": "r10",
+   "b": "r12",
+   "why": "O Komintern apoia a revolução mundial: greves e revoltas."
+  },
+  {
+   "a": "s11",
+   "b": "a10",
+   "why": "Freud inspira o Surrealismo: sonho e inconsciente."
+  },
+  {
+   "a": "s1",
+   "b": "s2",
+   "why": "A ciência acaba com as certezas e reforça a crise de valores."
+  },
+  {
+   "a": "s2",
+   "b": "s7",
+   "why": "Os valores tradicionais, incluindo o papel da mulher, são postos em causa."
+  },
+  {
+   "a": "s4",
+   "b": "s7",
+   "why": "As mulheres, mais independentes, adotam novos costumes."
+  },
+  {
+   "a": "s5",
+   "b": "s6",
+   "why": "O movimento pelo voto das mulheres chega a Portugal."
+  },
+  {
+   "a": "s2",
+   "b": "a11",
+   "why": "Crise de valores e angústia no pós-guerra."
+  },
+  {
+   "a": "t3",
+   "b": "t4",
+   "why": "Rádio e cinema levam ao cinema sonoro."
+  },
+  {
+   "a": "a0",
+   "b": "a1",
+   "why": "O Modernismo rompe com a arte académica."
+  },
+  {
+   "a": "a0",
+   "b": "a2",
+   "why": "O Modernismo rompe com a arte académica."
+  },
+  {
+   "a": "a0",
+   "b": "a3",
+   "why": "O Modernismo rompe com a arte académica."
+  },
+  {
+   "a": "a0",
+   "b": "a4",
+   "why": "O Modernismo rompe com a arte académica."
+  },
+  {
+   "a": "a2",
+   "b": "a6",
+   "why": "O Expressionismo continua em Munique."
+  },
+  {
+   "a": "a2",
+   "b": "a11",
+   "why": "O Expressionismo renasce no pós-guerra."
+  },
+  {
+   "a": "a3",
+   "b": "a4",
+   "why": "O Futurismo junta o movimento à fragmentação cubista."
+  },
+  {
+   "a": "a3",
+   "b": "a5",
+   "why": "Rejeitar a perspetiva abre caminho à abstração."
+  },
+  {
+   "a": "a3",
+   "b": "a9",
+   "why": "Mondrian leva a geometria do Cubismo à abstração."
+  },
+  {
+   "a": "a7",
+   "b": "a8",
+   "why": "Duchamp liga-se ao Dadaísmo: o ready-made."
+  },
+  {
+   "a": "a7",
+   "b": "a10",
+   "why": "Breton e outros dadaístas passam ao Surrealismo."
+  }
+ ],
+ "routes": [
+  {
+   "name": "Da guerra à paz frágil",
+   "nodes": [
+    "e1",
+    "e3",
+    "e4",
+    "e5",
+    "e7",
+    "e8"
+   ]
+  },
+  {
+   "name": "Dinheiro: da ruína à hiperinflação",
+   "nodes": [
+    "e1",
+    "e9",
+    "e10",
+    "e11"
+   ]
+  },
+  {
+   "name": "Rússia: do czar à URSS",
+   "nodes": [
+    "e1",
+    "r2",
+    "r3",
+    "r4",
+    "r5",
+    "r6",
+    "r9",
+    "r13",
+    "r14"
+   ]
+  },
+  {
+   "name": "A guerra muda a vida das mulheres",
+   "nodes": [
+    "e1",
+    "s4",
+    "s7"
+   ]
+  },
+  {
+   "name": "A guerra abala os valores",
+   "nodes": [
+    "e1",
+    "s2",
+    "a11"
+   ]
+  },
+  {
+   "name": "Da guerra ao Dadaísmo e ao Surrealismo",
+   "nodes": [
+    "e1",
+    "a7",
+    "a10"
+   ]
+  },
+  {
+   "name": "Do Modernismo à abstração",
+   "nodes": [
+    "a0",
+    "a3",
+    "a9"
+   ]
+  }
+ ]
+}
