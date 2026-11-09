@@ -355,3 +355,37 @@ body.hide-done .sess li.done{display:none}
 .tag.boost{background:var(--ok-soft);color:var(--ok)}
 .tag.cut{background:var(--bad-soft);color:var(--bad)}
 .sess li.carried .what::before{content:"↻";color:var(--accent2);font-weight:700}
+/* method parts (methods.py) */
+.mpart{position:relative;margin:22px 0;padding:16px 18px;border:1.5px solid var(--line);border-left:4px solid var(--accent2);border-radius:14px;background:var(--surface);display:flex;flex-direction:column;gap:12px}
+.mph{display:flex;flex-direction:column;gap:2px;padding-right:34px}.mph .eyebrow{color:var(--accent2)}.mph h3{font-size:19px;margin:0}.mph .nicon{position:absolute;top:12px;right:12px}
+.mpart .exs{margin:0}.mpart .xs{margin:0}
+.mpart h4{font-size:13px;font-family:var(--f-mono);letter-spacing:.07em;text-transform:uppercase;font-weight:600;color:var(--accent2);margin:6px 0 0}
+.sq{display:flex;flex-direction:column;gap:6px}.sq>b,.sq>summary{font-weight:600}
+details.sq>summary,details.qd>summary,details.hint1>summary{cursor:pointer;color:var(--accent);font-weight:600;min-height:32px;display:flex;align-items:center}
+ol.qa{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px}ol.qa li{padding-left:2px}
+details.qd{margin-top:4px;padding:2px 10px;border-radius:10px;background:var(--accent-soft)}details.qd[open]{padding-bottom:8px}
+details.hint1{margin:6px 0;padding:2px 10px;border-radius:10px;background:var(--warn-soft)}details.hint1[open]{padding-bottom:8px}
+textarea.mpad{width:100%;box-sizing:border-box;font:inherit;font-size:16px;line-height:1.45;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);resize:vertical}
+textarea.mpad:focus{outline:2px solid var(--accent);outline-offset:1px}
+ul.chk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}ul.chk label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}ul.chk input{width:20px;height:20px;margin-top:2px;accent-color:var(--accent);flex:none}
+table.cornell{width:100%;border-collapse:collapse;table-layout:fixed}table.cornell th,table.cornell td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left;overflow-wrap:anywhere}
+table.cornell thead th{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+table.cornell th[scope=row]{width:36%;font-weight:600;background:var(--accent2-soft)}
+.cnote{all:unset;display:block;width:100%;cursor:default}table.covered .cnote{cursor:pointer;min-height:24px;border-radius:6px;background:repeating-linear-gradient(135deg,var(--line) 0 6px,transparent 6px 12px);color:transparent}
+table.covered .cnote.shown{background:none;color:inherit}table.covered .cnote:not(.shown) *{visibility:hidden}
+.csum{padding:10px 12px;border-radius:10px;background:var(--accent-soft)}
+.mmap{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.mctr{align-self:center;max-width:100%;padding:10px 18px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-weight:700;text-align:center;overflow-wrap:anywhere}
+.mbrs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px}
+.mbr{border:1.5px solid var(--line);border-top:4px solid var(--accent2);border-radius:12px;padding:10px 12px;min-width:0}
+.mbr.g1{border-top-color:var(--accent)}.mbr.g2{border-top-color:var(--ok)}.mbr.g3{border-top-color:var(--warn)}.mbr.g4{border-top-color:var(--trap)}
+.mbl{font-weight:700;margin-bottom:4px;overflow-wrap:anywhere}.mbr ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}.mbr li{overflow-wrap:anywhere}
+.mfill{font:inherit;font-size:16px;width:100%;box-sizing:border-box;padding:4px 8px;border:1.5px dashed var(--accent2);border-radius:8px;background:var(--bg);color:var(--ink)}
+.mfill.ok{border:1.5px solid var(--ok);background:var(--ok-soft)}.mfill.miss{border:1.5px solid var(--bad);background:var(--bad-soft)}
+.mans{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+.twin{display:flex;flex-direction:column;gap:8px;padding-bottom:12px;border-bottom:1px dashed var(--line)}.twin:last-child{border-bottom:0;padding-bottom:0}
+.twinh{font-weight:600;color:var(--accent2)}
+.stage{display:flex;flex-direction:column;gap:6px}
+.klevel{display:flex;flex-direction:column;gap:6px}.klevel.locked h4{color:var(--muted)}
+.lvl{color:var(--accent2)}
+@media print{table.covered .cnote{background:none;color:inherit}table.covered .cnote *{visibility:visible}}

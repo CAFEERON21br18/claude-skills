@@ -9,6 +9,10 @@ change the JSON and rebuild. The build stops on any schema error.
 """
 import json, re, sys, os, base64, html, tarfile, io, subprocess, argparse, datetime, pathlib
 
+sys.dont_write_bytecode = True
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import methods as MTH
+
 KIT = pathlib.Path(__file__).resolve().parent
 CACHE = KIT / '.cache'
 PAGES = ['silabo', 'resumo', 'revisao', 'testes', 'mapa', 'plano']
@@ -85,6 +89,10 @@ def validate(pack, topics, plan):
             validate_solution(x, f'topic {n}: example "{x.get("title", "?")}"')
         for e in tp.get('exercises', []):
             validate_exercise(e, f'topic {n}', seen)
+    try:
+        MTH.validate_parts(pack, topics, words, validate_exercise, validate_solution, fail, seen)
+    except ValueError as e:
+        fail(str(e))
     if pack['features'].get('plan') and plan is None:
         fail('features.plan is on but plan.json is missing (run plan.py)')
 
@@ -552,7 +560,7 @@ def page_resumo(pack, topics, S, cx):
         links = [(f'{U["silabo"]}#t{n}', S['essential'].format(n=n)), (f'{U["revisao"]}#ch{n}', S['practice'].format(n=n))] + maplink(pack, n, S)
         secs.append(f'<section class="topic" id="r{n}" data-n="{n}" data-topic-sec data-note="r{n}" data-topic="{n}" data-label="{a(S["page"]["resumo"] + f" {n} · " + t["name"])}">'
                     + th(n, t['name'], t.get('meta')) + xlinks(links) + '<div class="nslot"></div>'
-                    + f'<div class="lesson">{blocks}</div><h3 class="exh fblk">{S["examples"]}</h3><div class="xs">{xs}</div>' + xlinks(links) + '</section>')
+                    + MTH.resumo_top(pack, tp, n, cx, S, RR) + f'<div class="lesson">{blocks}</div>' + MTH.resumo_end(pack, tp, n, cx, S, RR) + f'<h3 class="exh fblk">{S["examples"]}</h3><div class="xs">{xs}</div>' + xlinks(links) + '</section>')
     intro = f'<div class="intro"><p>{a(S["intro"]["resumo"])}</p><p class="hint">{a(S["intro"]["notesHint"])}</p></div>'
     return f'<div class="wrap layout">{rail(pack, "resumo", S)}<main>{intro}{"".join(secs)}</main></div>'
 
@@ -562,7 +570,11 @@ def free_box(eid, S, with_showkey):
             f'<div class="photo" hidden><label class="lbl" for="ph-{eid}">{S["photo"]}</label><input type="file" id="ph-{eid}" accept="image/*" multiple></div><p class="err" hidden></p>'
             f'<div class="acts"><button type="button" class="btn solid grade" hidden>{S["grade"]}</button><button type="button" class="btn stop" hidden>{S["stop"]}</button>{sk}</div><div class="verdict" hidden></div></div>')
 
-def exercise_html(e, n, j, cx, pack, S, test=False):
+def hints_html(e, cx, S):
+    hs = e.get('hints') or []
+    return ''.join(f'<details class="hint1"><summary>{S["methods"]["hint"]} {i}</summary><div class="prose{mtx(h)}">{md(h, cx)}</div></details>' for i, h in enumerate(hs, 1))
+
+def exercise_html(e, n, j, cx, pack, S, test=False, num=None):
     eid = e['id']; typ = e['type']
     key = e['key']
     keyh = (f'<div class="key" hidden><h5>{S["keyTitle"]}</h5>{howto(key.get("method"), cx, S)}{steps_html(key.get("steps", []), cx, S)}'
@@ -591,13 +603,14 @@ def exercise_html(e, n, j, cx, pack, S, test=False):
     ask = f'<button type="button" class="btn sm ghost" data-ask="ex" hidden>{S["tutor"]["ask"]}</button>' if tutor else ''
     pb = plot_btn(e.get('plot'), pack, S)
     corr = f' data-correct="{e["correct"]}"' if typ in ('mcq', 'tf') else ''
-    num = f'{j}' if test else f'{n}.{j}'
+    num = num or (f'{j}' if test else f'{n}.{j}')
+    lvl = f'<span class="lvl eyebrow">{S["methods"]["level"].format(k=e["level"])}</span>' if e.get('level') and not test else ''
     src = f'{S["topic"]} {n} · {pack["topics"][n - 1]["name"]}' if test else origin_label(e, S)
     lbl = f'{num} · {src}'
     note = '' if test else f' data-note="{eid}"'
     return (f'<article class="ex {typ}{"" if test else " fblk"}" id="{eid}" data-id="{eid}" data-n="{n}"{corr}{note} data-topic="{n}" data-label="{a(lbl)}">'
-            f'<div class="exhead"><span class="exn mono">{num}</span><span class="src eyebrow">{a(src)}</span><span class="badge" hidden></span><span class="nicon"></span></div>'
-            f'<div class="q prose{mtx(e["q"])}">{md(e["q"], cx)}</div>{body}<div class="xact">{ask}{pb}</div>' + ('' if test else f'<button type="button" class="btn redo sm" hidden>{S["redo"]}</button>') + '<div class="nslot"></div></article>')
+            f'<div class="exhead"><span class="exn mono">{num}</span><span class="src eyebrow">{a(src)}</span>{lvl}<span class="badge" hidden></span><span class="nicon"></span></div>'
+            f'<div class="q prose{mtx(e["q"])}">{md(e["q"], cx)}</div>{hints_html(e, cx, S)}{body}<div class="xact">{ask}{pb}</div>' + ('' if test else f'<button type="button" class="btn redo sm" hidden>{S["redo"]}</button>') + '<div class="nslot"></div></article>')
 
 def page_revisao(pack, topics, S, cx):
     U = pack['urls']; F = pack['features']
@@ -607,7 +620,7 @@ def page_revisao(pack, topics, S, cx):
         blocks = ''.join(block_html(b, i + 1, n, 'ch', S['page']['revisao'], cx, pack, S) for i, b in enumerate(tp.get('lesson', [])))
         w = tp.get('worked')
         wk = f'<h3 class="exh fblk">{S["workedExample"]}</h3><div class="xs">{example_html(w, n, 0, f"ch{n}-x0", cx, pack, S, open_=True)}</div>' if w else ''
-        exs = tp.get('exercises', [])
+        exs = MTH.sort_graded(pack, tp.get('exercises', []))
         shortage = f'<p class="shortage">{a(tp["shortage"])}</p>' if tp.get('shortage') else (f'<p class="shortage">{a(S["shortage"])}</p>' if not exs else '')
         exh = ''.join(exercise_html(e, n, j + 1, cx, pack, S) for j, e in enumerate(exs))
         prog = f'<div class="tprog"><div class="bar" aria-hidden="true"><i class="okb"></i><i class="badb"></i></div><span class="tcount mono"></span></div>' if F.get('progress', True) else ''
@@ -615,10 +628,14 @@ def page_revisao(pack, topics, S, cx):
                     + th(n, t['name'], t.get('meta'))
                     + xlinks([(f'{U["resumo"]}#r{n}', S['fullVersion'].format(n=n)), (f'{U["silabo"]}#t{n}', S['essential'].format(n=n))] + maplink(pack, n, S))
                     + prog + '<div class="nslot"></div>'
-                    + f'<div class="lesson">{blocks}</div>{wk}<h3 class="exh fblk">{S["yourExercises"] if pack.get("exercise", {}).get("source") == "mine" else S["exercises"]}</h3>{shortage}<div class="exs">{exh}</div></section>')
+                    + MTH.revisao_top(pack, tp, n, cx, S, RR) + f'<div class="lesson">{blocks}</div>{wk}' + MTH.revisao_end(pack, tp, n, cx, S, RR)
+                    + f'<h3 class="exh fblk">{S["yourExercises"] if pack.get("exercise", {}).get("source") == "mine" else S["exercises"]}</h3>{shortage}<div class="exs">{exh}</div>'
+                    + MTH.revisao_last(pack, tp, n, cx, S, RR) + '</section>')
     intro = f'<div class="intro"><p class="hint">{a(S["intro"]["revisao"])}</p><p class="hint">{a(S["intro"]["notesHint"])}</p><p class="hint" id="chatOff" hidden>{a(S["tutor"]["off"])}</p></div>'
     empty = f'<p class="empty" id="emptyMiss">{a(S["emptyMiss"])}</p>'
     return f'<div class="wrap layout">{rail(pack, "revisao", S)}<main>{intro}{empty}{"".join(secs)}</main></div>'
+
+RR = None   # rendering helpers for methods.py, set in build()
 
 def page_mapa(pack, mp, S):
     M = S['mapa']; K = M['kinds'][mp['kind']]
@@ -679,7 +696,8 @@ def page_plano(pack, plan, S):
 
 # ---------------------------------------------------------------- assemble
 def build(pack_dir, out_dir, pages=None):
-    global MAPTOPICS
+    global MAPTOPICS, RR
+    RR = MTH.R(md=md, a=a, mtx=mtx, inline=inline, exercise_html=exercise_html, example_html=example_html)
     pack, topics, plan, mp, ts = load_pack(pack_dir)
     MAPTOPICS = {n['topic'] for n in mp['nodes'] if n.get('topic') is not None} if mp else set()
     I18N = json.load(open(KIT / 'i18n.json', encoding='utf-8'))
@@ -701,9 +719,9 @@ def build(pack_dir, out_dir, pages=None):
         if page == 'silabo':
             body = page_silabo(pack, topics, S, cx); src = {str(n): {'syllabus': topics[n].get('syllabus', [])} for n in topics}
         elif page == 'resumo':
-            body = page_resumo(pack, topics, S, cx); src = {str(n): {k: topics[n].get(k) for k in ('resumo', 'examples')} for n in topics}
+            body = page_resumo(pack, topics, S, cx); src = {str(n): {k: topics[n].get(k) for k in ('resumo', 'examples', 'parts')} for n in topics}
         elif page == 'revisao':
-            body = page_revisao(pack, topics, S, cx); src = {str(n): {k: topics[n].get(k) for k in ('lesson', 'worked', 'exercises', 'shortage')} for n in topics}
+            body = page_revisao(pack, topics, S, cx); src = {str(n): {k: topics[n].get(k) for k in ('lesson', 'worked', 'exercises', 'shortage', 'parts')} for n in topics}
         elif page == 'mapa':
             body = page_mapa(pack, mp, S); src = mp
         elif page == 'testes':
@@ -721,9 +739,11 @@ def build(pack_dir, out_dir, pages=None):
         if F.get('calc') and page in ('resumo', 'revisao'):
             scripts.append(f'{CDN}/mathjs/{MATHJS_V}/math.min.js')
         page_js = (KIT / 'assets' / f'{page}.js').read_text(encoding='utf-8') if page in ('revisao', 'plano', 'mapa', 'testes') else 'commonInit();'
+        if page in ('resumo', 'revisao') and pack.get('methods'):
+            page_js += '\n' + (KIT / 'assets' / 'methods.js').read_text(encoding='utf-8')
         plan_js = f'const PLAN={js(plan)};' if page == 'plano' else ''
         config = {k: v for k, v in pack.items() if k != 'topics'}
-        config.update({'topics': pack['topics'], 'page': page, 'built': datetime.date.today().isoformat(), 'kit': 'study-pack kit 3'})
+        config.update({'topics': pack['topics'], 'page': page, 'built': datetime.date.today().isoformat(), 'kit': 'study-pack kit 4'})
         doc = (f'<!doctype html><html lang="{pack["lang"]}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
                f'<meta name="claude:viewport-fit-sides" content="cover"><title>{a(title)}</title>'
                f'<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>{link}{faces}'

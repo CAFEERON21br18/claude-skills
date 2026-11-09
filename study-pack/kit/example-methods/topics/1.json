@@ -1,0 +1,744 @@
+{
+ "n": 1,
+ "syllabus": [
+  "Axiomas de corpo e de ordem de $\\mathbb R$",
+  "Módulo: $|x|<a\\Leftrightarrow -a<x<a$, desigualdade triangular",
+  "Indução: base $P(p)$ + hereditariedade $P(n)\\Rightarrow P(n+1)$"
+ ],
+ "resumo": [
+  {
+   "kind": "p",
+   "body": "Em CDI-I os números reais não são construídos a partir das dízimas: são definidos pela **via axiomática**. Isto quer dizer que se aceita uma pequena lista de regras (os axiomas) e tudo o resto — as regras de cálculo que já usas desde o secundário, a regra dos sinais, as propriedades do módulo, o princípio de indução — é **provado** a partir delas. Na prática continuas a calcular como sempre; a diferença é que, numa prova, cada passo tem de ser justificado por um axioma ou por uma propriedade já demonstrada."
+  },
+  {
+   "kind": "def",
+   "title": "Módulo",
+   "body": "$|x|=x$ se $x\\ge0$ e $|x|=-x$ se $x<0$.",
+   "explain": "O módulo é a **distância** de $x$ a $0$ na reta real, por isso nunca é negativo. Do mesmo modo, $|x-a|$ é a distância entre $x$ e $a$. Pensar em distâncias torna as inequações com módulo quase visuais: $|x-1|<2$ são os pontos a menos de 2 unidades de 1.",
+   "plot": "abs(x)"
+  },
+  {
+   "kind": "formula",
+   "title": "Regras de ouro do módulo",
+   "body": "$$|x|<a\\Leftrightarrow -a<x<a\\qquad |x|>a\\Leftrightarrow x>a\\lor x<-a\\qquad \\big||x|-|y|\\big|\\le|x+y|\\le|x|+|y|$$",
+   "explain": "A primeira diz que estar a menos de $a$ do zero é estar entre $-a$ e $a$ (um intervalo, «e»). A segunda é o contrário: estar a mais de $a$ é estar à direita de $a$ **ou** à esquerda de $-a$ (dois pedaços, «ou»). A desigualdade triangular diz que somar números com sinais diferentes pode «encolher» o resultado, nunca aumentá-lo além da soma dos módulos."
+  },
+  {
+   "kind": "method",
+   "title": "Resolver uma inequação com vários módulos",
+   "body": "1. Encontrar os zeros do que está dentro de cada módulo.\n2. Partir a reta em intervalos por esses zeros.\n3. Em cada intervalo, tirar os módulos (o argumento ou o simétrico) e resolver.\n4. Intersectar cada solução com o seu intervalo e reunir tudo.",
+   "explain": "Num mesmo intervalo cada argumento tem sempre o mesmo sinal, por isso cada módulo é substituído por uma expressão sem módulo. O passo 4 é o que mais se esquece: uma solução só vale dentro do intervalo em que foi calculada."
+  },
+  {
+   "kind": "trap",
+   "title": "Armadilha 1",
+   "body": "Multiplicar ou dividir uma desigualdade por um número **negativo** inverte o sinal: de $-2x<4$ vem $x>-2$, não $x<-2$."
+  },
+  {
+   "kind": "bookerr",
+   "title": "Gralha no livro",
+   "body": "O livro escreve $|x+y|\\ge|x|+|y|$ na p. 12; o correto é $\\le$ (com $x=1$, $y=-1$: $0\\ge2$ é falso)."
+  }
+ ],
+ "examples": [
+  {
+   "title": "Soma de potências de 2",
+   "origin": "Aula 1",
+   "statement": "Prove que $\\displaystyle\\sum_{k=0}^n2^k=2^{n+1}-1$ para todo o $n\\in\\mathbb N_0$.",
+   "method": "Uma igualdade que tem de valer **para todo o natural** $n$ pede uma prova por **indução**: verificar a base e mostrar que, se vale para $n$, vale para $n+1$.",
+   "steps": [
+    {
+     "do": "Base ($n=0$): $\\sum_{k=0}^0 2^k=2^0=1$ e $2^{0+1}-1=1$. Os dois lados são iguais.",
+     "why": "Princípio de indução: começa-se no primeiro valor do domínio, aqui $n=0$; substitui-se só $n$.",
+     "trap": "Substituir também $k$ por 0 no termo e esquecer que o somatório ainda tem um termo."
+    },
+    {
+     "do": "Hipótese: $\\sum_{k=0}^n2^k=2^{n+1}-1$. Tese: $\\sum_{k=0}^{n+1}2^k=2^{n+2}-1$.",
+     "why": "Escrever hipótese e tese antes de calcular mostra exatamente o que falta provar."
+    },
+    {
+     "do": "$\\sum_{k=0}^{n+1}2^k=\\sum_{k=0}^n2^k+2^{n+1}=(2^{n+1}-1)+2^{n+1}=2^{n+2}-1$.",
+     "why": "Separar o último termo do somatório faz aparecer a hipótese, que se substitui."
+    }
+   ],
+   "answer": "Verdadeira para todo o $n\\in\\mathbb N_0$.",
+   "check": "Para $n=2$: $1+2+4=7$ e $2^3-1=7$."
+  },
+  {
+   "title": "Inequação com módulo",
+   "origin": "Ficha 1, ex. 2",
+   "statement": "Resolva $|2x-1|<3$.",
+   "method": "Um só módulo com «menor que» positivo: aplica-se diretamente $|u|<a\\Leftrightarrow -a<u<a$ e resolve-se a dupla desigualdade.",
+   "steps": [
+    {
+     "do": "$-3<2x-1<3$",
+     "why": "Regra $|u|<a\\Leftrightarrow -a<u<a$ com $u=2x-1$ e $a=3>0$."
+    },
+    {
+     "do": "$-2<2x<4$",
+     "why": "Somar 1 aos três membros não muda o sentido das desigualdades."
+    },
+    {
+     "do": "$-1<x<2$",
+     "why": "Dividir por 2, que é positivo, não inverte as desigualdades.",
+     "by_claude": true
+    }
+   ],
+   "answer": "$x\\in\\,]-1,2[$",
+   "check": "$x=0$ dá $|-1|=1<3$ (está na solução) e $x=2$ dá $|3|=3$, que não é $<3$ (fica de fora).",
+   "plot": "abs(2x-1)"
+  },
+  {
+   "title": "Módulos encadeados",
+   "origin": "new",
+   "statement": "Resolva $\\big||x|-2\\big|\\le 1$.",
+   "method": "Há um módulo dentro de outro: tira-se primeiro o de fora (com $u=|x|-2$), o que deixa uma condição só sobre $|x|$.",
+   "steps": [
+    {
+     "do": "$-1\\le|x|-2\\le1$, ou seja $1\\le|x|\\le3$.",
+     "why": "Regra do módulo aplicada a $u=|x|-2$, depois somar 2."
+    },
+    {
+     "do": "$|x|\\ge1$ dá $x\\le-1\\lor x\\ge1$; $|x|\\le3$ dá $-3\\le x\\le3$.",
+     "why": "Cada desigualdade em $|x|$ resolve-se pela sua regra («ou» para $\\ge$, intervalo para $\\le$)."
+    },
+    {
+     "do": "$x\\in[-3,-1]\\cup[1,3]$",
+     "why": "A solução tem de cumprir as duas condições: intersecção.",
+     "flag": {
+      "text": "A resolução original escreve $[-3,3]$.",
+      "fix": "Falta excluir $]-1,1[$: fica $[-3,-1]\\cup[1,3]$."
+     }
+    }
+   ],
+   "answer": "$[-3,-1]\\cup[1,3]$"
+  }
+ ],
+ "lesson": [
+  {
+   "kind": "p",
+   "body": "O módulo mede uma **distância**: $|x|$ é a distância de $x$ a $0$ e $|x-a|$ a distância de $x$ a $a$. Quase todas as inequações com módulo resolvem-se com duas regras: «menor que» dá um intervalo, «maior que» dá dois pedaços. Revê também como se faz uma prova por indução e liga com [[2|as matrizes]]."
+  },
+  {
+   "kind": "formula",
+   "title": "Módulo",
+   "body": "$|x|<a\\Leftrightarrow -a<x<a$",
+   "explain": "Os pontos a menos de $a$ do zero são exatamente os que estão entre $-a$ e $a$; por isso a solução é um só intervalo."
+  }
+ ],
+ "worked": {
+  "title": "Inequação com módulo",
+  "origin": "Ficha 1, ex. 2",
+  "statement": "Resolva $|x-1|\\le 2$.",
+  "method": "É a distância de $x$ a 1 ser no máximo 2: um intervalo centrado em 1, que se obtém pela regra do «menor ou igual».",
+  "steps": [
+   {
+    "do": "$-2\\le x-1\\le 2$",
+    "why": "Regra $|u|\\le a\\Leftrightarrow -a\\le u\\le a$ com $u=x-1$."
+   },
+   {
+    "do": "$-1\\le x\\le3$",
+    "why": "Somar 1 aos três membros."
+   }
+  ],
+  "answer": "$[-1,3]$",
+  "check": "Os extremos $-1$ e $3$ estão exatamente a distância 2 de 1."
+ },
+ "exercises": [
+  {
+   "id": "e1-1",
+   "type": "mcq",
+   "origin": "Ficha 1, ex. 3",
+   "gate": true,
+   "free_too": true,
+   "q": "Qual é o conjunto-solução de $|x+2|\\ge 5$?",
+   "options": [
+    "$]-\\infty,-7]\\cup[3,+\\infty[$",
+    "$[-7,3]$",
+    "$]-\\infty,-3]\\cup[7,+\\infty[$",
+    "$[3,+\\infty[$"
+   ],
+   "why": [
+    "Certo: $|u|\\ge5$ dá $u\\ge5$ ou $u\\le-5$, com $u=x+2$.",
+    "Este é o conjunto de $|x+2|\\le5$: confundiu «maior» com «menor».",
+    "Trocou o sinal do 2: resolveu $|x-2|\\ge5$.",
+    "Só ficou com o ramo $x+2\\ge5$ e esqueceu o ramo negativo."
+   ],
+   "correct": 0,
+   "key": {
+    "method": "«Maior ou igual» com módulo dá **dois ramos** («ou»): escreve-se cada um e resolve-se separadamente.",
+    "steps": [
+     {
+      "do": "$x+2\\ge5\\ \\lor\\ x+2\\le-5$",
+      "why": "Regra $|u|\\ge a\\Leftrightarrow u\\ge a\\lor u\\le -a$.",
+      "trap": "Escrever «e» em vez de «ou»."
+     },
+     {
+      "do": "$x\\ge3\\ \\lor\\ x\\le-7$",
+      "why": "Subtrair 2 em cada ramo."
+     }
+    ],
+    "answer": "$]-\\infty,-7]\\cup[3,+\\infty[$",
+    "check": "$x=3$: $|5|=5\\ge5$ ✓; $x=0$: $|2|=2$, não serve ✓."
+   },
+   "level": 1
+  },
+  {
+   "id": "e1-2",
+   "type": "tf",
+   "origin": "new",
+   "q": "$|a+b|=|a|+|b|$ para todos os reais $a,b$.",
+   "why": [
+    "Não: com $a=1$ e $b=-1$ fica $0=2$, que é falso.",
+    "Certo: a igualdade só vale quando $ab\\ge0$ (mesmo sinal)."
+   ],
+   "correct": 1,
+   "key": {
+    "method": "Para mostrar que uma afirmação «para todos» é falsa basta **um contraexemplo**.",
+    "steps": [
+     {
+      "do": "Com $a=1$, $b=-1$: $|a+b|=0$ e $|a|+|b|=2$.",
+      "why": "Um único caso em que falha chega para a afirmação geral ser falsa."
+     }
+    ],
+    "answer": "Falso."
+   },
+   "level": 2
+  },
+  {
+   "id": "e1-3",
+   "type": "free",
+   "origin": "Semana 2, ex. 1a",
+   "q": "Mostre que $6^{2n}-1$ é divisível por 7 para todo o $n\\in\\mathbb N^+$.",
+   "key": {
+    "method": "«Para todo o $n$» pede **indução**; «divisível por 7» quer dizer escrever como $7\\times$ um inteiro, e o truque é fazer aparecer a expressão da hipótese.",
+    "steps": [
+     {
+      "do": "Base: $6^2-1=35=7\\cdot5$.",
+      "why": "Base da indução em $p=1$, com o inteiro $5$."
+     },
+     {
+      "do": "Hipótese: $6^{2n}-1=7k$ com $k\\in\\mathbb Z$. Tese: $6^{2n+2}-1=7k'$.",
+      "why": "Escrever o que se assume e o que se quer.",
+      "trap": "Usar o mesmo $k$ na tese."
+     },
+     {
+      "do": "$6^{2n+2}-1=36\\cdot6^{2n}-1=36(6^{2n}-1)+35=7(36k+5)$.",
+      "why": "Fazer aparecer $6^{2n}-1$ e usar a hipótese; $36k+5$ é inteiro."
+     }
+    ],
+    "answer": "Divisível por 7 para todo o $n\\ge1$.",
+    "check": "$n=2$: $6^4-1=1295=7\\cdot185$."
+   },
+   "level": 3
+  }
+ ],
+ "parts": {
+  "active_recall": {
+   "questions": [
+    {
+     "q": "O que diz a desigualdade triangular?",
+     "a": "$|x+y|\\le|x|+|y|$ para todos os reais $x,y$."
+    },
+    {
+     "q": "Como se desdobra $|x|<a$?",
+     "a": "$-a<x<a$ (um só intervalo, «e»)."
+    },
+    {
+     "q": "E $|x|>a$?",
+     "a": "$x>a$ ou $x<-a$ (dois ramos, «ou»)."
+    },
+    {
+     "q": "Quais são os dois passos da indução?",
+     "a": "Base $P(p)$ e hereditariedade $P(n)\\Rightarrow P(n+1)$."
+    }
+   ],
+   "keys": [
+    "Módulo = distância a zero",
+    "$|x|<a$: um intervalo; $|x|>a$: dois ramos",
+    "Indução: base + hereditariedade, usando a hipótese"
+   ]
+  },
+  "spaced": {
+   "quick": [
+    {
+     "q": "$|-3|$",
+     "a": "$3$"
+    },
+    {
+     "q": "Resolve $|x|<2$",
+     "a": "$]-2,2[$"
+    },
+    {
+     "q": "Resolve $|x|\\ge1$",
+     "a": "$x\\le-1$ ou $x\\ge1$"
+    },
+    {
+     "q": "Passo da indução que usa a hipótese?",
+     "a": "A hereditariedade."
+    }
+   ]
+  },
+  "kumon": [
+   [
+    {
+     "id": "e1-k1",
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-3|=3$",
+     "correct": 0,
+     "why": [
+      "Verdadeiro: o módulo é a distância a zero, sempre positiva.",
+      "Falso: o módulo de um número negativo é o seu simétrico."
+     ],
+     "key": {
+      "method": "Módulo de um número: tira-se o sinal, porque o módulo mede distância a zero.",
+      "steps": [
+       {
+        "do": "$|-3|=3$",
+        "why": "Distância de um número a zero."
+       }
+      ],
+      "answer": "$|-3|=3$"
+     }
+    },
+    {
+     "id": "e1-k2",
+     "type": "tf",
+     "origin": "new",
+     "q": "$|5|=5$",
+     "correct": 0,
+     "why": [
+      "Verdadeiro: o módulo é a distância a zero, sempre positiva.",
+      "Falso: o módulo de um número negativo é o seu simétrico."
+     ],
+     "key": {
+      "method": "Módulo de um número: tira-se o sinal, porque o módulo mede distância a zero.",
+      "steps": [
+       {
+        "do": "$|5|=5$",
+        "why": "Distância de um número a zero."
+       }
+      ],
+      "answer": "$|5|=5$"
+     }
+    },
+    {
+     "id": "e1-k3",
+     "type": "tf",
+     "origin": "new",
+     "q": "$|-7|=-7$",
+     "correct": 1,
+     "why": [
+      "Verdadeiro: o módulo é a distância a zero, sempre positiva.",
+      "Falso: o módulo de um número negativo é o seu simétrico."
+     ],
+     "key": {
+      "method": "Módulo de um número: tira-se o sinal, porque o módulo mede distância a zero.",
+      "steps": [
+       {
+        "do": "$|-7|=7$",
+        "why": "Distância de um número a zero."
+       }
+      ],
+      "answer": "$|-7|=7$"
+     }
+    }
+   ],
+   [
+    {
+     "id": "e1-k21",
+     "type": "tf",
+     "origin": "new",
+     "q": "$|x|<1\\Leftrightarrow -1<x<1$",
+     "correct": 0,
+     "why": [
+      "Verdadeiro: é a regra do módulo aplicada corretamente.",
+      "Falso: troca-se «e» por «ou» ou o sentido da desigualdade."
+     ],
+     "key": {
+      "method": "Inequação com módulo: identifica-se se é «menor» (um intervalo) ou «maior» (dois ramos).",
+      "steps": [
+       {
+        "do": "$-1<x<1$",
+        "why": "Regra do módulo com $a>0$."
+       }
+      ],
+      "answer": "$-1<x<1$"
+     }
+    },
+    {
+     "id": "e1-k22",
+     "type": "tf",
+     "origin": "new",
+     "q": "$|x|>2\\Leftrightarrow -2<x<2$",
+     "correct": 1,
+     "why": [
+      "Verdadeiro: é a regra do módulo aplicada corretamente.",
+      "Falso: troca-se «e» por «ou» ou o sentido da desigualdade."
+     ],
+     "key": {
+      "method": "Inequação com módulo: identifica-se se é «menor» (um intervalo) ou «maior» (dois ramos).",
+      "steps": [
+       {
+        "do": "$x>2\\lor x<-2$",
+        "why": "Regra do módulo com $a>0$."
+       }
+      ],
+      "answer": "$x>2\\lor x<-2$"
+     }
+    },
+    {
+     "id": "e1-k23",
+     "type": "tf",
+     "origin": "new",
+     "q": "$|x|\\le0\\Leftrightarrow x=0$",
+     "correct": 0,
+     "why": [
+      "Verdadeiro: é a regra do módulo aplicada corretamente.",
+      "Falso: troca-se «e» por «ou» ou o sentido da desigualdade."
+     ],
+     "key": {
+      "method": "Inequação com módulo: identifica-se se é «menor» (um intervalo) ou «maior» (dois ramos).",
+      "steps": [
+       {
+        "do": "$x=0$",
+        "why": "Regra do módulo com $a>0$."
+       }
+      ],
+      "answer": "$x=0$"
+     }
+    }
+   ],
+   [
+    {
+     "id": "e1-k31",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $|x-1|<3$.",
+     "key": {
+      "method": "Desdobra-se o módulo em dois ramos com a regra $|u|<a\\Leftrightarrow -a<u<a$ e resolve-se cada desigualdade.",
+      "steps": [
+       {
+        "do": "$-3<x-1<3$",
+        "why": "Regra do módulo com dois lados."
+       },
+       {
+        "do": "$-2<x<4$",
+        "why": "Isolar $x$ em cada lado."
+       }
+      ],
+      "answer": "$]-2,4[$"
+     }
+    },
+    {
+     "id": "e1-k32",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $|x+2|\\le1$.",
+     "key": {
+      "method": "Desdobra-se o módulo em dois ramos com a regra $|u|<a\\Leftrightarrow -a<u<a$ e resolve-se cada desigualdade.",
+      "steps": [
+       {
+        "do": "$-1\\le x+2\\le1$",
+        "why": "Regra do módulo com dois lados."
+       },
+       {
+        "do": "$-3\\le x\\le-1$",
+        "why": "Isolar $x$ em cada lado."
+       }
+      ],
+      "answer": "$[-3,-1]$"
+     }
+    },
+    {
+     "id": "e1-k33",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $|2x|<4$.",
+     "key": {
+      "method": "Desdobra-se o módulo em dois ramos com a regra $|u|<a\\Leftrightarrow -a<u<a$ e resolve-se cada desigualdade.",
+      "steps": [
+       {
+        "do": "$-4<2x<4$",
+        "why": "Regra do módulo com dois lados."
+       },
+       {
+        "do": "$-2<x<2$",
+        "why": "Isolar $x$ em cada lado."
+       }
+      ],
+      "answer": "$]-2,2[$"
+     }
+    }
+   ]
+  ],
+  "worked_examples": [
+   {
+    "example": {
+     "title": "Módulo com «menor»",
+     "origin": "new",
+     "statement": "Resolve $|x-3|<2$.",
+     "method": "Desdobra-se o módulo em dois ramos com a regra $|u|<a\\Leftrightarrow -a<u<a$ e resolve-se cada desigualdade.",
+     "steps": [
+      {
+       "do": "$-2<x-3<2$",
+       "why": "Regra $|u|<a\\Leftrightarrow -a<u<a$."
+      },
+      {
+       "do": "$1<x<5$",
+       "why": "Somar 3 aos três membros."
+      }
+     ],
+     "answer": "$]1,5[$"
+    },
+    "twin": {
+     "id": "e1-w1",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $|x-4|<1$.",
+     "key": {
+      "method": "Desdobra-se o módulo em dois ramos com a regra $|u|<a\\Leftrightarrow -a<u<a$ e resolve-se cada desigualdade.",
+      "steps": [
+       {
+        "do": "$-1<x-4<1$",
+        "why": "Regra do módulo com «menor»."
+       },
+       {
+        "do": "$3<x<5$",
+        "why": "Somar 4 aos três membros."
+       }
+      ],
+      "answer": "$]3,5[$"
+     }
+    }
+   },
+   {
+    "example": {
+     "title": "Módulo com «maior»",
+     "origin": "new",
+     "statement": "Resolve $|x+1|>3$.",
+     "method": "Desdobra-se o módulo em dois ramos com a regra $|u|<a\\Leftrightarrow -a<u<a$ e resolve-se cada desigualdade.",
+     "steps": [
+      {
+       "do": "$x+1>3\\ \\lor\\ x+1<-3$",
+       "why": "Regra $|u|>a$: dois ramos."
+      },
+      {
+       "do": "$x>2\\ \\lor\\ x<-4$",
+       "why": "Subtrair 1 em cada ramo."
+      }
+     ],
+     "answer": "$]-\\infty,-4[\\cup]2,+\\infty[$"
+    },
+    "twin": {
+     "id": "e1-w2",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $|x+2|>1$.",
+     "key": {
+      "method": "Desdobra-se o módulo em dois ramos com a regra $|u|<a\\Leftrightarrow -a<u<a$ e resolve-se cada desigualdade.",
+      "steps": [
+       {
+        "do": "$x+2>1\\ \\lor\\ x+2<-1$",
+        "why": "Regra do módulo com «maior»."
+       },
+       {
+        "do": "$x>-1\\ \\lor\\ x<-3$",
+        "why": "Subtrair 2 em cada ramo."
+       }
+      ],
+      "answer": "$]-\\infty,-3[\\cup]-1,+\\infty[$"
+     }
+    }
+   }
+  ],
+  "shuhari": {
+   "shu": [
+    {
+     "id": "e1-s1",
+     "type": "free",
+     "origin": "new",
+     "q": "Prova por indução que $1+2+\\dots+n=\\frac{n(n+1)}2$.",
+     "key": {
+      "method": "Prova por indução: verifica-se a base e depois mostra-se que $P(n)$ implica $P(n+1)$, usando a hipótese.",
+      "steps": [
+       {
+        "do": "Base: $1=\\frac{1\\cdot2}2$.",
+        "why": "A fórmula vale para $n=1$."
+       },
+       {
+        "do": "Somar $n+1$ à hipótese: $\\frac{n(n+1)}2+n+1=\\frac{(n+1)(n+2)}2$.",
+        "why": "Usar a hipótese de indução."
+       }
+      ],
+      "answer": "A fórmula vale para todo o $n\\ge1$."
+     },
+     "hints": [
+      "Começa por $n=1$: os dois lados dão o mesmo?",
+      "Supõe a fórmula para $n$ e soma $n+1$ aos dois lados."
+     ]
+    }
+   ],
+   "ha": [
+    {
+     "id": "e1-s2",
+     "type": "free",
+     "origin": "new",
+     "q": "Prova por indução que $1+3+\\dots+(2n-1)=n^2$.",
+     "key": {
+      "method": "Prova por indução: verifica-se a base e depois mostra-se que $P(n)$ implica $P(n+1)$, usando a hipótese.",
+      "steps": [
+       {
+        "do": "Base: $1=1^2$.",
+        "why": "A fórmula vale para $n=1$."
+       },
+       {
+        "do": "$n^2+(2n+1)=(n+1)^2$.",
+        "why": "Usar a hipótese e somar o termo seguinte."
+       }
+      ],
+      "answer": "A soma dos $n$ primeiros ímpares é $n^2$."
+     }
+    }
+   ],
+   "ri": [
+    {
+     "id": "e1-s3",
+     "type": "free",
+     "origin": "new",
+     "q": "Descobre uma fórmula para $2+4+\\dots+2n$ e prova-a.",
+     "key": {
+      "method": "Experimenta valores pequenos, adivinha a fórmula e prova-a por indução (base + hereditariedade).",
+      "steps": [
+       {
+        "do": "Para $n=1,2,3$: $2,6,12$, ou seja $n(n+1)$.",
+        "why": "Testar casos pequenos sugere a fórmula."
+       },
+       {
+        "do": "$n(n+1)+2(n+1)=(n+1)(n+2)$.",
+        "why": "Hereditariedade com a hipótese."
+       }
+      ],
+      "answer": "$2+4+\\dots+2n=n(n+1)$."
+     }
+    }
+   ]
+  },
+  "problem_first": {
+   "starter": {
+    "id": "e1-p1",
+    "type": "free",
+    "origin": "new",
+    "q": "Para que valores de $x$ está $x$ a menos de 2 unidades de 5?",
+    "key": {
+     "method": "Distância entre dois números é o módulo da diferença: traduz-se a frase para $|x-5|<2$.",
+     "steps": [
+      {
+       "do": "$|x-5|<2$",
+       "why": "Distância entre $x$ e 5."
+      },
+      {
+       "do": "$3<x<7$",
+       "why": "Regra do módulo e somar 5."
+      }
+     ],
+     "answer": "$]3,7[$"
+    },
+    "hints": [
+     "«Distância entre $x$ e 5» escreve-se com um módulo.",
+     "Que intervalo tem centro 5 e raio 2?"
+    ]
+   },
+   "compare": "A lição dá o atalho: distância entre $x$ e 5 é $|x-5|$ e «menor que 2» desdobra-se num só intervalo. Se resolveste por tentativas, compara: a regra dá logo os extremos 3 e 7 sem testar valores."
+  },
+  "feynman": {
+   "task": "Explica a alguém de 12 anos o que quer dizer $|x-5|<2$ e porque é que dá um só intervalo.",
+   "checklist": [
+    "Diz que o módulo é uma distância",
+    "Usa um exemplo com números",
+    "Explica porque dá «entre» e não «ou»",
+    "Não usa termos que a criança não conheça"
+   ]
+  },
+  "mindmap": {
+   "center": "Reais, módulo e indução",
+   "branches": [
+    {
+     "label": "Axiomas",
+     "leaves": [
+      "corpo",
+      "ordem",
+      "supremo"
+     ]
+    },
+    {
+     "label": "Módulo",
+     "leaves": [
+      "distância a zero",
+      "desigualdade triangular",
+      "«menor»: um intervalo"
+     ]
+    },
+    {
+     "label": "Indução",
+     "leaves": [
+      "base",
+      "hereditariedade"
+     ]
+    }
+   ],
+   "blanks": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ]
+   ]
+  },
+  "sq3r": {
+   "survey": "Este tópico apresenta as regras que fazem dos reais um corpo ordenado, o módulo como distância e a indução como forma de provar uma afirmação para todos os naturais.",
+   "questions": [
+    "O que é o módulo de um número?",
+    "Quando dá um intervalo e quando dá dois ramos?",
+    "Quais são os dois passos da indução?"
+   ],
+   "recap": [
+    "A distância a zero",
+    "«Menor»: um intervalo; «maior»: dois ramos",
+    "Base e hereditariedade"
+   ]
+  },
+  "cornell": {
+   "cues": [
+    {
+     "cue": "Módulo",
+     "note": "distância a zero, $|x|\\ge0$"
+    },
+    {
+     "cue": "Triangular",
+     "note": "$|x+y|\\le|x|+|y|$"
+    },
+    {
+     "cue": "$|x|<a$",
+     "note": "$-a<x<a$"
+    },
+    {
+     "cue": "Indução",
+     "note": "base + hereditariedade"
+    }
+   ],
+   "summary": "O módulo mede distâncias e transforma-se num intervalo ou em dois ramos conforme o sinal da desigualdade; a indução prova uma afirmação para todos os naturais com dois passos, a base e a hereditariedade."
+  },
+  "hansei": [
+   "Distingui bem «menor» de «maior» nos módulos?"
+  ]
+ }
+}

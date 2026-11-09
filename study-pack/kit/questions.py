@@ -8,6 +8,7 @@ Prints the HTML for the inline form (Visualizer show_widget, elicitation module)
 --calc          the course is calculation-heavy (adds the graph calculator question)
 --lesson-style  a Notion page "lesson-style" was found (adds it as the first exercise format)
 --exam          exam date found in the material (pre-fills the deadline)
+--methods       learning methods to pre-select, comma-separated (from the app's study-profile quiz, or what the user said); add hansei to pre-select it
 --text          prints the plain-text fallback instead (numbered questions, theme colors as hex)
 """
 import json, argparse, pathlib, html
@@ -22,7 +23,9 @@ L = {
         'feat': ['Barra lateral', 'Modo foco', 'Histórico', 'Progresso', 'Contagem decrescente', 'Links para tópicos anteriores', 'Só erradas', 'Mapa de ideias (página extra)', 'Testes tipo e teste do dia (página extra)'],
         'fmt': ['A minha página lesson-style', 'Como na fonte', 'Escolha múltipla', 'Resposta livre corrigida pelo Claude', 'Verdadeiro / falso'],
         'src': [('Só os meus', 'mine'), ('50/50 meus e teus', 'mix'), ('Os teus (curso + Claude)', 'yours')],
-        'all': 'Todos os meus', 'yes': 'Sim', 'no': 'Não', 'auto': 'Decides tu', 'theme_other': 'Outro (descreve)'},
+        'all': 'Todos os meus', 'yes': 'Sim', 'no': 'Não', 'auto': 'Decides tu', 'theme_other': 'Outro (descreve)',
+        'mq': 'Que métodos de estudo? (cada um junta a sua parte a cada tópico; 2 a 4 é o ideal)',
+        'm': ['Recordação ativa', 'Repetição espaçada', 'Aprender fazendo (exercícios por níveis)', 'Kumon', 'Exemplos resolvidos', 'Shuhari', 'Problema primeiro', 'Prática intercalada', 'Feynman', 'Mapa mental', 'SQ3R', 'Notas Cornell', 'Hansei (reflexão de 2 min)']},
  'fr': {'title': "Détails du pack d'étude", 'skip': 'Passer', 'go': 'Continuer', 'other': 'Autre',
         'q': ['Quel thème de couleurs veux-tu ?', 'Quelle police ?', 'Quelles fonctions veux-tu dans les pages ?', 'Quel format pour les exercices ?',
               "D'où viennent les exercices ?", "Combien d'exercices par thème ?", 'Dans quelle langue ?', 'Ajouter une calculatrice graphique ?',
@@ -31,7 +34,9 @@ L = {
         'feat': ['Barre latérale', 'Mode focus', 'Historique', 'Progression', 'Compte à rebours', 'Liens vers les thèmes précédents', 'Erreurs seulement', "Carte d'idées (page en plus)", 'Tests types et test du jour (page en plus)'],
         'fmt': ['Ma page lesson-style', 'Comme dans la source', 'QCM', 'Réponse libre corrigée par Claude', 'Vrai / faux'],
         'src': [('Seulement les miens', 'mine'), ('50/50 les miens et les tiens', 'mix'), ('Les tiens (cours + Claude)', 'yours')],
-        'all': 'Tous les miens', 'yes': 'Oui', 'no': 'Non', 'auto': 'Tu décides', 'theme_other': 'Autre (décris)'},
+        'all': 'Tous les miens', 'yes': 'Oui', 'no': 'Non', 'auto': 'Tu décides', 'theme_other': 'Autre (décris)',
+        'mq': "Quelles méthodes d'étude ? (chacune ajoute sa partie à chaque thème ; 2 à 4, c'est l'idéal)",
+        'm': ['Rappel actif', 'Répétition espacée', 'Apprendre en faisant (exercices par niveaux)', 'Kumon', 'Exemples résolus', 'Shuhari', "Le problème d'abord", 'Pratique entrelacée', 'Feynman', 'Carte mentale', 'SQ3R', 'Notes Cornell', 'Hansei (réflexion de 2 min)']},
  'en': {'title': 'Study pack details', 'skip': 'Skip', 'go': 'Continue', 'other': 'Other',
         'q': ['Which color theme do you want?', 'Which font?', 'Which features do you want on the pages?', 'Which format for the exercises?',
               'Where should the exercises come from?', 'How many exercises per topic?', 'Which language?', 'Add a graph calculator?',
@@ -40,10 +45,18 @@ L = {
         'feat': ['Sidebar', 'Focus mode', 'Question history', 'Progress', 'Exam countdown', 'Links to earlier topics', 'Missed only', 'Idea map (extra page)', 'Practice tests and daily test (extra page)'],
         'fmt': ['My lesson-style page', 'As in the source', 'Multiple choice', 'Free answer graded by Claude', 'True / false'],
         'src': [('Mine only', 'mine'), ('50/50 mine and yours', 'mix'), ('Yours (course + Claude)', 'yours')],
-        'all': 'All of mine', 'yes': 'Yes', 'no': 'No', 'auto': 'You decide', 'theme_other': 'Other (describe)'},
+        'all': 'All of mine', 'yes': 'Yes', 'no': 'No', 'auto': 'You decide', 'theme_other': 'Other (describe)',
+        'mq': 'Which study methods? (each adds its own part to every topic; 2 to 4 is best)',
+        'm': ['Active recall', 'Spaced repetition', 'Learning by doing (graded exercises)', 'Kumon', 'Worked examples', 'Shuhari', 'Problem first', 'Interleaving', 'Feynman', 'Mind map', 'SQ3R', 'Cornell notes', 'Hansei (2-min reflection)']},
 }
 FEAT_KEYS = ['sidebar', 'focus', 'history', 'progress', 'countdown', 'recall', 'review_only', 'map', 'tests']
 FMT_KEYS = ['lesson-style', 'source', 'mcq', 'free', 'tf']
+METHOD_KEYS = ['active_recall', 'spaced', 'learning_by_doing', 'kumon', 'worked_examples', 'shuhari', 'problem_first', 'interleaving', 'feynman', 'mindmap', 'sq3r', 'cornell', 'hansei']
+DEFAULT_METHODS = ['active_recall', 'spaced', 'worked_examples']
+
+def picked(a):
+    m = [x.strip().replace('blurting', 'active_recall') for x in (a.methods or '').split(',') if x.strip()]
+    return [x for x in m if x in METHOD_KEYS] or DEFAULT_METHODS
 HEAD = '<svg viewBox="0 0 20 20" fill="currentColor"><path d="M11.586 2a1.5 1.5 0 0 1 1.06.44l2.914 2.914a1.5 1.5 0 0 1 .44 1.06V16.5a1.5 1.5 0 0 1-1.5 1.5h-9a1.5 1.5 0 0 1-1.492-1.347L4 16.5v-13A1.5 1.5 0 0 1 5.5 2zM5.5 3a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h-2.5A1.5 1.5 0 0 1 11 5.5V3zm7.04 10.304a.5.5 0 0 1 .92.392c-.295.69-.871 1.304-1.66 1.304-.487 0-.892-.234-1.2-.574-.309.34-.713.574-1.2.574-.486 0-.892-.233-1.2-.574-.31.34-.714.574-1.2.574a.5.5 0 0 1 0-1c.212 0 .52-.18.74-.696l.034-.067a.5.5 0 0 1 .886.067c.221.516.528.696.74.696.213 0 .52-.18.74-.696l.035-.067a.5.5 0 0 1 .885.067c.22.516.527.696.74.696s.519-.18.74-.696m0-4a.5.5 0 0 1 .92.392c-.295.69-.871 1.304-1.66 1.304-.487 0-.892-.234-1.2-.574-.309.34-.713.574-1.2.574-.486 0-.892-.233-1.2-.574-.31.34-.714.574-1.2.574a.5.5 0 0 1 0-1c.212 0 .52-.18.74-.696l.034-.067a.5.5 0 0 1 .886.067c.221.516.528.696.74.696.213 0 .52-.18.74-.696l.035-.067a.5.5 0 0 1 .885.067c.22.516.527.696.74.696s.519-.18.74-.696M12 5.5a.5.5 0 0 0 .5.5h2.293L12 3.207z"/></svg>'
 CARD = 'border-radius:12px; padding:12px 14px; display:flex; flex-direction:column; gap:8px; align-items:flex-start; text-align:left; min-width:150px; box-shadow:0 1px 2px rgba(0,0,0,0.04)'
 e = lambda s: html.escape(str(s), quote=True)
@@ -75,6 +88,7 @@ def html_form(a):
         out.append(group(Q[4], 'source', ''.join(pill(v, l, on=v == 'mix') for l, v in S['src'])))
     counts = ([pill('all', S['all'])] if a.mine else []) + [pill(n, n, on=n == '5') for n in ('3', '5', '8', '10')] + [pill('other', S['other'], other=True)]
     out.append(group(Q[5], 'per_topic', ''.join(counts), other_for='per_topic'))
+    out.append(group(S['mq'], 'methods', ''.join(pill(k, l, on=k in picked(a)) for k, l in zip(METHOD_KEYS, S['m'])), multi=True))
     out.append(group(Q[6], 'language', pill('pt', 'Português', on=a.lang == 'pt') + pill('fr', 'Français', on=a.lang == 'fr') + pill('en', 'English', on=a.lang == 'en')))
     if a.calc:
         out.append(group(Q[7], 'graph_calc', pill('yes', S['yes'], on=True) + pill('no', S['no'])))
@@ -97,6 +111,7 @@ def text_form(a):
     if a.mine:
         out.append(f'{n}. {Q[4]} ' + ' · '.join(l for l, _ in S['src'])); n += 1
     out.append(f'{n}. {Q[5]} ' + ((S['all'] + ' · ') if a.mine else '') + '3 · 5 · 8 · 10'); n += 1
+    out.append(f'{n}. {S["mq"]} ' + ' · '.join(l + (' ✓' if k in picked(a) else '') for k, l in zip(METHOD_KEYS, S['m']))); n += 1
     out.append(f'{n}. {Q[6]} Português · Français · English'); n += 1
     if a.calc:
         out.append(f'{n}. {Q[7]} {S["yes"]} · {S["no"]}'); n += 1
@@ -109,6 +124,6 @@ if __name__ == '__main__':
     ap.add_argument('--lang', default='pt', choices=['pt', 'fr', 'en'])
     ap.add_argument('--mine', action='store_true'); ap.add_argument('--calc', action='store_true')
     ap.add_argument('--lesson-style', action='store_true'); ap.add_argument('--exam', default='')
-    ap.add_argument('--text', action='store_true')
+    ap.add_argument('--text', action='store_true'); ap.add_argument('--methods', default='')
     a = ap.parse_args()
     print(text_form(a) if a.text else html_form(a))

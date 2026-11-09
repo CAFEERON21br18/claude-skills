@@ -25,6 +25,7 @@
  "urls": {"silabo": "", "resumo": "", "revisao": "", "testes": "", "mapa": "", "plano": ""},   // artifact URLs; "" until published
  "storage": {"prefix": "cdi-", "docs": {"revisao": "revisao", "plano": "plano"}, "ls": {"revisao": "cdi-revisao-v1"}},  // only for packs made before the kit: keep their old keys
  "plan": {"start": "2026-10-24", "hours": "auto", "busy": {"2026-10-27": {"hours": 1, "note": "Exame de IEI às 10:30"}}, "weights": {"3": 1.5}, "hours_note": "2h nos dias úteis, 3h ao fim-de-semana"},
+ "methods": {"learning": ["active_recall", "worked_examples", "feynman"], "time": "pomodoro", "hansei": true},   // optional: see › Method parts
  "topics": [{"n": 1, "name": "Reais, módulos e indução", "meta": "Aula 1"}],
  "sources": ["Notion › Ruben › IST › CDI: Aulas 1–11"]
 }
@@ -41,7 +42,8 @@
  "lesson":   [BLOCK, …],        // short lesson (Revisão)
  "worked":   EXAMPLE,           // one step-by-step example (Revisão)
  "exercises":[EXERCISE, …],     // Revisão
- "shortage": "Só há 2 exercícios teus neste tópico."   // optional one-line notice
+ "shortage": "Só há 2 exercícios teus neste tópico.",  // optional one-line notice
+ "parts": {"active_recall": {…}, "feynman": {…}}       // one per method in pack.methods (see › Method parts)
 }
 ```
 
@@ -67,12 +69,37 @@ Every step has a `do` (the working, nothing skipped) and a `why` (the rule or id
  "layout": "two",                           // optional: options in two columns (only short, non-maths options)
  "key": {"method": "how you should have attacked it", "steps": [STEP…], "answer": "…", "check": "…"},   // complete correction: method + every step + answer (+ check)
  "plot": "…", "reconstructed": true,
- "topic": 2}                                // only in tests.json: the topic the question is about
+ "hints": ["Pista 1", "Pista 2"],           // optional: progressive hints (required on Shu and starter problems)
+ "level": 2,                                // learning by doing: 1 (direct) · 2 (one more step) · 3 (exam level)
+ "topic": 2}                                // in tests.json and in parts.interleaving: the topic the question is about
 ```
 Each MCQ `why` is a full sentence (≥ 6 words): why it is right, or which mistake leads to it.
 
 - `origin: "new"` shows "Novo". Never label an invented exercise or example with a course source.
 - Ids: `e<topic>-<k>`. On update, the same exercise (same sheet + number) keeps its id; new ones take the next numbers.
+
+## Method parts
+
+`pack.methods.learning` lists the student's learning methods (from the app's study-profile quiz, or the question form). **Every listed method needs its part in every topic** (`topics/<n>.json › parts.<method>`); interleaving starts at topic 2; learning by doing has no part of its own (it grades the plain exercises). `time` (pomodoro | kaizen | finnish) only shapes the plan. `hansei: true` adds the 2-minute reflection at the end of each Revisão topic (3 fixed questions + optional `parts.hansei: ["topic-specific question"]`). No flashcards. Legacy names: `blurting` → active_recall.
+
+Exercises inside parts are ordinary EXERCISEs (same gate, ids unique across the whole pack, e.g. `e3-k12`, `e3-w1`, `e3-m2`); they count in the topic progress.
+
+| Method | Page · where | `parts.<method>` | Minimum |
+|---|---|---|---|
+| `active_recall` | Revisão · before the lesson | `{"questions": [{"q", "a"}], "keys": ["key point"]}` — closed-book questions, then "write everything you remember", compared with `keys` | 4 questions, 3 keys |
+| `spaced` | Revisão · after the lesson | `{"quick": [{"q", "a"}]}` — 5-minute review to redo after 1, 3, 7 days | 4 |
+| `learning_by_doing` | Revisão · exercises | no part: every plain exercise gets `"level"` 1–3, shown easiest first | one of each level |
+| `kumon` | Revisão · after the lesson | `[[EXERCISE…], …]` — 3–5 levels of short drills; a level opens at 90 % right on the one before | 3 per level |
+| `worked_examples` | Revisão · after the lesson | `[{"example": EXAMPLE, "twin": EXERCISE}]` — solved example, then the same problem with other numbers | 2 pairs |
+| `shuhari` | Revisão · after the lesson | `{"shu": [EXERCISE + hints], "ha": [EXERCISE], "ri": [EXERCISE type free]}` — copy the model, vary it, open problem | 1 each, Shu ≥ 2 hints |
+| `problem_first` | Revisão · before + after the lesson | `{"starter": EXERCISE + hints, "compare": "how the lesson solves it vs a first try"}` | 2 hints, compare ≥ 20 words |
+| `interleaving` | Revisão · after the lesson | `[EXERCISE + "topic"]` — this topic mixed with earlier ones; the key starts by naming the topic (added by the build) | 4, ≥ 2 topics incl. this one |
+| `feynman` | Revisão · after the lesson | `{"task": "Explica … a alguém de 12 anos", "checklist": ["what a good explanation covers"]}` | task ≥ 8 words, 4 checks |
+| `mindmap` | Resumo (map) + Revisão (complete the map) | `{"center", "branches": [{"label", "leaves": []}], "blanks": [[branch, leaf]]}` | 3 branches × 2 leaves, 3 blanks |
+| `sq3r` | Resumo · before + after the explanation | `{"survey": "overview", "questions": ["guiding question"], "recap": ["answer"]}` | survey ≥ 20 words, 3 + 3 |
+| `cornell` | Resumo · after the explanation | `{"cues": [{"cue", "note"}], "summary": "…"}` — notes can be covered to self-test | 4 rows, summary ≥ 25 words |
+
+Pads (the "write what you remember", Feynman, SQ3R and Hansei boxes) and Feynman ticks are saved in the browser under `<slug>-m-…`. `example-methods/` is a pack with every part on (`python3 example-methods/make.py` rebuilds it).
 
 ## Quality gate (build.py refuses the pack otherwise)
 

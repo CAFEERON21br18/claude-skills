@@ -9,7 +9,7 @@ Linked pages for one course (three always, three optional), always built by the 
 
 1. **Sílabo**: numbered topics, bare essentials.
 2. **Resumo**: the full course, explained so that someone who reads it understands it, ≥ 3 solved examples per topic.
-3. **Revisão**: short but clear lesson + exercises (yours / the user's), each with a complete step-by-step correction; grading, history, notes, tutor (its notes are saved on the exercise or block the chat is about and shown at the top of it).
+3. **Revisão**: short but clear lesson + exercises (yours / the user's), each with a complete step-by-step correction, plus the parts of the student's study methods (Resumo gets the SQ3R, Cornell and mind-map parts); grading, history, notes, tutor (its notes are saved on the exercise or block the chat is about and shown at the top of it).
 4. **Testes** (optional): a daily test at the end of each plan day on that day's topics, tests on a few topics, full mock tests; answer everything, then see the full correction; results feed the Plano.
 5. **Mapa** (optional): an idea map for any kind of course (causes in history, prerequisites in maths/CS, steps in biology/procedures). Every card carries context, explanation, key points, vocabulary and a memory image; three tabs: Mapa · Rotas (guided paths) · Treino (questions).
 6. **Plano** (optional): dated plan to the exam, charts, ticks; it adapts by itself to what the student really did (unfinished sessions move on, load follows their pace, weak topics from the tests get an extra review).
@@ -65,12 +65,12 @@ Tools per page (fixed order, an option that is off is simply absent):
 
 ## Step 2 — The questions (one fixed form)
 
-1. `python3 kit/questions.py --lang <pt|fr|en> [--mine] [--calc] [--lesson-style] [--exam YYYY-MM-DD]`
-   (`--mine` if the user uploaded their own exercises, `--calc` if calculation-heavy, `--lesson-style` if that Notion page exists, `--exam` if a date was found.)
+1. `python3 kit/questions.py --lang <pt|fr|en> [--mine] [--calc] [--lesson-style] [--exam YYYY-MM-DD] [--methods a,b,c]`
+   (`--mine` if the user uploaded their own exercises, `--calc` if calculation-heavy, `--lesson-style` if that Notion page exists, `--exam` if a date was found, `--methods` with the student's methods when known: the Study Pack app's study-profile quiz result, what the user said, or the existing `pack.methods` in update mode; add `hansei` if it is on.)
 2. Call the Visualizer `read_me` (module `elicitation`), then `show_widget` with **exactly** the printed HTML, title `study_pack_details`. Nothing else in the widget, no extra question.
-3. The answer comes back as one line (`Theme: … · Font: … · Features: … · Exercise format: … · Source: … · Per topic: … · Language: … · Graph calc: … · Tutor: … · Plan: … · Deadline: … · Hours: …`). Map it to `pack.json`.
+3. The answer comes back as one line (`Theme: … · Font: … · Features: … · Exercise format: … · Source: … · Per topic: … · Language: … · Graph calc: … · Tutor: … · Plan: … · Deadline: … · Hours: … · Methods: …`). Map it to `pack.json` (Methods → `methods.learning`, Hansei → `methods.hansei: true`; no methods picked → no `methods`).
 4. No Visualizer in this session → send the output of `questions.py … --text` verbatim (it shows each theme with its hex colors) and wait for the numbered answers. No other format, ever.
-5. Skipped or unanswered (unattended run) → defaults: Focus theme, Atkinson Hyperlegible, sidebar + focus + history + progress + countdown, lesson-style if found else multiple choice + free answer, 50/50 if the user has exercises else yours, 5 per topic, conversation language, calculator yes if calculation-heavy, tutor yes, no plan. Say which defaults were used.
+5. Skipped or unanswered (unattended run) → defaults: Focus theme, Atkinson Hyperlegible, sidebar + focus + history + progress + countdown, lesson-style if found else multiple choice + free answer, 50/50 if the user has exercises else yours, 5 per topic, conversation language, calculator yes if calculation-heavy, tutor yes, no plan, methods from `--methods` else active recall + spaced repetition + worked examples. Say which defaults were used.
 
 Then, before building:
 - **Source = mine only** and some topics have none of the user's exercises → say which topics now, and ask once: leave them without exercises (with the notice) or fill those topics only with course / Claude exercises.
@@ -79,7 +79,7 @@ Then, before building:
 
 ## Step 3 — Write the content (JSON only)
 
-Split the topics into groups and write them with **up to 4 subagents in parallel** (e.g. 1–3, 4–6, 7–9, 10–11). Give each: `kit/SCHEMA.md`, its topics' material, the answers from Step 2, and these rules (Explanations, Complete corrections, and the page rules below). Each writes `pack/topics/<n>.json` with a Python script (`json.dump`, never by hand) and checks every computation with sympy. Then read their files and check they follow the rules.
+Split the topics into groups and write them with **up to 4 subagents in parallel** (e.g. 1–3, 4–6, 7–9, 10–11). Give each: `kit/SCHEMA.md`, its topics' material, the answers from Step 2, and these rules (Explanations, Complete corrections, Method parts, and the page rules below). Each writes `pack/topics/<n>.json` with a Python script (`json.dump`, never by hand) and checks every computation with sympy. Then read their files and check they follow the rules (`parts` present for every method, in every topic).
 
 **Explanations — someone who reads must understand.** Short is fine; unclear is not. For every notion (definition, theorem, rule, method):
 - Say what it means in everyday words, then the formal statement, then when and how you use it. The formal part goes in `body`, the plain-words part in `explain` ("Em palavras simples") — required on def / thm / formula (and method in the Resumo).
@@ -96,7 +96,7 @@ Split the topics into groups and write them with **up to 4 subagents in parallel
 - `answer`, and `check` ("Verificação": substitute back, test a value, check units or signs) whenever one exists.
 - MCQ: each `why` is a full sentence; the right one says why it is right, each wrong one names the mistake that leads to it. The full key is shown after answering.
 
-**Comprehension check (always).** When the topic files are written, give each group to a **fresh subagent that has not seen the source** and ask it to read the Resumo and Revisão parts as a student: list every sentence, step or symbol it cannot follow, and every correction step that jumps. Fix all of it, then build.
+**Comprehension check (always).** When the topic files are written, give each group to a **fresh subagent that has not seen the source** and ask it to read the Resumo and Revisão parts (method parts included) as a student: list every sentence, step or symbol it cannot follow, and every correction step that jumps. Fix all of it, then build.
 
 **Mapa** (only if `features.map`; read `kit/MAP-GUIDE.md`): write `pack/map.json` after the topics exist, so every card can point to its topic (`topic`). Choose the engine switches from the course, never from the look:
 - `kind`: `causal` (history, geography, economics, literature), `prereq` (maths, physics, CS, grammar), `process` (biology, chemistry, algorithms, procedures).
@@ -109,6 +109,22 @@ Every node needs `label` (≤ 40 chars), `text` (one line), `ctx` (context), `wh
 **Resumo** (`resumo` + `examples`): every definition, theorem, rule and method of the topic, explained completely (intuition → formal statement → when and how to use it), course notation; `def` / `thm` / `formula` / `method` / `trap` blocks. **≥ 3 solved examples** per topic, simple → exam level, different methods: the user's exercises with resolutions first, then course examples, then new ones. Every step has `do` + `why` (+ `trap` where students slip). Origin label: the real source, or `"new"` → "Novo". Never label an invented example with a course source. When an MCQ is reused as an example, keep only the solution steps: drop sentences about the options ("A troca…", "A opção B…", "C e D…").
 
 **Revisão** (`lesson`, `worked`, `exercises`): short lesson blocks, one `worked` example, then the exercises.
+
+**Method parts** (only when `pack.methods` is set; shapes and minimums in `kit/SCHEMA.md` › Method parts). The pack adapts to how the student learns: every method listed gets its own part in **every topic** (`topics/<n>.json › parts`), and the build refuses a missing one. Write them from the same material, same notation, same correction rules (every exercise inside a part has a complete key). No flashcards, ever.
+- **Active recall**: closed-book questions on the core of the topic (what, why, when), short answers; `keys` = the 3–5 points a good "write everything you remember" page must contain.
+- **Spaced repetition**: 4–6 quick questions answerable in 5 minutes in total, the ones worth seeing again after 1, 3, 7 days.
+- **Learning by doing**: give every plain exercise a `level` (1 direct application · 2 one extra step · 3 exam level), at least one of each; add exercises if needed.
+- **Kumon**: 3–5 levels of very short drills (≥ 3 each), one small step harder per level, the last close to exam level; each drill tests one thing.
+- **Worked examples**: 2–3 solved examples (not the Resumo ones), each followed by its twin: the same problem with other numbers, same method.
+- **Shuhari**: Shu = the model problem again with `hints` that walk its steps; Ha = the same method on a changed case; Ri = an open `free` problem (choose the method, invent a case, explain).
+- **Problem first**: a starter problem solvable by intuition before the lesson, ≥ 2 progressive `hints`, and `compare`: how the lesson's method solves it and why it beats a first try.
+- **Interleaving** (from topic 2): ≥ 4 exercises mixing this topic with earlier ones (`topic` on each), similar-looking on purpose so the student must first recognise the topic; at least one from this topic.
+- **Feynman**: one task "explain … to a 12-year-old" on the hardest idea of the topic, and 4–6 checklist points a good explanation covers (the idea, an example, the why, no jargon).
+- **Mind map**: the topic as a centre + 3–6 branches of 2–4 short leaves (≤ 6 words), and 3+ `blanks` on leaves worth recalling.
+- **SQ3R**: a 2–3 sentence survey of the topic, 3–5 guiding questions the Resumo answers, and the `recap` answers in the same order.
+- **Cornell**: 4–8 rows, cue = a question or keyword, note = its short answer; a 2–3 sentence summary.
+- **Hansei** (`hansei: true`): nothing to write; optionally 1 topic-specific question in `parts.hansei`.
+- Time method (`pomodoro` · `kaizen` · `finnish`): nothing to write in the pages.
 
 Exercise selection:
 - *Mine only, All*: every user exercise under its topic, nothing added; a topic with none gets the notice. *Mine only, N*: the best N per topic — most exam-relevant first, then variety (each method once, easy → exam level, no two testing the same thing the same way); fewer than N → all of them + `shortage` notice.
@@ -138,4 +154,4 @@ The Plano adapts itself in the page (nothing to write, never edit the plan for i
 
 ## Finish
 
-A few lines only: what was built or updated (the cards carry the links), anything missing from the material, exercises from the user / the course / written by Claude, **the list of the user's resolutions flagged as wrong** (exercise + step), what the plan had to cut, how many tests and questions were written, which map facts come from outside the user's material (`extra`), and anything that couldn't be enabled (tutor, account storage). Say once that formulas copy as LaTeX (select + copy, or double-click a formula). No recap of the steps.
+A few lines only: what was built or updated (the cards carry the links), anything missing from the material, exercises from the user / the course / written by Claude, **the list of the user's resolutions flagged as wrong** (exercise + step), what the plan had to cut, how many tests and questions were written, which map facts come from outside the user's material (`extra`), which study methods got their own parts, and anything that couldn't be enabled (tutor, account storage). Say once that formulas copy as LaTeX (select + copy, or double-click a formula). No recap of the steps.

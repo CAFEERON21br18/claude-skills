@@ -420,6 +420,99 @@
    "overall": "{done} de {total} testes feitos · média {avg}",
    "noAvg": "–",
    "last": "Último: {p}% ({d})"
+  },
+  "methods": {
+   "eyebrow": "Método",
+   "showAnswer": "Ver resposta",
+   "yourPage": "A tua folha",
+   "padPh": "Escreve aqui, sem olhar…",
+   "fillAria": "Completa o ramo {b}",
+   "hint": "Pista",
+   "level": "Nível {k}",
+   "sq3r": {
+    "title": "SQ3R · antes de ler",
+    "sub": "Visão geral e perguntas-guia: lê o resumo à procura das respostas.",
+    "s": "Visão geral (Survey)",
+    "q": "Perguntas-guia (Question)",
+    "read": "Agora lê o resumo (Read) e procura as respostas.",
+    "end": "SQ3R · depois de ler",
+    "r1": "Recita (Recite): responde às perguntas-guia sem olhar.",
+    "recitePh": "Responde às perguntas-guia de memória…",
+    "r2": "Revê (Review): compara com os pontos-chave"
+   },
+   "cornell": {
+    "title": "Notas Cornell",
+    "sub": "Tapa as notas e responde a partir das pistas; toca numa nota para a ver.",
+    "cover": "Tapar notas",
+    "uncover": "Mostrar notas",
+    "cues": "Pistas",
+    "notes": "Notas",
+    "summary": "Resumo"
+   },
+   "mindmap": {
+    "title": "Mapa mental",
+    "sub": "O tópico de uma vez: o centro, os ramos e o que pende de cada um.",
+    "fill": "Completa o mapa",
+    "fill_b": "Escreve o que falta em cada ramo, de memória, e depois verifica.",
+    "check": "Verificar"
+   },
+   "pf": {
+    "title": "Começa pelo problema",
+    "sub": "Tenta uns 5 minutos antes de ler a lição. Usa as pistas só se precisares.",
+    "back": "Volta ao problema inicial"
+   },
+   "ar": {
+    "title": "Antes de ler: de memória",
+    "sub": "Responde de cabeça, sem abrir nada, e só depois vê a resposta.",
+    "blurt": "Escreve tudo o que te lembras deste tópico.",
+    "blurtPh": "Tudo o que te lembras, por qualquer ordem…",
+    "compare": "Comparar com os pontos-chave"
+   },
+   "we": {
+    "title": "Exemplos resolvidos e gémeos",
+    "sub": "Estuda o exemplo passo a passo e resolve logo o gémeo, com outros números.",
+    "now": "Agora tu: o mesmo problema, com outros números."
+   },
+   "sh": {
+    "title": "Shuhari: imitar, variar, criar",
+    "sub": "Três etapas: segue o modelo, adapta-o, resolve sem modelo.",
+    "shu": "Shu · seguir o modelo",
+    "shu_b": "Faz exatamente como no exemplo, com as pistas passo a passo.",
+    "ha": "Ha · variar",
+    "ha_b": "O mesmo método num caso diferente.",
+    "ri": "Ri · criar",
+    "ri_b": "Um problema aberto: escolhe tu o caminho."
+   },
+   "ku": {
+    "title": "Kumon: níveis pequenos",
+    "sub": "Exercícios curtos, do mais fácil ao mais difícil. Cada nível abre com 90 % certo no anterior.",
+    "level": "Nível {k}",
+    "locked": "Fechado: acerta 90 % do nível anterior para abrir."
+   },
+   "il": {
+    "title": "Série mista",
+    "sub": "Exercícios de vários tópicos misturados. Primeiro descobre de que tópico é cada um.",
+    "topic": "Tópico"
+   },
+   "fy": {
+    "title": "Técnica de Feynman",
+    "sub": "Explica por palavras simples, como a alguém de 12 anos. Onde encravares, volta à lição.",
+    "ph": "A tua explicação, sem termos difíceis…",
+    "check": "A tua explicação tem:"
+   },
+   "sp": {
+    "title": "Revisão rápida · 5 min",
+    "sub": "Para fazer de novo daqui a 1, 3 e 7 dias. O plano trá-la de volta."
+   },
+   "hs": {
+    "title": "Hansei · 2 minutos",
+    "sub": "Uma reflexão curta, sem culpa: o que correu bem e o que mudar.",
+    "q": [
+     "O que correu bem neste tópico?",
+     "Onde encravei e porquê?",
+     "O que faço diferente na próxima sessão?"
+    ]
+   }
   }
  },
  "fr": {
@@ -843,6 +936,100 @@
    "overall": "{done} sur {total} tests faits · moyenne {avg}",
    "noAvg": "–",
    "last": "Dernier : {p} % ({d})"
+  },
+  "methods": {
+   "eyebrow": "Méthode",
+   "showAnswer": "Voir la réponse",
+   "yourPage": "Ta feuille",
+   "padPh": "Écris ici, sans regarder…",
+   "fillAria": "Complète la branche {b}",
+   "hint": "Indice",
+   "level": "Niveau {k}",
+   "sq3r": {
+    "title": "SQ3R · avant de lire",
+    "sub": "Vue d'ensemble et questions-guides : lis le résumé en cherchant les réponses.",
+    "s": "Vue d'ensemble (Survey)",
+    "q": "Questions-guides (Question)",
+    "read": "Lis maintenant le résumé (Read) et cherche les réponses.",
+    "end": "SQ3R · après la lecture",
+    "r1": "Récite (Recite) : réponds aux questions-guides sans regarder.",
+    "recitePh": "Réponds aux questions-guides de mémoire…",
+    "r2": "Révise (Review) : compare avec les points clés"
+   },
+   "cornell": {
+    "title": "Notes Cornell",
+    "sub": "Cache les notes et réponds à partir des indices ; touche une note pour la voir.",
+    "cover": "Cacher les notes",
+    "uncover": "Montrer les notes",
+    "cues": "Indices",
+    "notes": "Notes",
+    "summary": "Résumé"
+   },
+   "mindmap": {
+    "title": "Carte mentale",
+    "sub": "Le thème d'un coup d'œil : le centre, les branches et ce qui en dépend.",
+    "fill": "Complète la carte",
+    "fill_b": "Écris ce qui manque dans chaque branche, de mémoire, puis vérifie.",
+    "check": "Vérifier"
+   },
+   "pf": {
+    "title": "Commence par le problème",
+    "sub": "Essaie environ 5 minutes avant de lire la leçon. Les indices seulement si besoin.",
+    "back": "Retour au problème de départ"
+   },
+   "ar": {
+    "title": "Avant de lire : de mémoire",
+    "sub": "Réponds de tête, sans rien ouvrir, puis regarde la réponse.",
+    "blurt": "Écris tout ce dont tu te souviens sur ce thème.",
+    "blurtPh": "Tout ce dont tu te souviens, dans n'importe quel ordre…",
+    "compare": "Comparer avec les points clés"
+   },
+   "we": {
+    "title": "Exemples résolus et jumeaux",
+    "sub": "Étudie l'exemple pas à pas, puis résous tout de suite le jumeau, avec d'autres nombres.",
+    "now": "À toi : le même problème, avec d'autres nombres."
+   },
+   "sh": {
+    "title": "Shuhari : imiter, varier, créer",
+    "sub": "Trois étapes : suivre le modèle, l'adapter, résoudre sans modèle.",
+    "shu": "Shu · suivre le modèle",
+    "shu_b": "Fais exactement comme dans l'exemple, avec les indices pas à pas.",
+    "ha": "Ha · varier",
+    "ha_b": "La même méthode dans un autre cas.",
+    "ri": "Ri · créer",
+    "ri_b": "Un problème ouvert : choisis toi-même le chemin."
+   },
+   "ku": {
+    "title": "Kumon : petits niveaux",
+    "sub": "Exercices courts, du plus facile au plus difficile. Chaque niveau s'ouvre avec 90 % de réussite au précédent.",
+    "level": "Niveau {k}",
+    "locked": "Fermé : réussis 90 % du niveau précédent pour l'ouvrir."
+   },
+   "il": {
+    "title": "Série mélangée",
+    "sub": "Des exercices de plusieurs thèmes mélangés. Trouve d'abord le thème de chacun.",
+    "topic": "Thème"
+   },
+   "fy": {
+    "title": "Technique de Feynman",
+    "sub": "Explique avec des mots simples, comme à un enfant de 12 ans. Là où tu bloques, retourne à la leçon.",
+    "ph": "Ton explication, sans mots difficiles…",
+    "check": "Ton explication contient :"
+   },
+   "sp": {
+    "title": "Révision rapide · 5 min",
+    "sub": "À refaire dans 1, 3 et 7 jours. Le plan la ramène.",
+    "topic": "Thème"
+   },
+   "hs": {
+    "title": "Hansei · 2 minutes",
+    "sub": "Une réflexion courte, sans culpabilité : ce qui a marché et ce qu'il faut changer.",
+    "q": [
+     "Qu'est-ce qui a bien marché sur ce thème ?",
+     "Où ai-je bloqué, et pourquoi ?",
+     "Que vais-je faire autrement à la prochaine séance ?"
+    ]
+   }
   }
  },
  "en": {
@@ -1266,6 +1453,99 @@
    "overall": "{done} of {total} tests done · average {avg}",
    "noAvg": "–",
    "last": "Last: {p}% ({d})"
+  },
+  "methods": {
+   "eyebrow": "Method",
+   "showAnswer": "Show answer",
+   "yourPage": "Your page",
+   "padPh": "Write here, without looking…",
+   "fillAria": "Complete the {b} branch",
+   "hint": "Hint",
+   "level": "Level {k}",
+   "sq3r": {
+    "title": "SQ3R · before reading",
+    "sub": "Overview and guiding questions: read the summary looking for the answers.",
+    "s": "Survey",
+    "q": "Question",
+    "read": "Now read the summary (Read) and look for the answers.",
+    "end": "SQ3R · after reading",
+    "r1": "Recite: answer the guiding questions without looking.",
+    "recitePh": "Answer the guiding questions from memory…",
+    "r2": "Review: compare with the key points"
+   },
+   "cornell": {
+    "title": "Cornell notes",
+    "sub": "Cover the notes and answer from the cues; tap a note to see it.",
+    "cover": "Cover notes",
+    "uncover": "Show notes",
+    "cues": "Cues",
+    "notes": "Notes",
+    "summary": "Summary"
+   },
+   "mindmap": {
+    "title": "Mind map",
+    "sub": "The whole topic at a glance: the centre, the branches and what hangs off each.",
+    "fill": "Complete the map",
+    "fill_b": "Write what is missing in each branch from memory, then check.",
+    "check": "Check"
+   },
+   "pf": {
+    "title": "Start with the problem",
+    "sub": "Try for about 5 minutes before reading the lesson. Use the hints only if you need them.",
+    "back": "Back to the starter problem"
+   },
+   "ar": {
+    "title": "Before reading: from memory",
+    "sub": "Answer from your head, with nothing open, then look at the answer.",
+    "blurt": "Write everything you remember about this topic.",
+    "blurtPh": "Everything you remember, in any order…",
+    "compare": "Compare with the key points"
+   },
+   "we": {
+    "title": "Worked examples and twins",
+    "sub": "Study the example step by step, then solve its twin straight away, with other numbers.",
+    "now": "Your turn: the same problem with other numbers."
+   },
+   "sh": {
+    "title": "Shuhari: copy, vary, create",
+    "sub": "Three stages: follow the model, adapt it, solve without a model.",
+    "shu": "Shu · follow the model",
+    "shu_b": "Do it exactly as in the example, with step-by-step hints.",
+    "ha": "Ha · vary",
+    "ha_b": "The same method on a different case.",
+    "ri": "Ri · create",
+    "ri_b": "An open problem: choose your own way."
+   },
+   "ku": {
+    "title": "Kumon: small levels",
+    "sub": "Short exercises from easiest to hardest. Each level opens at 90 % right on the one before.",
+    "level": "Level {k}",
+    "locked": "Locked: get 90 % of the previous level right to open it."
+   },
+   "il": {
+    "title": "Mixed set",
+    "sub": "Exercises from several topics, mixed. First work out which topic each one is from.",
+    "topic": "Topic"
+   },
+   "fy": {
+    "title": "Feynman technique",
+    "sub": "Explain it in simple words, as to a 12-year-old. Where you get stuck, go back to the lesson.",
+    "ph": "Your explanation, no hard words…",
+    "check": "Your explanation has:"
+   },
+   "sp": {
+    "title": "Quick review · 5 min",
+    "sub": "Do it again in 1, 3 and 7 days. The plan brings it back."
+   },
+   "hs": {
+    "title": "Hansei · 2 minutes",
+    "sub": "A short reflection, no blame: what went well and what to change.",
+    "q": [
+     "What went well on this topic?",
+     "Where did I get stuck, and why?",
+     "What will I do differently next session?"
+    ]
+   }
   }
  }
 }

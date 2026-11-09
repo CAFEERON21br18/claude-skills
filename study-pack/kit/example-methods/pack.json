@@ -1,0 +1,93 @@
+{
+ "slug": "cdim",
+ "course": "Cálculo Diferencial (exemplo com métodos)",
+ "short": "CDI-I",
+ "school": "IST",
+ "lang": "pt",
+ "exam": {
+  "label": "1.º Teste",
+  "date": "2026-11-12",
+  "time": "18:00"
+ },
+ "theme": "focus",
+ "font": "Atkinson Hyperlegible",
+ "features": {
+  "sidebar": true,
+  "focus": true,
+  "history": true,
+  "progress": true,
+  "countdown": true,
+  "recall": true,
+  "review_only": true,
+  "calc": true,
+  "tutor": true,
+  "plan": false,
+  "map": true,
+  "tests": false
+ },
+ "exercise": {
+  "types": [
+   "mcq",
+   "free"
+  ],
+  "style": "lesson-style",
+  "source": "mix",
+  "count": 3
+ },
+ "urls": {
+  "silabo": "",
+  "resumo": "",
+  "revisao": "",
+  "plano": "",
+  "mapa": "",
+  "testes": ""
+ },
+ "topics": [
+  {
+   "n": 1,
+   "name": "Reais, módulos e indução",
+   "meta": "Aula 1"
+  },
+  {
+   "n": 2,
+   "name": "Matrizes e sistemas",
+   "meta": "Aula 2"
+  }
+ ],
+ "plan": {
+  "start": "2026-11-02",
+  "hours": "auto",
+  "busy": {
+   "2026-11-07": {
+    "hours": 1,
+    "note": "Exame de IEI às 10:30"
+   }
+  },
+  "weights": {
+   "1": 1,
+   "2": 1.3
+  },
+  "hours_note": "2h nos dias úteis, 3h ao fim-de-semana, 1h nos dias com outros exames."
+ },
+ "sources": [
+  "Exemplo do kit"
+ ],
+ "methods": {
+  "time": "pomodoro",
+  "hansei": true,
+  "learning": [
+   "active_recall",
+   "spaced",
+   "learning_by_doing",
+   "kumon",
+   "worked_examples",
+   "shuhari",
+   "problem_first",
+   "interleaving",
+   "feynman",
+   "mindmap",
+   "sq3r",
+   "cornell"
+  ]
+ }
+}

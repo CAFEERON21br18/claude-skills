@@ -1,0 +1,765 @@
+{
+ "n": 2,
+ "syllabus": [
+  "Operações com matrizes; produto não comutativo",
+  "Método de Gauss: escada de linhas, pivôs, $\\operatorname{car}(A)$"
+ ],
+ "resumo": [
+  {
+   "kind": "p",
+   "body": "Uma matriz é uma tabela de números; serve para escrever sistemas de equações de forma compacta e para os resolver sempre pelo mesmo método. O **método de Gauss** transforma a matriz do sistema numa matriz em escada usando só operações que não mudam as soluções: trocar linhas, multiplicar uma linha por um número não nulo e somar a uma linha um múltiplo de outra. No fim, a matriz em escada mostra logo se o sistema tem uma, nenhuma ou infinitas soluções."
+  },
+  {
+   "kind": "def",
+   "title": "Matriz em escada",
+   "body": "Nenhuma linha nula acima de uma não nula; cada pivô fica à direita do pivô da linha de cima. Ex.: $\\begin{bmatrix}1&2&3\\\\0&1&4\\\\0&0&1\\end{bmatrix}$",
+   "explain": "O **pivô** é o primeiro número não nulo de cada linha. Em escada, os pivôs descem como degraus para a direita; é essa forma que permite resolver o sistema de baixo para cima, uma incógnita de cada vez."
+  },
+  {
+   "kind": "thm",
+   "title": "Inversa 2×2",
+   "body": "$$\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}^{-1}=\\frac1{ad-bc}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}$$ se $ad-bc\\ne0$. Usa o módulo de [[1]].",
+   "explain": "Troca-se a posição de $a$ e $d$, muda-se o sinal de $b$ e $c$ e divide-se tudo pelo determinante $ad-bc$. Se o determinante é zero, a matriz não tem inversa: o sistema correspondente não tem solução única."
+  }
+ ],
+ "examples": [
+  {
+   "title": "Inversa",
+   "origin": "Ficha 2, ex. 1",
+   "statement": "Calcule a inversa de $A=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}$.",
+   "method": "Matriz $2\\times2$: usa-se a fórmula da inversa, depois de confirmar que o determinante não é zero.",
+   "steps": [
+    {
+     "do": "$\\det A=2\\cdot1-1\\cdot1=1\\neq0$",
+     "why": "A inversa só existe se o determinante for diferente de zero."
+    },
+    {
+     "do": "$A^{-1}=\\frac11\\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}$",
+     "why": "Fórmula: trocar a e d, mudar o sinal de b e c, dividir pelo determinante."
+    }
+   ],
+   "answer": "$A^{-1}=\\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}$",
+   "check": "$AA^{-1}=I$."
+  },
+  {
+   "title": "Sistema",
+   "origin": "Ficha 2, ex. 4",
+   "statement": "Resolva $\\begin{cases}x+y=3\\\\x-y=1\\end{cases}$",
+   "method": "Duas equações com coeficientes simétricos em $y$: somá-las elimina $y$ de imediato.",
+   "steps": [
+    {
+     "do": "Somar as equações: $2x=4$, logo $x=2$.",
+     "why": "Eliminação: $y$ e $-y$ anulam-se."
+    },
+    {
+     "do": "Substituir na 1.ª: $2+y=3$, logo $y=1$.",
+     "why": "Com $x$ conhecido, uma equação basta para $y$."
+    }
+   ],
+   "answer": "$(x,y)=(2,1)$"
+  },
+  {
+   "title": "Característica",
+   "origin": "new",
+   "statement": "Calcule $\\operatorname{car}\\begin{bmatrix}1&2\\\\2&4\\end{bmatrix}$.",
+   "method": "A característica é o número de pivôs depois de pôr a matriz em escada pelo método de Gauss.",
+   "steps": [
+    {
+     "do": "$L_2\\leftarrow L_2-2L_1$ dá $\\begin{bmatrix}1&2\\\\0&0\\end{bmatrix}$",
+     "why": "Gauss: anular o elemento abaixo do primeiro pivô."
+    },
+    {
+     "do": "Há um só pivô.",
+     "why": "Contam-se as linhas não nulas da matriz em escada."
+    }
+   ],
+   "answer": "$1$"
+  }
+ ],
+ "lesson": [
+  {
+   "kind": "p",
+   "body": "Para resolver um sistema pelo método de Gauss, escreve-se a matriz aumentada e põe-se em **escada** com operações de linha que não mudam as soluções. Depois lê-se a escada de baixo para cima: cada pivô dá uma incógnita, e uma linha do tipo $0\\cdots0\\,|\\,c$ com $c\\ne0$ quer dizer que o sistema é impossível."
+  },
+  {
+   "kind": "def",
+   "title": "Escada",
+   "body": "Pivôs em escada; linhas nulas no fim.",
+   "explain": "Cada pivô fica mais à direita do que o de cima, como degraus; as linhas só de zeros ficam todas em baixo."
+  }
+ ],
+ "exercises": [
+  {
+   "id": "e2-1",
+   "type": "mcq",
+   "origin": "Ficha 2, ex. 2",
+   "gate": true,
+   "q": "Qual é a inversa de $\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$?",
+   "options": [
+    "$\\begin{pmatrix}-2&1\\\\\\tfrac32&-\\tfrac12\\end{pmatrix}$",
+    "$\\begin{pmatrix}4&-2\\\\-3&1\\end{pmatrix}$",
+    "$\\begin{pmatrix}-4&2\\\\3&-1\\end{pmatrix}$",
+    "$\\begin{pmatrix}2&-1\\\\-\\tfrac32&\\tfrac12\\end{pmatrix}$"
+   ],
+   "why": [
+    "Certo: o determinante é $-2$ e divide-se a adjunta por $-2$.",
+    "Esqueceu-se de dividir pelo determinante $-2$.",
+    "Dividiu por $-1$ em vez de $-2$.",
+    "Usou $+2$ como determinante: trocou o sinal."
+   ],
+   "correct": 0,
+   "key": {
+    "method": "Matriz $2\\times2$: calcula-se o determinante e aplica-se a fórmula da inversa (trocar, mudar sinais, dividir).",
+    "steps": [
+     {
+      "do": "$\\det=1\\cdot4-2\\cdot3=-2$",
+      "why": "Determinante $ad-bc$.",
+      "trap": "Calcular $ad+bc$."
+     },
+     {
+      "do": "$\\frac1{-2}\\begin{pmatrix}4&-2\\\\-3&1\\end{pmatrix}=\\begin{pmatrix}-2&1\\\\\\tfrac32&-\\tfrac12\\end{pmatrix}$",
+      "why": "Fórmula da inversa $2\\times2$ e divisão de cada entrada por $-2$."
+     }
+    ],
+    "answer": "$\\begin{pmatrix}-2&1\\\\\\tfrac32&-\\tfrac12\\end{pmatrix}$"
+   },
+   "level": 1
+  },
+  {
+   "id": "e2-g2",
+   "type": "free",
+   "origin": "new",
+   "q": "Resolve $x+y=6,\\ x-y=2$.",
+   "key": {
+    "method": "Sistema linear: escreve-se a matriz aumentada e aplica-se Gauss até à escada, lendo depois as soluções.",
+    "steps": [
+     {
+      "do": "$-2y=-4$",
+      "why": "Subtrair a primeira linha."
+     },
+     {
+      "do": "$y=2,\\ x=4$",
+      "why": "Substituição para trás."
+     }
+    ],
+    "answer": "$(4,2)$"
+   },
+   "level": 2
+  },
+  {
+   "id": "e2-g3",
+   "type": "free",
+   "origin": "new",
+   "q": "Resolve $x+y+z=3,\\ y+z=2,\\ z=1$.",
+   "key": {
+    "method": "Sistema linear: escreve-se a matriz aumentada e aplica-se Gauss até à escada, lendo depois as soluções.",
+    "steps": [
+     {
+      "do": "$z=1$, $y=1$",
+      "why": "Ler a escada de baixo para cima."
+     },
+     {
+      "do": "$x=1$",
+      "why": "Substituir na primeira equação."
+     }
+    ],
+    "answer": "$(1,1,1)$"
+   },
+   "level": 3
+  }
+ ],
+ "shortage": null,
+ "parts": {
+  "active_recall": {
+   "questions": [
+    {
+     "q": "Quando se pode multiplicar $A$ por $B$?",
+     "a": "Quando o número de colunas de $A$ é igual ao de linhas de $B$."
+    },
+    {
+     "q": "$AB=BA$ sempre?",
+     "a": "Não: o produto de matrizes não é comutativo."
+    },
+    {
+     "q": "O que é um pivô?",
+     "a": "A primeira entrada não nula de uma linha em escada."
+    },
+    {
+     "q": "O que é a característica?",
+     "a": "O número de pivôs da matriz em escada."
+    }
+   ],
+   "keys": [
+    "Linha × coluna",
+    "Não comutativo",
+    "Gauss até à escada; car = número de pivôs"
+   ]
+  },
+  "spaced": {
+   "quick": [
+    {
+     "q": "Ordem de $AB$ com $A$ $2\\times3$ e $B$ $3\\times1$",
+     "a": "$2\\times1$"
+    },
+    {
+     "q": "$\\det\\begin{pmatrix}1&2\\\\3&4\\end{pmatrix}$",
+     "a": "$-2$"
+    },
+    {
+     "q": "Operações de Gauss permitidas",
+     "a": "Trocar linhas, multiplicar por $k\\neq0$, somar múltiplos de outra linha."
+    },
+    {
+     "q": "Sistema possível e indeterminado quando…",
+     "a": "car(A) = car(A|b) < número de incógnitas."
+    }
+   ]
+  },
+  "kumon": [
+   [
+    {
+     "id": "e2-k11",
+     "type": "tf",
+     "origin": "new",
+     "q": "$A_{2\\times3}B_{3\\times2}$ existe",
+     "correct": 0,
+     "why": [
+      "Verdadeiro: conta as colunas da primeira e as linhas da segunda.",
+      "Falso: as dimensões do meio não coincidem."
+     ],
+     "key": {
+      "method": "Produto de matrizes: cada entrada é linha da primeira vezes coluna da segunda, somando os produtos.",
+      "steps": [
+       {
+        "do": "Existe, $2\\times2$",
+        "why": "Regra das dimensões do produto."
+       }
+      ],
+      "answer": "Existe, $2\\times2$"
+     }
+    },
+    {
+     "id": "e2-k12",
+     "type": "tf",
+     "origin": "new",
+     "q": "$A_{2\\times2}B_{3\\times1}$ existe",
+     "correct": 1,
+     "why": [
+      "Verdadeiro: conta as colunas da primeira e as linhas da segunda.",
+      "Falso: as dimensões do meio não coincidem."
+     ],
+     "key": {
+      "method": "Produto de matrizes: cada entrada é linha da primeira vezes coluna da segunda, somando os produtos.",
+      "steps": [
+       {
+        "do": "Não existe",
+        "why": "Regra das dimensões do produto."
+       }
+      ],
+      "answer": "Não existe"
+     }
+    },
+    {
+     "id": "e2-k13",
+     "type": "tf",
+     "origin": "new",
+     "q": "$A_{1\\times3}B_{3\\times1}$ é $1\\times1$",
+     "correct": 0,
+     "why": [
+      "Verdadeiro: conta as colunas da primeira e as linhas da segunda.",
+      "Falso: as dimensões do meio não coincidem."
+     ],
+     "key": {
+      "method": "Produto de matrizes: cada entrada é linha da primeira vezes coluna da segunda, somando os produtos.",
+      "steps": [
+       {
+        "do": "$1\\times1$",
+        "why": "Regra das dimensões do produto."
+       }
+      ],
+      "answer": "$1\\times1$"
+     }
+    }
+   ],
+   [
+    {
+     "id": "e2-k21",
+     "type": "free",
+     "origin": "new",
+     "q": "Calcula $\\begin{pmatrix}1&2\\end{pmatrix}\\begin{pmatrix}3\\\\4\\end{pmatrix}$.",
+     "key": {
+      "method": "Produto de matrizes: cada entrada é linha da primeira vezes coluna da segunda, somando os produtos.",
+      "steps": [
+       {
+        "do": "$1\\cdot3+2\\cdot4$",
+        "why": "Linha vezes coluna."
+       },
+       {
+        "do": "$3+8$",
+        "why": "Somar os produtos."
+       }
+      ],
+      "answer": "$11$"
+     }
+    },
+    {
+     "id": "e2-k22",
+     "type": "free",
+     "origin": "new",
+     "q": "Calcula $\\begin{pmatrix}2&0\\end{pmatrix}\\begin{pmatrix}5\\\\1\\end{pmatrix}$.",
+     "key": {
+      "method": "Produto de matrizes: cada entrada é linha da primeira vezes coluna da segunda, somando os produtos.",
+      "steps": [
+       {
+        "do": "$2\\cdot5+0\\cdot1$",
+        "why": "Linha vezes coluna."
+       },
+       {
+        "do": "$10+0$",
+        "why": "Somar os produtos."
+       }
+      ],
+      "answer": "$10$"
+     }
+    },
+    {
+     "id": "e2-k23",
+     "type": "free",
+     "origin": "new",
+     "q": "Calcula $\\begin{pmatrix}1&1\\end{pmatrix}\\begin{pmatrix}1\\\\-1\\end{pmatrix}$.",
+     "key": {
+      "method": "Produto de matrizes: cada entrada é linha da primeira vezes coluna da segunda, somando os produtos.",
+      "steps": [
+       {
+        "do": "$1-1$",
+        "why": "Linha vezes coluna."
+       },
+       {
+        "do": "$0$",
+        "why": "Somar os produtos."
+       }
+      ],
+      "answer": "$0$"
+     }
+    }
+   ],
+   [
+    {
+     "id": "e2-k31",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $x+y=3,\\ x-y=1$.",
+     "key": {
+      "method": "Sistema linear: escreve-se a matriz aumentada e aplica-se Gauss até à escada, lendo depois as soluções.",
+      "steps": [
+       {
+        "do": "$2y=2$",
+        "why": "Eliminar $x$ da segunda equação."
+       },
+       {
+        "do": "$y=1,\\ x=2$",
+        "why": "Substituir para trás."
+       }
+      ],
+      "answer": "$(2,1)$"
+     }
+    },
+    {
+     "id": "e2-k32",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $x+y=2,\\ x+2y=3$.",
+     "key": {
+      "method": "Sistema linear: escreve-se a matriz aumentada e aplica-se Gauss até à escada, lendo depois as soluções.",
+      "steps": [
+       {
+        "do": "$y=1$",
+        "why": "Eliminar $x$ da segunda equação."
+       },
+       {
+        "do": "$x=1$",
+        "why": "Substituir para trás."
+       }
+      ],
+      "answer": "$(1,1)$"
+     }
+    },
+    {
+     "id": "e2-k33",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $x+2y=4,\\ 2x+y=5$.",
+     "key": {
+      "method": "Sistema linear: escreve-se a matriz aumentada e aplica-se Gauss até à escada, lendo depois as soluções.",
+      "steps": [
+       {
+        "do": "$-3y=-3$",
+        "why": "Eliminar $x$ da segunda equação."
+       },
+       {
+        "do": "$y=1,\\ x=2$",
+        "why": "Substituir para trás."
+       }
+      ],
+      "answer": "$(2,1)$"
+     }
+    }
+   ]
+  ],
+  "worked_examples": [
+   {
+    "example": {
+     "title": "Sistema 2×2 por Gauss",
+     "origin": "new",
+     "statement": "Resolve $x+y=5,\\ x-y=1$.",
+     "method": "Sistema linear: escreve-se a matriz aumentada e aplica-se Gauss até à escada, lendo depois as soluções.",
+     "steps": [
+      {
+       "do": "$L_2\\leftarrow L_2-L_1$: $-2y=-4$.",
+       "why": "Eliminar $x$ com uma operação de Gauss."
+      },
+      {
+       "do": "$y=2,\\ x=3$.",
+       "why": "Substituir para trás na primeira linha."
+      }
+     ],
+     "answer": "$(3,2)$"
+    },
+    "twin": {
+     "id": "e2-w1",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $x+y=7,\\ x-y=3$.",
+     "key": {
+      "method": "Sistema linear: escreve-se a matriz aumentada e aplica-se Gauss até à escada, lendo depois as soluções.",
+      "steps": [
+       {
+        "do": "$-2y=-4$",
+        "why": "Subtrair a primeira linha à segunda."
+       },
+       {
+        "do": "$y=2,\\ x=5$",
+        "why": "Substituição para trás."
+       }
+      ],
+      "answer": "$(5,2)$"
+     }
+    }
+   },
+   {
+    "example": {
+     "title": "Produto 2×2",
+     "origin": "new",
+     "statement": "Calcula $\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}\\begin{pmatrix}3\\\\1\\end{pmatrix}$.",
+     "method": "Produto de matrizes: cada entrada é linha da primeira vezes coluna da segunda, somando os produtos.",
+     "steps": [
+      {
+       "do": "$1\\cdot3+0\\cdot1=3$",
+       "why": "Primeira linha vezes a coluna."
+      },
+      {
+       "do": "$2\\cdot3+1\\cdot1=7$",
+       "why": "Segunda linha vezes a coluna."
+      }
+     ],
+     "answer": "$\\begin{pmatrix}3\\\\7\\end{pmatrix}$"
+    },
+    "twin": {
+     "id": "e2-w2",
+     "type": "free",
+     "origin": "new",
+     "q": "Calcula $\\begin{pmatrix}2&1\\\\0&1\\end{pmatrix}\\begin{pmatrix}1\\\\4\\end{pmatrix}$.",
+     "key": {
+      "method": "Produto de matrizes: cada entrada é linha da primeira vezes coluna da segunda, somando os produtos.",
+      "steps": [
+       {
+        "do": "$2\\cdot1+1\\cdot4=6$",
+        "why": "Primeira linha vezes a coluna."
+       },
+       {
+        "do": "$0\\cdot1+1\\cdot4=4$",
+        "why": "Segunda linha vezes a coluna."
+       }
+      ],
+      "answer": "$\\begin{pmatrix}6\\\\4\\end{pmatrix}$"
+     }
+    }
+   }
+  ],
+  "shuhari": {
+   "shu": [
+    {
+     "id": "e2-s1",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $x+y=4,\\ x-y=2$ como no exemplo.",
+     "key": {
+      "method": "Sistema linear: escreve-se a matriz aumentada e aplica-se Gauss até à escada, lendo depois as soluções.",
+      "steps": [
+       {
+        "do": "$-2y=-2$",
+        "why": "Subtrair a primeira linha."
+       },
+       {
+        "do": "$y=1,\\ x=3$",
+        "why": "Substituição para trás."
+       }
+      ],
+      "answer": "$(3,1)$"
+     },
+     "hints": [
+      "Faz $L_2\\leftarrow L_2-L_1$.",
+      "Com $y$, volta à primeira equação."
+     ]
+    }
+   ],
+   "ha": [
+    {
+     "id": "e2-s2",
+     "type": "free",
+     "origin": "new",
+     "q": "Resolve $2x+y=5,\\ x+y=3$.",
+     "key": {
+      "method": "Sistema linear: escreve-se a matriz aumentada e aplica-se Gauss até à escada, lendo depois as soluções.",
+      "steps": [
+       {
+        "do": "$L_2\\leftarrow 2L_2-L_1$: $y=1$.",
+        "why": "Eliminar $x$ com um múltiplo."
+       },
+       {
+        "do": "$x=2$",
+        "why": "Substituição para trás."
+       }
+      ],
+      "answer": "$(2,1)$"
+     }
+    }
+   ],
+   "ri": [
+    {
+     "id": "e2-s3",
+     "type": "free",
+     "origin": "new",
+     "q": "Inventa um sistema 2×2 sem solução e mostra porquê com Gauss.",
+     "key": {
+      "method": "Um sistema é impossível quando a escada dá uma linha $0=c$ com $c\\neq0$: escolhem-se duas retas paralelas.",
+      "steps": [
+       {
+        "do": "$x+y=1,\\ x+y=2$",
+        "why": "Retas paralelas, mesmo lado esquerdo."
+       },
+       {
+        "do": "$L_2-L_1$: $0=1$.",
+        "why": "A linha impossível prova que não há solução."
+       }
+      ],
+      "answer": "Por exemplo $x+y=1,\\ x+y=2$."
+     }
+    }
+   ]
+  },
+  "problem_first": {
+   "starter": {
+    "id": "e2-p1",
+    "type": "free",
+    "origin": "new",
+    "q": "Dois números somam 10 e a diferença é 4. Quais são?",
+    "key": {
+     "method": "Duas incógnitas com duas condições lineares: escreve-se um sistema e elimina-se uma incógnita.",
+     "steps": [
+      {
+       "do": "$x+y=10,\\ x-y=4$",
+       "why": "Traduzir as duas frases."
+      },
+      {
+       "do": "$2x=14$, $x=7$, $y=3$",
+       "why": "Somar as equações elimina $y$."
+      }
+     ],
+     "answer": "$7$ e $3$"
+    },
+    "hints": [
+     "Chama $x$ e $y$ aos números e escreve duas equações.",
+     "Somar as duas equações faz desaparecer uma incógnita."
+    ]
+   },
+   "compare": "Somar as equações é exatamente uma operação de Gauss. A lição faz o mesmo de forma sistemática, com a matriz aumentada, e funciona igual com três ou mais incógnitas, onde as tentativas deixam de chegar."
+  },
+  "interleaving": [
+   {
+    "id": "e2-m1",
+    "type": "tf",
+    "origin": "new",
+    "q": "$|x-1|<2\\Leftrightarrow -1<x<3$",
+    "correct": 0,
+    "why": [
+     "Verdadeiro: é o intervalo de centro 1 e raio 2.",
+     "Falso: seria assim só com «maior»."
+    ],
+    "key": {
+     "method": "Desdobra-se o módulo em dois ramos com a regra $|u|<a\\Leftrightarrow -a<u<a$ e resolve-se cada desigualdade.",
+     "steps": [
+      {
+       "do": "$-2<x-1<2$",
+       "why": "Regra do módulo com «menor»."
+      }
+     ],
+     "answer": "$]-1,3[$"
+    },
+    "topic": 1
+   },
+   {
+    "id": "e2-m2",
+    "type": "tf",
+    "origin": "new",
+    "q": "$AB=BA$ para quaisquer matrizes quadradas",
+    "correct": 1,
+    "why": [
+     "Verdadeiro só em casos especiais, não em geral.",
+     "Falso: o produto de matrizes não é comutativo."
+    ],
+    "key": {
+     "method": "Produto de matrizes: cada entrada é linha da primeira vezes coluna da segunda, somando os produtos.",
+     "steps": [
+      {
+       "do": "Contraexemplo com matrizes $2\\times2$.",
+       "why": "Basta um caso em que falhe."
+      }
+     ],
+     "answer": "Falso"
+    },
+    "topic": 2
+   },
+   {
+    "id": "e2-m3",
+    "type": "tf",
+    "origin": "new",
+    "q": "Na indução, a hereditariedade usa a hipótese $P(n)$",
+    "correct": 0,
+    "why": [
+     "Verdadeiro: parte-se de $P(n)$ para chegar a $P(n+1)$.",
+     "Falso: sem hipótese não há passo de indução."
+    ],
+    "key": {
+     "method": "Prova por indução: verifica-se a base e depois mostra-se que $P(n)$ implica $P(n+1)$, usando a hipótese.",
+     "steps": [
+      {
+       "do": "$P(n)\\Rightarrow P(n+1)$",
+       "why": "Definição do passo de indução."
+      }
+     ],
+     "answer": "Verdadeiro"
+    },
+    "topic": 1
+   },
+   {
+    "id": "e2-m4",
+    "type": "tf",
+    "origin": "new",
+    "q": "Um sistema com uma linha $0=3$ na escada é impossível",
+    "correct": 0,
+    "why": [
+     "Verdadeiro: nenhuma escolha das incógnitas dá $0=3$.",
+     "Falso: a linha diz que não há solução."
+    ],
+    "key": {
+     "method": "Sistema linear: escreve-se a matriz aumentada e aplica-se Gauss até à escada, lendo depois as soluções.",
+     "steps": [
+      {
+       "do": "A linha $0=3$ nunca se verifica.",
+       "why": "Leitura da escada de Gauss."
+      }
+     ],
+     "answer": "Verdadeiro"
+    },
+    "topic": 2
+   }
+  ],
+  "feynman": {
+   "task": "Explica a alguém de 12 anos o que faz o método de Gauss e porque não muda as soluções.",
+   "checklist": [
+    "Diz que se eliminam incógnitas uma a uma",
+    "Explica porque as operações não mudam as soluções",
+    "Usa um exemplo pequeno",
+    "Diz quando o sistema não tem solução"
+   ]
+  },
+  "mindmap": {
+   "center": "Matrizes e sistemas",
+   "branches": [
+    {
+     "label": "Operações",
+     "leaves": [
+      "soma",
+      "produto linha × coluna",
+      "não comutativo"
+     ]
+    },
+    {
+     "label": "Gauss",
+     "leaves": [
+      "matriz aumentada",
+      "escada",
+      "pivôs"
+     ]
+    },
+    {
+     "label": "Soluções",
+     "leaves": [
+      "possível determinado",
+      "indeterminado",
+      "impossível"
+     ]
+    }
+   ],
+   "blanks": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ]
+   ]
+  },
+  "sq3r": {
+   "survey": "Este tópico mostra como se opera com matrizes, porque o produto não é comutativo e como o método de Gauss resolve qualquer sistema linear e classifica as suas soluções.",
+   "questions": [
+    "Quando se pode multiplicar duas matrizes?",
+    "O que se faz no método de Gauss?",
+    "Como se sabe se um sistema é impossível?"
+   ],
+   "recap": [
+    "Colunas da primeira = linhas da segunda",
+    "Operações de linha até à escada",
+    "Aparece uma linha $0=c$ com $c\\neq0$"
+   ]
+  },
+  "cornell": {
+   "cues": [
+    {
+     "cue": "Produto",
+     "note": "linha × coluna"
+    },
+    {
+     "cue": "Comutativo?",
+     "note": "não: $AB\\neq BA$ em geral"
+    },
+    {
+     "cue": "Gauss",
+     "note": "operações de linha até à escada"
+    },
+    {
+     "cue": "car(A)",
+     "note": "número de pivôs"
+    }
+   ],
+   "summary": "O produto de matrizes faz-se linha vezes coluna e não é comutativo; o método de Gauss leva a matriz aumentada à escada, e os pivôs dão a característica, que decide se o sistema é possível e quantas soluções tem."
+  }
+ }
+}
