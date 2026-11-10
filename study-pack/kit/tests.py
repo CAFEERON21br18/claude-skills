@@ -11,7 +11,7 @@ Fixed rules:
 - daily  "d<YYYY-MM-DD>": one per plan day that has a "quiz" session, on that day's topics.
          2 questions per topic, at least 4, at most 8. ~15 min.
 - topics "b<first>-<last>": blocks of 3 consecutive topics (last block may have 2–4). 2 questions per topic. ~20–30 min.
-- mock   "m1" (and "m2" when there are more than 7 days of plan): all topics, 2 questions per topic,
+- mock   "m1" and "m2" (always two, like two exam papers): all topics, 2 questions per topic,
          at least 10, at most 25; m1 is the one linked from the last day's mixed test.
 Without a plan: no daily tests, only topic tests and mocks.
 """
@@ -44,7 +44,7 @@ def main(d):
         tests.append({'id': f'b{b[0]}-{b[-1]}', 'kind': 'topics', 'title': f'{W[1]} {b[0]}–{b[-1]}' if len(b) > 1 else f'{W[1]} {b[0]}',
                       'topics': b, 'need': 2 * len(b), 'minutes': 10 * len(b)})
     days = len(plan['days']) if plan else 0
-    for i in range(1, (3 if days > 7 else 2)):
+    for i in (1, 2):
         need = max(10, min(25, 2 * len(ns)))
         tests.append({'id': f'm{i}', 'kind': 'mock', 'title': f'{W[2]} {i}', 'topics': ns, 'need': need, 'minutes': max(30, need * 4)})
     for t in tests:

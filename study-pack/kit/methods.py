@@ -197,8 +197,10 @@ def mindmap_html(p, cx, r, S, blanks=None):
                        f'<span class="mans{r.mtx(leaf)}" hidden>{r.inline(leaf, cx)}</span></li>')
             else:
                 lv += f'<li class="{r.mtx(leaf)}">{r.inline(leaf, cx)}</li>'
-        out.append(f'<div class="mbr g{i % 5}"><div class="mbl{r.mtx(b["label"])}">{r.inline(b["label"], cx)}</div><ul>{lv}</ul></div>')
-    return f'<div class="mmap"><div class="mctr{r.mtx(p["center"])}">{r.inline(p["center"], cx)}</div><div class="mbrs">{"".join(out)}</div></div>'
+        out.append(f'<div class="mbr g{i % 5} {"ml" if i % 2 == 0 else "mr"}"><div class="mbl{r.mtx(b["label"])}">{r.inline(b["label"], cx)}</div><ul>{lv}</ul></div>')
+    n = len(p['branches'])
+    return (f'<div class="mmap" style="--rows:{(n + 1) // 2}"><svg class="mlinks" aria-hidden="true" focusable="false"></svg>'
+            f'<div class="mctr{r.mtx(p["center"])}">{r.inline(p["center"], cx)}</div><div class="mbrs">{"".join(out)}</div></div>')
 
 
 def resumo_top(pack, tp, n, cx, S, r):

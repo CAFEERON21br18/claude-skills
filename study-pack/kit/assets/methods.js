@@ -18,6 +18,19 @@
     $$('.mfill',sec).forEach(i=>{const ok=i.value.trim()&&(norm(i.value)===norm(i.dataset.ans)||norm(i.dataset.ans).includes(norm(i.value))&&norm(i.value).length>3);
       i.classList.toggle('ok',!!ok); i.classList.toggle('miss',!ok); const a=i.nextElementSibling; a.hidden=false; typeset(a);});
   }));
+  /* Mind map: curved links from the centre to each branch (wide layout only; phones get the CSS spine) */
+  function drawMap(m){
+    const svg=$('.mlinks',m), c=$('.mctr',m); if(!svg||!c) return;
+    if(getComputedStyle(svg).display==='none'){svg.innerHTML='';return;}
+    const R=m.getBoundingClientRect(), C=c.getBoundingClientRect(); let d='';
+    svg.setAttribute('viewBox',`0 0 ${R.width} ${R.height}`);
+    $$('.mbr',m).forEach(b=>{const B=b.getBoundingClientRect(), left=B.right<=C.left+1;
+      const x1=(left?C.left:C.right)-R.left, y1=C.top+C.height/2-R.top, x2=(left?B.right:B.left)-R.left, y2=B.top+Math.min(26,B.height/2)-R.top, mx=(x1+x2)/2;
+      const col=getComputedStyle(b).borderTopColor;
+      d+=`<path d="M${x1} ${y1} C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}" fill="none" stroke="${col}" stroke-width="2.5" stroke-linecap="round"/>`;});
+    svg.innerHTML=d;
+  }
+  const maps=$$('.mmap'); if(maps.length){const ro=new ResizeObserver(es=>es.forEach(e=>drawMap(e.target))); maps.forEach(m=>{ro.observe(m); drawMap(m);});}
   /* Kumon: a level opens when 90 % of the level before is right */
   function kumon(){
     if(typeof state==='undefined') return;

@@ -93,7 +93,7 @@ def html_form(a):
     if a.calc:
         out.append(group(Q[7], 'graph_calc', pill('yes', S['yes'], on=True) + pill('no', S['no'])))
     out.append(group(Q[8], 'tutor', pill('yes', S['yes'], on=True) + pill('no', S['no'])))
-    out.append(group(Q[9], 'plan', pill('yes', S['yes']) + pill('no', S['no'], on=True)))
+    out.append(group(Q[9], 'plan', pill('yes', S['yes'], on=bool(a.exam)) + pill('no', S['no'], on=not a.exam)))   # a plan needs a date: on when one was found
     out.append(f'<div class="elicit-group"><label class="elicit-question">{e(Q[10])}</label><input type="date" class="elicit-date" data-name="deadline"{f" value=\"{e(a.exam)}\"" if a.exam else ""}></div>')
     out.append(group(Q[11], 'hours', pill('auto', S['auto'], on=True) + ''.join(pill(h, h + 'h') for h in ('1', '2', '3', '4')) + pill('other', S['other'], other=True), other_for='hours'))
     return (f'<h2 class="sr-only">{e(S["title"])}</h2><form class="elicit"><div class="elicit-header">{HEAD}<span>{e(S["title"])}</span></div><div class="elicit-body">{"".join(out)}</div>'
